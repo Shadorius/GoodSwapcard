@@ -5,6 +5,16 @@ IF EXISTS
     WHERE name = N'GoodSwapCardDB'
     )
 BEGIN
+	use master
+	drop table RdV
+	drop table HourTime	
+	drop table EventUser	
+	drop table Evenement	
+	drop table Place
+	drop table Locality
+	drop table Country
+	drop table Statut
+	drop table Utils	
 	DROP DATABASE GoodSwapCardDB
 END
 CREATE DATABASE GoodSwapCardDB;
@@ -82,7 +92,7 @@ CREATE TABLE RdV (
 	Id int IDENTITY(1,1) Primary Key,
 	IdHour int NOT NULL CONSTRAINT FK_Hour FOREIGN KEY (IdHour) REFERENCES HourTime (Id),
 	IdCandidat int NOT NULL CONSTRAINT FK_Candidat FOREIGN KEY (IdCandidat) REFERENCES Utils (Id),
-	IdRep int NOT NULL CONSTRAINT FK_HR FOREIGN KEY (IdHR) REFERENCES Utils (Id),
+	IdRep int NOT NULL CONSTRAINT FK_Rep FOREIGN KEY (IdRep) REFERENCES Utils (Id),
 );
 
 GO
