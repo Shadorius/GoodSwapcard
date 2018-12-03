@@ -8,6 +8,6 @@ namespace DAL
 {
     class Connexion
     {
-
+        Console.WriteLine("tata");
     }
 }
