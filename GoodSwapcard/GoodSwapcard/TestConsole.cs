@@ -19,6 +19,7 @@ namespace GoodSwapcard
 
             Console.WriteLine(user);
 
+
             Console.ReadKey();
         }
     }
