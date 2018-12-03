@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModelClient
 {
-    public class Class1
+    class RdVMC
     {
     }
 }

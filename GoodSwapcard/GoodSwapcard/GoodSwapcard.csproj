@@ -44,11 +44,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="TestConsole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">
+      <Project>{a7f36655-7b95-4682-884b-8bb6b4fdc793}</Project>
+      <Name>BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{2703a198-fcfe-42c3-bb94-94b507e4127c}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ModelClient\ModelClient.csproj">
+      <Project>{61b2f8cb-1c09-4d68-8d97-e7919a3b0343}</Project>
+      <Name>ModelClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ModelServer\ModelServer.csproj">
+      <Project>{ba053d3e-e740-4627-bff4-dc9dbb49f5a7}</Project>
+      <Name>ModelServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Repostory\Repostory.csproj">
+      <Project>{293404ad-60c1-4ac7-954f-1f0a2eea350a}</Project>
+      <Name>Repostory</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
