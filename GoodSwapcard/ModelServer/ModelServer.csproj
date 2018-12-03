@@ -41,8 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EvenementMS.cs" />
     <Compile Include="EventUserMS.cs" />
+    <Compile Include="HourTimeMS.cs" />
+    <Compile Include="LocalityMS.cs" />
+    <Compile Include="PlaceMS.cs" />
     <Compile Include="RdVMS.cs" />
+    <Compile Include="StatutMS.cs" />
     <Compile Include="UtilisateurMS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
