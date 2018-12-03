@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC", "MVC\MVC.csproj", "{8
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GoodSwapDB", "GoodSwapDB", "{1CD60A90-D978-4A49-8B63-0B31CFEB250C}"
 	ProjectSection(SolutionItems) = preProject
-		DBSQL.txt = DBSQL.txt
+		DBSQL.sql = DBSQL.sql
 	EndProjectSection
 EndProject
 Global
