@@ -18,6 +18,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GoodSwapDB", "GoodSwapDB", 
 		DBSQL.sql = DBSQL.sql
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelServer", "ModelServer\ModelServer.csproj", "{BA053D3E-E740-4627-BFF4-DC9DBB49F5A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelClient", "ModelClient\ModelClient.csproj", "{61B2F8CB-1C09-4D68-8D97-E7919A3B0343}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +48,14 @@ Global
 		{88D6C553-1F33-4B1B-A7D5-7D50809E5191}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88D6C553-1F33-4B1B-A7D5-7D50809E5191}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88D6C553-1F33-4B1B-A7D5-7D50809E5191}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA053D3E-E740-4627-BFF4-DC9DBB49F5A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA053D3E-E740-4627-BFF4-DC9DBB49F5A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA053D3E-E740-4627-BFF4-DC9DBB49F5A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA053D3E-E740-4627-BFF4-DC9DBB49F5A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61B2F8CB-1C09-4D68-8D97-E7919A3B0343}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61B2F8CB-1C09-4D68-8D97-E7919A3B0343}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61B2F8CB-1C09-4D68-8D97-E7919A3B0343}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61B2F8CB-1C09-4D68-8D97-E7919A3B0343}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
