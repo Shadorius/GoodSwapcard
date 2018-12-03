@@ -9,6 +9,7 @@ namespace DAL
 {
     public class Connexion
     {
+        //private readonly string Cnstr = @"Server = PORTABLE-AXEL; Database=ADOExe; User ID=sa; Password = tftic@2012";
         private readonly string Cnstr = @"Server = PORTABLE-AXEL; Database=ADOExe; User ID=sa; Password = tftic@2012";
 
         private SqlConnection oConn;
