@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ModelClient
+namespace ModelServer
 {
-    public class Class1
+    public class Country
     {
+        public int Id { get; set; }
+        public string CountryName { get; set; }
     }
 }

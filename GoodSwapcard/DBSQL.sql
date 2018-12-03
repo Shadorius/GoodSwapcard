@@ -37,19 +37,19 @@ CREATE TABLE Utils (
 --Table Statut
 CREATE TABLE Statut (
 	Id int IDENTITY(1,1) Primary Key,
-	Statut varchar(50) NOT NULL
+	StatutName varchar(50) NOT NULL
 );
 
 --Table Pays
 CREATE TABLE Country (
 	Id int IDENTITY(1,1) Primary Key,
-	Country varchar (50) NOT NULL
+	CountryName varchar (50) NOT NULL
 );
 
 --Table Localité
 CREATE TABLE Locality (
 	Id int IDENTITY(1,1) Primary Key,
-	Locality varchar (50) NOT NULL,
+	LocalityName varchar (50) NOT NULL,
 	CP varchar (10) NOT NULL,
 	IdCountry int NOT NULL CONSTRAINT FK_Country FOREIGN KEY (IdCountry) REFERENCES Country (Id)
 );
@@ -57,7 +57,7 @@ CREATE TABLE Locality (
 --Table Place
 CREATE TABLE Place (
 	Id int IDENTITY(1,1) Primary Key,
-	Place varchar(50) NOT NULL,
+	PlaceName varchar(50) NOT NULL,
 	Street varchar(50) NOT NULL,
 	Number varchar(5) NOT NULL,
 	IdLoc int NOT NULL CONSTRAINT FK_Locality FOREIGN KEY (IdLoc) REFERENCES Locality (Id)
@@ -66,7 +66,7 @@ CREATE TABLE Place (
 --Table Event
 CREATE TABLE Evenement (
 	Id int IDENTITY(1,1) Primary Key,
-	Evenement varchar(50) NOT NULL,
+	EvenementName varchar(50) NOT NULL,
 	DateEvent DateTime NOT Null,
 	IdUserCreator int NOT NULL CONSTRAINT FK_UserCreator FOREIGN KEY (IdUserCreator) REFERENCES Utils (Id),
 	IdPlace int NOT NULL CONSTRAINT FK_Place FOREIGN KEY (IdPlace) REFERENCES Place (Id)
@@ -83,12 +83,12 @@ CREATE TABLE EventUser (
 --Table Heure
 CREATE TABLE HourTime (
 	Id int IDENTITY(1,1) Primary Key,
-	HourTime int NOT NULL,
-	MinuteTime int NOT NULL
+	[Hour] int NOT NULL,
+	[Minute] int NOT NULL
 );
 
 --Table RDV
-CREATE TABLE RdV (
+CREATE TABLE RDV (
 	Id int IDENTITY(1,1) Primary Key,
 	IdHour int NOT NULL CONSTRAINT FK_Hour FOREIGN KEY (IdHour) REFERENCES HourTime (Id),
 	IdCandidat int NOT NULL CONSTRAINT FK_Candidat FOREIGN KEY (IdCandidat) REFERENCES Utils (Id),
