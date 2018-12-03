@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodSwapcard", "GoodSwapcard\GoodSwapcard.csproj", "{4D19B345-60B9-46DF-9936-919AB7D0D12A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{2703A198-FCFE-42C3-BB94-94B507E4127C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4D19B345-60B9-46DF-9936-919AB7D0D12A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D19B345-60B9-46DF-9936-919AB7D0D12A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D19B345-60B9-46DF-9936-919AB7D0D12A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2703A198-FCFE-42C3-BB94-94B507E4127C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2703A198-FCFE-42C3-BB94-94B507E4127C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2703A198-FCFE-42C3-BB94-94B507E4127C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2703A198-FCFE-42C3-BB94-94B507E4127C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
