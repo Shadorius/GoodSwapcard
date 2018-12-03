@@ -11,6 +11,7 @@ namespace GoodSwapcard
         static void Main(string[] args)
         {
             Console.WriteLine("titi encule gros miney");
+            Console.ReadLine();
         }
     }
 }
