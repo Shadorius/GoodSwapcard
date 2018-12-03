@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CountryMS.cs" />
     <Compile Include="EvenementMS.cs" />
     <Compile Include="EventUserMS.cs" />
     <Compile Include="HourTimeMS.cs" />
