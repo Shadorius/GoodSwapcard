@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace ModelServer
 {
-    public class Locality
+    public class HourTimeMS
     {
         public int Id { get; set; }
-        public string LocalityName { get; set; }
-        public string CP { get; set; }
-        public int IdCountry { get; set; }
+        public int Hour { get; set; }
+        public int Minute { get; set; }
     }
 }

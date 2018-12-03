@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModelServer
 {
-    public class Evenement
+    public class EvenementMS
     {
         public int Id { get; set; }
         public string EvenementName { get; set; }

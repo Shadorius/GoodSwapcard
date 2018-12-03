@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace ModelServer
 {
-    public class Country
+    public class LocalityMS
     {
         public int Id { get; set; }
-        public string CountryName { get; set; }
+        public string LocalityName { get; set; }
+        public string CP { get; set; }
+        public int IdCountry { get; set; }
     }
 }

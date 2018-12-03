@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace ModelServer
 {
-    public class HourTime
+    public class StatutMS
     {
         public int Id { get; set; }
-        public int Hour { get; set; }
-        public int Minute { get; set; }
+        public string StatutName { get; set; }
     }
 }

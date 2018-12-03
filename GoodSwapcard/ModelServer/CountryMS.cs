@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ModelServer
 {
-    public class Statut
+    public class CountryMS
     {
         public int Id { get; set; }
-        public string StatutName { get; set; }
+        public string CountryName { get; set; }
     }
 }
