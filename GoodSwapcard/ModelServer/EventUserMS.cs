@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModelServer
 {
-    class EventUserMS
+    public class EventUserMS
     {
         public int Id { get; set; }
         public int IdUser { get; set; }

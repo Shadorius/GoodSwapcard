@@ -9,48 +9,50 @@ using System.Threading.Tasks;
 
 namespace Repostory
 {
-    public class RepoHourTime : IRepository<HourTimeMS, int>
+    public class RepoRDV : IRepository<RdVMS, int>
     {
         private Connexion _con = new Connexion();
         public bool Delete(int id)
         {
-            string Query = "Delete from [HourTime] where [Id]=" + id;
+            string Query = "Delete from [RDV] where [Id]=" + id;
             bool QueryState = _con.Delete(Query);
             return QueryState;
         }
 
-        public HourTimeMS Get(int id)
+        public RdVMS Get(int id)
         {
-            string Query = "Select * from [Evenement] where [Id] =" + id;
+            string Query = "Select * from [RDV] where [Id] =" + id;
             List<Dictionary<string, object>> Result = _con.getData(Query);
-            HourTimeMS CurrentHourTime = null;
+            RdVMS CurrentRDV = null;
 
             if (Result.Count != 0)
             {
-                CurrentHourTime = new HourTimeMS
+                CurrentRDV = new RdVMS
                 {
                     Id = (int)Result[0]["Id"],
-                    Hour = (int)Result[0]["Hour"],
-                    Minute = (int)Result[0]["Minute"]
+                    IdHour = (int)Result[0]["IdHour"],
+                    IdCandidat = (int)Result[0]["IdCandidat"],
+                    IdRep = (int)Result[0]["IdRep"]
                 };
             }
-            return CurrentHourTime;
+            return CurrentRDV;
         }
 
-        public List<HourTimeMS> GetAll()
+        public List<RdVMS> GetAll()
         {
-            string Query = "Select * from [HourTime]";
+            string Query = "Select * from [RDV]";
             List<Dictionary<string, object>> Result = _con.getData(Query);
-            List<HourTimeMS> CurrentList = new List<HourTimeMS>();
+            List<RdVMS> CurrentList = new List<RdVMS>();
             if (Result.Count != 0)
             {
                 for (int i = 0; i < Result.Count; i++)
                 {
-                    HourTimeMS temp = new HourTimeMS
+                    RdVMS temp = new RdVMS
                     {
                         Id = (int)Result[i]["Id"],
-                        Hour = (int)Result[i]["Hour"],
-                        Minute = (int)Result[i]["Minute"]
+                        IdHour = (int)Result[i]["IdHour"],
+                        IdCandidat = (int)Result[i]["IdCandidat"],
+                        IdRep = (int)Result[i]["IdRep"]
                     };
                     CurrentList.Add(temp);
                 }
@@ -58,22 +60,24 @@ namespace Repostory
             return CurrentList;
         }
 
-        public bool Insert(HourTimeMS item)
+        public bool Insert(RdVMS item)
         {
-            string Query = "INSERT INTO [HourTime] Values (";
-            Query += "" + item.Hour + ",";
-            Query += "" + item.Minute;
+            string Query = "INSERT INTO [RDV] Values (";
+            Query += "" + item.IdHour + ",";
+            Query += "," + item.IdCandidat;
+            Query += "," + item.IdRep;
             Query += ")";
 
             bool QueryResult = _con.Insert(Query);
             return QueryResult;
         }
 
-        public bool Update(HourTimeMS item)
+        public bool Update(RdVMS item)
         {
-            string Query = "UPDATE [HourTime] SET";
-            Query += "[Hour] = " + item.Hour + "";
-            Query += ", [Minute] = " + item.Minute + "";
+            string Query = "UPDATE [RDV] SET";
+            Query += "IdHour = " + item.IdHour + "";
+            Query += ", IdCandidat = " + item.IdCandidat + "";
+            Query += ", IdRep = " + item.IdRep + "";
             Query += " WHERE Id=" + item.Id;
 
             bool QueryResult = _con.Insert(Query);
