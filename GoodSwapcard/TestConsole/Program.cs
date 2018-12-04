@@ -20,6 +20,9 @@ namespace TestConsole
             user = repo.Get(1);
 
             Console.WriteLine(user.Email);
+            Console.WriteLine(user.FirstName);
+            Console.WriteLine(user.Phone);
+            Console.WriteLine(user.Birthdate);
 
 
             Console.ReadKey();
