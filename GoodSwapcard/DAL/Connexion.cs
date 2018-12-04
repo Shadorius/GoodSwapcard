@@ -11,6 +11,7 @@ namespace DAL
     {
         //private readonly string Cnstr = @"Server = PORTABLE-AXEL; Database=ADOExe; User ID=sa; Password = tftic@2012";
         private readonly string Cnstr = @"Data Source=PREDATOR;Initial Catalog = GoodSwapCardDB; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        //private readonly string Cnstr = @"Data Source=DESKTOP-BK95MHE\SQLEXPRESS;Initial Catalog=GoodSwapCardDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         private SqlConnection oConn;
         private SqlCommand oCmd;

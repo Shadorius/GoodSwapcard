@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Repostory
 {
-    public class StatutRepository : IRepository<StatutMS, int>
+    public class RepoStatut : IRepository<StatutMS, int>
     {
         Connexion _con = new Connexion();
         public bool Delete(int id)
