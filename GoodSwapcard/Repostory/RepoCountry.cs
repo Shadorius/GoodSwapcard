@@ -48,8 +48,8 @@ namespace Repostory
                 {
                     CountryMS temp = new CountryMS
                     {
-                        Id = (int)Result[0]["Id"],
-                        CountryName = (string)Result[0]["CountryName"]
+                        Id = (int)Result[i]["Id"],
+                        CountryName = (string)Result[i]["CountryName"]
                     };
                     CurrentList.Add(temp);
                 }

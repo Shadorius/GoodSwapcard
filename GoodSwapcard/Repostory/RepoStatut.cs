@@ -48,8 +48,8 @@ namespace Repostory
                 {
                     StatutMS temp = new StatutMS
                     {
-                        Id = (int)Result[0]["Id"],
-                        StatutName = (string)Result[0]["StatutName"]
+                        Id = (int)Result[i]["Id"],
+                        StatutName = (string)Result[i]["StatutName"]
                     };
                     CurrentList.Add(temp);
                 }
