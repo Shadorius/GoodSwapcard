@@ -73,7 +73,7 @@ namespace Repostory
 
         public bool Update(UtilisateurMS util)
         {
-            string  Query = "UPDATE [User] SET ";
+            string  Query = "UPDATE [Utils] SET ";
 
                     Query += "LastName  = '"    +   util.LastName     + "', ";
                     Query += "FirstName = '"    +   util.FirstName    + "', ";
@@ -82,9 +82,9 @@ namespace Repostory
 
                     Query += ", Phone = ";
                     Query += util.Phone == null ? "null" : "'" + util.Phone + "' ";
-                    Query += ", BirthDate = ";
+                    Query += ", Birthdate = ";
                     Query += util.Birthdate == null ? "null" : "'" + util.Birthdate + "' ";
-                    Query += " WHERE UserId = " + util.Id;
+                    Query += " WHERE Id = " + util.Id;
 
             bool QueryResult = _con.Insert(Query);
 
