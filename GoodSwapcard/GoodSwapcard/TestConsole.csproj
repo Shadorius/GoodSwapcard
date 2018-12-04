@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="TestConsole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestCrazyPush.cs" />
     <Compile Include="TestFromScratch.cs" />
   </ItemGroup>
   <ItemGroup>

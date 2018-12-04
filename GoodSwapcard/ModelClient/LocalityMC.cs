@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ModelClient
 {
-    public class EventUserMC
+    public class LocalityMC
     {
         public int Id { get; set; }
-        public int IdUser { get; set; }
-        public int IdEvent { get; set; }
-        public int IdStatut { get; set; }
+        public string LocalityName { get; set; }
+        public string CP { get; set; }
+        public int IdCountry { get; set; }
     }
 }
