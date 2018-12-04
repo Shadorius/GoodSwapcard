@@ -50,11 +50,11 @@ namespace Repostory
                 {
                     EvenementMS temp = new EvenementMS
                     {
-                        Id = (int)Result[0]["Id"],
-                        EvenementName = (string)Result[0]["EvenementName"],
-                        DateEvent = (DateTime?)Result[0]["DateEvent"],
-                        IdUserCreator = (int)Result[0]["IdUserCreator"],
-                        IdPlace = (int)Result[0]["IdPlace"]
+                        Id = (int)Result[i]["Id"],
+                        EvenementName = (string)Result[i]["EvenementName"],
+                        DateEvent = (DateTime?)Result[i]["DateEvent"],
+                        IdUserCreator = (int)Result[i]["IdUserCreator"],
+                        IdPlace = (int)Result[i]["IdPlace"]
                     };
                     CurrentList.Add(temp);
                 }
