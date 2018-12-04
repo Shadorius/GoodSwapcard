@@ -95,6 +95,13 @@ CREATE TABLE RDV (
 	IdRep int NOT NULL CONSTRAINT FK_Rep FOREIGN KEY (IdRep) REFERENCES Utils (Id),
 );
 
+--Table Notifications
+CREATE TABLE Notifications(
+	Id int IDENTITY(1,1) PRIMARY KEY,
+	Content varchar(255) NOT NULL,
+	IdUser int NOT NULL CONSTRAINT FK_NotifUser FOREIGN KEY (IdUserCreator) REFERENCES Utils (Id),
+);
+
 GO
 
 --Populations des tables
