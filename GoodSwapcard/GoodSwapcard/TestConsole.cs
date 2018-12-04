@@ -17,7 +17,7 @@ namespace GoodSwapcard
 
             user = repo.Get(1);
 
-            Console.WriteLine(user);
+            Console.WriteLine(user.Email);
 
 
             Console.ReadKey();

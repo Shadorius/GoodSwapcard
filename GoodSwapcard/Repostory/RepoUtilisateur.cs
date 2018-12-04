@@ -20,12 +20,12 @@ namespace Repostory
             list = con.getData("Select * from Utils where Id = " + id);
 
             uti.Id          =   (int)     list[0]["Id"];
-            uti.LastName    =   (string)  list[0]["Lastname"];
-            uti.FirstName   =   (string)  list[0]["Firstname"];
+            uti.LastName    =   (string)  list[0]["LastName"];
+            uti.FirstName   =   (string)  list[0]["FirstName"];
             uti.PsW         =   (string)  list[0]["PsW"];
             uti.Email       =   (string)  list[0]["Email"];
-            uti.Phone       =   (string)  list[0]["Phone"];
-            uti.Birthdate   =   (DateTime)list[0]["Birthdate"];
+            //uti.Phone       =   (string)  list[0]["Phone"];
+            //uti.Birthdate   =   (DateTime)list[0]["Birthdate"];
 
             return uti;
         }
