@@ -5,16 +5,7 @@ IF EXISTS
     WHERE name = N'GoodSwapCardDB'
     )
 BEGIN
-	use master
-	drop table RdV
-	drop table HourTime	
-	drop table EventUser	
-	drop table Evenement	
-	drop table Place
-	drop table Locality
-	drop table Country
-	drop table Statut
-	drop table Utils	
+	use master;
 	DROP DATABASE GoodSwapCardDB
 END
 CREATE DATABASE GoodSwapCardDB;
@@ -95,6 +86,13 @@ CREATE TABLE RDV (
 	IdRep int NOT NULL CONSTRAINT FK_Rep FOREIGN KEY (IdRep) REFERENCES Utils (Id),
 );
 
+--Table Notifications
+CREATE TABLE Notifications(
+	Id int IDENTITY(1,1) PRIMARY KEY,
+	Content varchar(255) NOT NULL,
+	IdUser int NOT NULL CONSTRAINT FK_NotifUser FOREIGN KEY (IdUser) REFERENCES Utils (Id),
+);
+
 GO
 
 --Populations des tables
@@ -106,63 +104,63 @@ INSERT INTO Utils (LastName, FirstName, PsW, Email) VALUES ('Ghost', 'Man', 'poi
 INSERT INTO Utils (LastName, FirstName, PsW, Email) VALUES ('Brasseur', 'Xavier', '9515951', 'emaile@mail.be');
 
 --Table Statut
-INSERT INTO Statut (Statut) VALUES ('Visiteur');
-INSERT INTO Statut (Statut) VALUES ('Recruteur');
-INSERT INTO Statut (Statut) VALUES ('Candidat');
+INSERT INTO Statut (StatutName) VALUES ('Visiteur');
+INSERT INTO Statut (StatutName) VALUES ('Recruteur');
+INSERT INTO Statut (StatutName) VALUES ('Candidat');
 
 --Table Country
-INSERT INTO Country (Country) VALUES ('Belgique');
-INSERT INTO Country (Country) VALUES ('Allemagne');
-INSERT INTO Country (Country) VALUES ('Luxembourg');
+INSERT INTO Country (CountryName) VALUES ('Belgique');
+INSERT INTO Country (CountryName) VALUES ('Allemagne');
+INSERT INTO Country (CountryName) VALUES ('Luxembourg');
 
 --Table Locality
-INSERT INTO Locality (Locality, CP, IdCountry) VALUES ('Bruxelles','1000',1);
-INSERT INTO Locality (Locality, CP, IdCountry) VALUES ('Namur','5000',1);
-INSERT INTO Locality (Locality, CP, IdCountry) VALUES ('Gembloux','5030',1);
-INSERT INTO Locality (Locality, CP, IdCountry) VALUES ('Court-Saint-Etienne','1490',1);
-INSERT INTO Locality (Locality, CP, IdCountry) VALUES ('Nivelles','1400',1);
-INSERT INTO Locality (Locality, CP, IdCountry) VALUES ('Cologne','50441',2);
+INSERT INTO Locality (LocalityName, CP, IdCountry) VALUES ('Bruxelles','1000',1);
+INSERT INTO Locality (LocalityName, CP, IdCountry) VALUES ('Namur','5000',1);
+INSERT INTO Locality (LocalityName, CP, IdCountry) VALUES ('Gembloux','5030',1);
+INSERT INTO Locality (LocalityName, CP, IdCountry) VALUES ('Court-Saint-Etienne','1490',1);
+INSERT INTO Locality (LocalityName, CP, IdCountry) VALUES ('Nivelles','1400',1);
+INSERT INTO Locality (LocalityName, CP, IdCountry) VALUES ('Cologne','50441',2);
 
 --Table Place
-INSERT INTO Place (Place, Street, Number, IdLoc) VALUES ('PAM Expo', 'rue du coin', '5', 4);
-INSERT INTO Place (Place, Street, Number, IdLoc) VALUES ('Waux Hall', 'grand place', '2', 5);
-INSERT INTO Place (Place, Street, Number, IdLoc) VALUES ('Palais 12', 'plateau du heysel', '12', 1);
-INSERT INTO Place (Place, Street, Number, IdLoc) VALUES ('Namur Expo', 'rue du bois', '789', 2);
+INSERT INTO Place (PlaceName, Street, Number, IdLoc) VALUES ('PAM Expo', 'rue du coin', '5', 4);
+INSERT INTO Place (PlaceName, Street, Number, IdLoc) VALUES ('Waux Hall', 'grand place', '2', 5);
+INSERT INTO Place (PlaceName, Street, Number, IdLoc) VALUES ('Palais 12', 'plateau du heysel', '12', 1);
+INSERT INTO Place (PlaceName, Street, Number, IdLoc) VALUES ('Namur Expo', 'rue du bois', '789', 2);
 
 --Table Heures
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (9,0);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (9,15);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (9,30);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (9,45);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (10,0);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (10,15);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (10,30);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (10,45);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (11,0);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (11,15);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (11,30);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (11,45);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (12,0);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (12,15);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (12,30);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (12,45);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (13,0);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (13,15);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (13,30);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (13,45);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (14,0);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (14,15);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (14,30);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (14,45);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (15,0);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (15,15);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (15,30);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (15,45);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (16,0);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (16,15);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (16,30);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (16,45);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (17,0);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (17,15);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (17,30);
-INSERT INTO HourTime (Hourtime, MinuteTime) VALUES (17,45);
+INSERT INTO HourTime VALUES (9,0);
+INSERT INTO HourTime VALUES (9,15);
+INSERT INTO HourTime VALUES (9,30);
+INSERT INTO HourTime VALUES (9,45);
+INSERT INTO HourTime VALUES (10,0);
+INSERT INTO HourTime VALUES (10,15);
+INSERT INTO HourTime VALUES (10,30);
+INSERT INTO HourTime VALUES (10,45);
+INSERT INTO HourTime VALUES (11,0);
+INSERT INTO HourTime VALUES (11,15);
+INSERT INTO HourTime VALUES (11,30);
+INSERT INTO HourTime VALUES (11,45);
+INSERT INTO HourTime VALUES (12,0);
+INSERT INTO HourTime VALUES (12,15);
+INSERT INTO HourTime VALUES (12,30);
+INSERT INTO HourTime VALUES (12,45);
+INSERT INTO HourTime VALUES (13,0);
+INSERT INTO HourTime VALUES (13,15);
+INSERT INTO HourTime VALUES (13,30);
+INSERT INTO HourTime VALUES (13,45);
+INSERT INTO HourTime VALUES (14,0);
+INSERT INTO HourTime VALUES (14,15);
+INSERT INTO HourTime VALUES (14,30);
+INSERT INTO HourTime VALUES (14,45);
+INSERT INTO HourTime VALUES (15,0);
+INSERT INTO HourTime VALUES (15,15);
+INSERT INTO HourTime VALUES (15,30);
+INSERT INTO HourTime VALUES (15,45);
+INSERT INTO HourTime VALUES (16,0);
+INSERT INTO HourTime VALUES (16,15);
+INSERT INTO HourTime VALUES (16,30);
+INSERT INTO HourTime VALUES (16,45);
+INSERT INTO HourTime VALUES (17,0);
+INSERT INTO HourTime VALUES (17,15);
+INSERT INTO HourTime VALUES (17,30);
+INSERT INTO HourTime VALUES (17,45);
