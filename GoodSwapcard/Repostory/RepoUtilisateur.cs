@@ -26,6 +26,7 @@ namespace Repostory
             uti.Email       =   (string)  list[0]["Email"];
             //uti.Phone       =   (string)  list[0]["Phone"];
             //uti.Birthdate   =   (DateTime)list[0]["Birthdate"];
+            //BirthDate = Result[i]["BirthDate"] == DBNull.Value ? null : (DateTime?)Result[i]["BirthDate"]
 
             return uti;
         }
@@ -38,11 +39,29 @@ namespace Repostory
         public bool Insert(UtilisateurMS item)
         {
             throw new NotImplementedException();
+            //string Query = "INSERT INTO [User] Values(";
+            //Query += "'" + item.Pseudo + "', ";
+            //Query += "'" + item.Email + "', ";
+            //Query += "'" + item.Password + "', ";
+            //Query += item.Name == null ? "null, " : "'" + item.Name + "', ";
+            //Query += item.LastName == null ? "null, " : "'" + item.LastName + "', ";
+            //Query += item.Active == true ? "1, " : "0, ";
+            //Query += item.BirthDate == null ? "null)" : "'" + item.BirthDate + "')";
         }
 
         public bool Update(UtilisateurMS item)
         {
-            throw new NotImplementedException();
+            //string Query = "UPDATE [User] SET ";
+            //Query += "Pseudo = '" + item.Pseudo + "', ";
+            //Query += "Email = '" + item.Email + "', ";
+            //Query += "Password = '" + item.Password + "', ";
+            //Query += "Name = ";
+            //Query += item.Name == null ? "null" : "'" + item.Name + "'";
+            //Query += ", LastName = ";
+            //Query += item.LastName == null ? "null" : "'" + item.LastName + "' ";
+            //Query += ", BirthDate = ";
+            //Query += item.BirthDate == null ? "null" : "'" + item.BirthDate + "' ";
+            //Query += " WHERE UserId = " + item.UserId;
         }
 
         public bool Delete(int id)
