@@ -67,7 +67,7 @@ CREATE TABLE Place (
 CREATE TABLE Evenement (
 	Id int IDENTITY(1,1) Primary Key,
 	EvenementName varchar(50) NOT NULL,
-	DateEvent DateTime NOT Null,
+	DateEvent DateTime NOT NUll,
 	IdUserCreator int NOT NULL CONSTRAINT FK_UserCreator FOREIGN KEY (IdUserCreator) REFERENCES Utils (Id),
 	IdPlace int NOT NULL CONSTRAINT FK_Place FOREIGN KEY (IdPlace) REFERENCES Place (Id)
 );

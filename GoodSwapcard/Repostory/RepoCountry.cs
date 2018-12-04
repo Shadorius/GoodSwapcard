@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Repostory
 {
-    class CountryRepository : IRepository<CountryMS, int>
+    public class RepoCountry : IRepository<CountryMS, int>
     {
-        Connexion _con = new Connexion();
+        private Connexion _con = new Connexion();
         public bool Delete(int id)
         {
             string Query = "Delete from [Country] where [Id]=" + id;
