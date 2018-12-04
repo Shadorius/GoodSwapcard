@@ -6,10 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GoodSwapcard
+namespace TestConsole
 {
-    class TestConsole
+    class Program
     {
+
+        // Jerem
         static void Main(string[] args)
         {
             RepoUtilisateur repo = new RepoUtilisateur();
@@ -22,5 +24,22 @@ namespace GoodSwapcard
 
             Console.ReadKey();
         }
+
+        //Axel
+        //static void Main(string[] args)
+        //{
+
+
+        //    Console.ReadKey();
+        //}
+
+        //Geoffroy
+        //static void Main(string[] args)
+        //{
+
+
+        //    Console.ReadKey();
+        //}
+
     }
 }
