@@ -66,7 +66,7 @@ namespace Repostory
         {
             string Query = "INSERT INTO [Evenement] Values (";
             Query += "'" + item.EvenementName + "',";
-            Query += "'"+item.DateEvent.ToString()+"'";
+            Query += "'" + item.DateEvent.ToString() + "'";
             Query += "," + item.IdUserCreator;
             Query += "," + item.IdPlace;
             Query += ")";
