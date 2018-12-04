@@ -8,5 +8,9 @@ namespace ModelClient
 {
     public class EventUserMC
     {
+        public int Id { get; set; }
+        public int IdUser { get; set; }
+        public int IdEvent { get; set; }
+        public int IdStatut { get; set; }
     }
 }

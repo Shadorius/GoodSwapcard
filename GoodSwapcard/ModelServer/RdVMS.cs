@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModelServer
 {
-    class RdVMS
+    public class RdVMS
     {
         public int Id { get; set; }
         public int IdHour { get; set; }
