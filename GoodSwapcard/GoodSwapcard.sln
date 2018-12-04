@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodSwapcard", "GoodSwapcard\GoodSwapcard.csproj", "{4D19B345-60B9-46DF-9936-919AB7D0D12A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "GoodSwapcard\TestConsole.csproj", "{4D19B345-60B9-46DF-9936-919AB7D0D12A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{2703A198-FCFE-42C3-BB94-94B507E4127C}"
 EndProject

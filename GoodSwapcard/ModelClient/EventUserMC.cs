@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModelClient
 {
-    class EventUserMC
+    public class EventUserMC
     {
     }
 }

@@ -41,11 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CountryRepository.cs" />
+    <Compile Include="RepoCountry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interface\IRepository.cs" />
     <Compile Include="RepoUtilisateur.cs" />
-    <Compile Include="StatutRepository.cs" />
+    <Compile Include="RepoStatut.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">
