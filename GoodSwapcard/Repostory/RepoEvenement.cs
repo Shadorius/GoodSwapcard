@@ -41,7 +41,7 @@ namespace Repostory
 
         public List<EvenementMS> GetAll()
         {
-            string Query = "Select * from [Country]";
+            string Query = "Select * from [Evenement]";
             List<Dictionary<string, object>> Result = _con.getData(Query);
             List<EvenementMS> CurrentList = new List<EvenementMS>();
             if (Result.Count != 0)

@@ -47,6 +47,7 @@
     <Compile Include="RepoEvenement.cs" />
     <Compile Include="RepoHourTime.cs" />
     <Compile Include="RepoPlace.cs" />
+    <Compile Include="RepoRDV.cs" />
     <Compile Include="RepoUtilisateur.cs" />
     <Compile Include="RepoStatut.cs" />
   </ItemGroup>
