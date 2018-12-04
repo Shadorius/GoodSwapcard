@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Repostory.Repository
 {
-    internal interface IRepository<T, Tkey>
+    public interface IRepository<T, Tkey>
         where Tkey : struct
     {
         T Get(Tkey id);
