@@ -1,4 +1,5 @@
-﻿using ModelClient;
+﻿using BusinessLayer;
+using ModelClient;
 using MVC.Models;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,15 @@ namespace MVC.Utils
 {
     public class MappingModel
     {
+        static BLRUtilisateur repoUtil = new BLRUtilisateur();
+        static BLREvenement repoEvent = new BLREvenement();
+        static BLRStatut repoStatut = new BLRStatut();
+        static BLRPlace repoPlace = new BLRPlace();
+        static BLRHourTime repoHourTime = new BLRHourTime();
+        static BLRLocality repoLocality = new BLRLocality();
+        static BLRCountry repoCountry = new BLRCountry();
+
+
         //Mapping Utilisateurs
         internal static Utilisateur UtilisateurCtoMVC(UtilisateurMC utiMS)
         {
@@ -66,9 +76,9 @@ namespace MVC.Utils
             {
                 Id = c.Id,
                 EvenementName = c.EvenementName,
-                DateEvent = c.DateEvent
-                //Creator = Utilisateur.Get(c.IdUserCreator)
-                //EventPlace = Evenement.Get(c.IdPlace)
+                DateEvent = c.DateEvent,
+                Creator = UtilisateurCtoMVC(repoUtil.Get(c.IdUserCreator)),
+                EventPlace = PlaceCtoM(repoPlace.Get(c.IdPlace))
             };
         }
         internal static EvenementMC EvenementMtoC(Evenement c)
@@ -106,13 +116,13 @@ namespace MVC.Utils
         {
             return new RdV()
             {
-                Id = s.Id
-                //RdvHour = RdV.Get(s.IdHour)
-                //IdCandidat = RdV.Get(s.IdCandidat)
-                //IdRep = RdV.Get(s.IdRep)
+                Id = s.Id,
+                RdvHour = HourTimeCtoM(repoHourTime.Get(s.IdHour)),
+                IdCandidat = UtilisateurCtoMVC(repoUtil.Get(s.IdCandidat)),
+                IdRep = UtilisateurCtoMVC(repoUtil.Get(s.IdRep))
             };
         }
-        internal static RdVMC RdVMtoM(RdV s)
+        internal static RdVMC RdVMtoC(RdV s)
         {
             return new RdVMC()
             {
@@ -124,18 +134,18 @@ namespace MVC.Utils
         }
 
         //Mapping Place
-        internal static Place RdVCtoM(PlaceMC p)
+        internal static Place PlaceCtoM(PlaceMC p)
         {
             return new Place()
             {
                 Id = p.Id,
                 PlaceName = p.PlaceName,
                 Street = p.Street,
-                Number = p.Number
-                //PLocality = Locality.Get(p.IdLoc)
+                Number = p.Number,
+                PLocality = LocalityCtoM(repoLocality.Get(p.IdLoc))
             };
         }
-        internal static PlaceMC RdVMtoM(Place p)
+        internal static PlaceMC PlaceMtoC(Place p)
         {
             return new PlaceMC()
             {
@@ -153,11 +163,11 @@ namespace MVC.Utils
             return new Notifications()
             {
                 Id = p.Id,
-                Content = p.Content
-                //UNotif = Utilisateur.Get(p.IdLoc)
+                Content = p.Content,
+                UNotif = UtilisateurCtoMVC(repoUtil.Get(p.IdUser))
             };
         }
-        internal static NotificationsMC NotificationsMtoM(Notifications p)
+        internal static NotificationsMC NotificationsMtoC(Notifications p)
         {
             return new NotificationsMC()
             {
@@ -175,10 +185,10 @@ namespace MVC.Utils
                 Id = p.Id,
                 LocalityName = p.LocalityName,
                 CP = p.CP,
-                //LCountry = Country.Get(p.IdCountry)
+                LCountry = CountryCtoM(repoCountry.Get(p.IdCountry))
             };
         }
-        internal static LocalityMC LocalityMtoM(Locality p)
+        internal static LocalityMC LocalityMtoC(Locality p)
         {
             return new LocalityMC()
             {
@@ -199,7 +209,7 @@ namespace MVC.Utils
                 Minute = p.Minute
             };
         }
-        internal static HourTimeMC HourTimeMtoM(HourTime p)
+        internal static HourTimeMC HourTimeMtoC(HourTime p)
         {
             return new HourTimeMC()
             {
@@ -215,12 +225,12 @@ namespace MVC.Utils
             return new EventUser()
             {
                 Id = p.Id,
-                //UserEvnt = Utilisateur.Get(p.IdUser),
-                //Event = Evenement.Get(p.IdEvent),
-                //UserStatut = Statut.Get(p.IdStatut)
+                UserEvnt = UtilisateurCtoMVC(repoUtil.Get(p.IdUser)),
+                Event = EvenementCtoM(repoEvent.Get(p.IdEvent)),
+                UserStatut = StatutCtoM(repoStatut.Get(p.IdStatut))
             };
         }
-        internal static EventUserMC EventUserMtoM(EventUser p)
+        internal static EventUserMC EventUserMtoC(EventUser p)
         {
             return new EventUserMC()
             {
