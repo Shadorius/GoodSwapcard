@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
-    class BLRUtilisateur : IRepository<UtilisateurMC, int>
+    public class BLRUtilisateur : IRepository<UtilisateurMC, int>
     {
         RepoUtilisateur repo = new RepoUtilisateur();
 

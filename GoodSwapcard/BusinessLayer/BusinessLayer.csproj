@@ -42,6 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLRCountry.cs" />
+    <Compile Include="BLREvenement.cs" />
+    <Compile Include="BLREventUser.cs" />
+    <Compile Include="BLRHourTime.cs" />
+    <Compile Include="BLRLocality.cs" />
     <Compile Include="BLRUtilisateur.cs" />
     <Compile Include="MappingModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

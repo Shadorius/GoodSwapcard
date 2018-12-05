@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Repostory
 {
-    class RepoEventUser : IRepository<EventUserMS, int>
+    public class RepoEventUser : IRepository<EventUserMS, int>
     {
         private Connexion _con = new Connexion();
 
