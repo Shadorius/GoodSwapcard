@@ -1,13 +1,8 @@
 -- Création de la DB
-IF EXISTS 
-   (
-     SELECT name FROM master.dbo.sysdatabases 
-    WHERE name = N'GoodSwapCardDB'
-    )
-BEGIN
-	use master;
-	DROP DATABASE GoodSwapCardDB
-END
+USE MASTER;
+GO
+DROP DATABASE IF EXISTS GoodSwapCardDB
+GO
 CREATE DATABASE GoodSwapCardDB;
 GO
 USE GoodSwapCardDB
@@ -104,9 +99,10 @@ INSERT INTO Utils (LastName, FirstName, PsW, Email) VALUES ('Ghost', 'Man', 'poi
 INSERT INTO Utils (LastName, FirstName, PsW, Email) VALUES ('Brasseur', 'Xavier', '9515951', 'emaile@mail.be');
 
 --Table Statut
+INSERT INTO Statut (StatutName) VALUES ('Admin'); --admin
+INSERT INTO Statut (StatutName) VALUES ('Modo'); --groupe pour création/administration des events
+INSERT INTO Statut (StatutName) VALUES ('Util');
 INSERT INTO Statut (StatutName) VALUES ('Visiteur');
-INSERT INTO Statut (StatutName) VALUES ('Recruteur');
-INSERT INTO Statut (StatutName) VALUES ('Candidat');
 
 --Table Country
 INSERT INTO Country (CountryName) VALUES ('Belgique');
