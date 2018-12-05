@@ -236,5 +236,23 @@ namespace BusinessLayer
 
             return statutMS;
         }
+
+        internal static NotificationsMC NotifictionsStoC(NotifictionsMS Notifs)
+        {
+            return new NotificationsMC()
+            {
+                Id = Notifs.Id,
+                Content = Notifs.Content,
+                IdUser = Notifs.IdUser
+            };
+        }
+
+        internal static NotifictionsMS NotifictionsCtoS(NotificationsMC Notifs) {
+            return new NotifictionsMS() {
+                Id = Notifs.Id,
+                Content = Notifs.Content,
+                IdUser = Notifs.IdUser
+            };
+        }
     }
 }
