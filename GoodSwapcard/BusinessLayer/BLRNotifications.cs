@@ -1,5 +1,5 @@
 ﻿using ModelClient;
-using ModelServer;
+using Repostory;
 using Repostory.Repository;
 using System;
 using System.Collections.Generic;
@@ -12,29 +12,31 @@ namespace BusinessLayer
     public class BLRNotifications : IRepository<NotificationsMC, int>
     {
 
+        RepoNotifications repo = new RepoNotifications();
+        
 
         public NotificationsMC Get(int id)
         {
-            throw new NotImplementedException();
+            return MappingModel.NotifictionsStoC(repo.Get(id));
         }
 
         public List<NotificationsMC> GetAll()
         {
-            throw new NotImplementedException();
+            return repo.GetAll().Select(x => MappingModel.NotifictionsStoC(x)).ToList();
         }
 
         public bool Insert(NotificationsMC item)
         {
-            throw new NotImplementedException();
+            return repo.Insert(MappingModel.NotifictionsCtoS(item));
         }
 
         public bool Update(NotificationsMC item)
         {
-            throw new NotImplementedException();
+            return repo.Update(MappingModel.NotifictionsCtoS(item));
         }
         public bool Delete(int id)
         {
-            return true;
+            return repo.Delete(id);
         }
     }
 }
