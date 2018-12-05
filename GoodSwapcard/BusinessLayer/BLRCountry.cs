@@ -1,4 +1,5 @@
 ﻿using ModelClient;
+using Repostory;
 using Repostory.Repository;
 using System;
 using System.Collections.Generic;
@@ -10,28 +11,30 @@ namespace BusinessLayer
 {
     public class BLRCountry : IRepository<CountryMC, int>
     {
+        RepoCountry repo = new RepoCountry();
+
         public CountryMC Get(int id)
         {
-            throw new NotImplementedException();
+            return MappingModel.CountryStoC(repo.Get(id));
         }
 
         public List<CountryMC> GetAll()
         {
-            throw new NotImplementedException();
+            return repo.GetAll().Select(x => MappingModel.CountryStoC(x)).ToList();
         }
 
         public bool Insert(CountryMC item)
         {
-            throw new NotImplementedException();
+            return repo.Insert(MappingModel.CountryCtoS(item));
         }
 
         public bool Update(CountryMC item)
         {
-            throw new NotImplementedException();
+            return repo.Update(MappingModel.CountryCtoS(item));
         }
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            return repo.Delete(id);
         }
     }
 }

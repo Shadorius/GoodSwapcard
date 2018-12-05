@@ -12,12 +12,6 @@ namespace Repostory
     public class RepoCountry : IRepository<CountryMS, int>
     {
         private Connexion _con = new Connexion();
-        public bool Delete(int id)
-        {
-            string Query = "Delete from [Country] where [Id]=" + id;
-            bool QueryState = _con.Delete(Query);
-            return QueryState;
-        }
 
         public CountryMS Get(int id)
         {
@@ -75,6 +69,13 @@ namespace Repostory
 
             bool QueryResult = _con.Insert(Query);
             return QueryResult;
+        }
+
+        public bool Delete(int id)
+        {
+            string Query = "Delete from [Country] where [Id]=" + id;
+            bool QueryState = _con.Delete(Query);
+            return QueryState;
         }
     }
 }
