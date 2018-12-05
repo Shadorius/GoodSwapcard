@@ -42,6 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLRCountry.cs" />
+    <Compile Include="BLRNotifications.cs" />
+    <Compile Include="BLRPlace.cs" />
+    <Compile Include="BLRRdV.cs" />
+    <Compile Include="BLRStatut.cs" />
     <Compile Include="BLREvenement.cs" />
     <Compile Include="BLREventUser.cs" />
     <Compile Include="BLRHourTime.cs" />
