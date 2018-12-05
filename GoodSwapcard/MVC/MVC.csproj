@@ -139,6 +139,7 @@
     <Compile Include="Models\EventUser.cs" />
     <Compile Include="Models\HourTime.cs" />
     <Compile Include="Models\Locality.cs" />
+    <Compile Include="Models\mapping\MappingModel.cs" />
     <Compile Include="Models\Notifications.cs" />
     <Compile Include="Models\Place.cs" />
     <Compile Include="Models\RdV.cs" />
