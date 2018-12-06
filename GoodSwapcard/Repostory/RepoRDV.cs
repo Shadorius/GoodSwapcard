@@ -32,7 +32,8 @@ namespace Repostory
                     Id = (int)Result[0]["Id"],
                     IdHour = (int)Result[0]["IdHour"],
                     IdCandidat = (int)Result[0]["IdCandidat"],
-                    IdRep = (int)Result[0]["IdRep"]
+                    IdRep = (int)Result[0]["IdRep"],
+                    RdvState = (bool)Result[0]["RdvState"]
                 };
             }
             return CurrentRDV;
@@ -52,7 +53,8 @@ namespace Repostory
                         Id = (int)Result[i]["Id"],
                         IdHour = (int)Result[i]["IdHour"],
                         IdCandidat = (int)Result[i]["IdCandidat"],
-                        IdRep = (int)Result[i]["IdRep"]
+                        IdRep = (int)Result[i]["IdRep"],
+                        RdvState = (bool)Result[i]["RdvState"]
                     };
                     CurrentList.Add(temp);
                 }
@@ -65,7 +67,8 @@ namespace Repostory
             string Query = "INSERT INTO [RDV] Values (";
             Query += "" + item.IdHour + ",";
             Query += "," + item.IdCandidat;
-            Query += "," + item.IdRep;
+            Query += "," + item.IdRep+",";
+            Query += item.RdvState == true ? '1' : '0';
             Query += ")";
 
             bool QueryResult = _con.Insert(Query);
@@ -77,7 +80,9 @@ namespace Repostory
             string Query = "UPDATE [RDV] SET";
             Query += "IdHour = " + item.IdHour + "";
             Query += ", IdCandidat = " + item.IdCandidat + "";
-            Query += ", IdRep = " + item.IdRep + "";
+            Query += ", IdRep = " + item.IdRep + ", ";
+            Query += "RdvState =";
+            Query += item.RdvState == true ? '1' : '0';
             Query += " WHERE Id=" + item.Id;
 
             bool QueryResult = _con.Insert(Query);

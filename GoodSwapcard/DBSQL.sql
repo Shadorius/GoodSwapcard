@@ -53,6 +53,7 @@ CREATE TABLE Place (
 CREATE TABLE Evenement (
 	Id int IDENTITY(1,1) Primary Key,
 	EvenementName varchar(50) NOT NULL,
+	EventDesc text,
 	DateEvent DateTime NOT NUll,
 	IdUserCreator int NOT NULL CONSTRAINT FK_UserCreator FOREIGN KEY (IdUserCreator) REFERENCES Utils (Id),
 	IdPlace int NOT NULL CONSTRAINT FK_Place FOREIGN KEY (IdPlace) REFERENCES Place (Id)
@@ -79,13 +80,14 @@ CREATE TABLE RDV (
 	IdHour int NOT NULL CONSTRAINT FK_Hour FOREIGN KEY (IdHour) REFERENCES HourTime (Id),
 	IdCandidat int NOT NULL CONSTRAINT FK_Candidat FOREIGN KEY (IdCandidat) REFERENCES Utils (Id),
 	IdRep int NOT NULL CONSTRAINT FK_Rep FOREIGN KEY (IdRep) REFERENCES Utils (Id),
+	RdvState bit NOT NULL default 0
 );
 
 --Table Notifications
 CREATE TABLE Notifications(
 	Id int IDENTITY(1,1) PRIMARY KEY,
 	Content varchar(255) NOT NULL,
-	IdUser int NOT NULL CONSTRAINT FK_NotifUser FOREIGN KEY (IdUser) REFERENCES Utils (Id),
+	IdUser int NOT NULL CONSTRAINT FK_NotifUser FOREIGN KEY (IdUser) REFERENCES Utils (Id)
 );
 
 GO
