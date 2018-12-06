@@ -1,4 +1,8 @@
-﻿body {
+﻿:root {
+    --input-padding-x: .75rem;
+    --input-padding-y: .75rem;
+}
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
