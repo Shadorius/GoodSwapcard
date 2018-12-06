@@ -20,9 +20,11 @@ namespace MVC.Models
         [Required]
         [RegularExpression(@"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})$", ErrorMessage ="coucou")] //https://codes-sources.commentcamarche.net/source/49715-validation-de-mot-de-passe
         [Display(Name ="Mot de passe")]
+        [DataType(DataType.Password)]
         public string PsW { get; set; }
         [Required]
         [Compare(nameof(PsW))]
+        [DataType(DataType.Password)]
         public string ConfirmPsW { get; set; }
         [Required]
         [EmailAddress]
