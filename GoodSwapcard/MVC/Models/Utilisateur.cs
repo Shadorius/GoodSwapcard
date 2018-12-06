@@ -32,7 +32,6 @@ namespace MVC.Models
         [Required]
         [Compare(nameof(Email))]
         public string ConfirmEmail { get; set; }
-        [Required]
         [Display(Name = "Numéro de tel")]
         [RegularExpression(@"[\d]{5,15}")]
         public string Phone { get; set; }

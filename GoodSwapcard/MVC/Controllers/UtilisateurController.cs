@@ -39,9 +39,12 @@ namespace MVC.Controllers
 
                     if (HashageMD5.VerifyMd5Hash(md5Hash, util.PsW, hash))
                     {
-                        DateTime dt = DateTime.ParseExact(util.Birthdate.ToString(), "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+                        if(util.Birthdate != null)
+                        {
+                            DateTime date = (DateTime)util.Birthdate;
+                            util.Birthdate = date;
+                        }
 
-                        string s = dt.ToString("dd/M/yyyy", CultureInfo.InvariantCulture);
                         util.PsW = hash;
                         repo.Insert(MappingModel.UtilisateurtoS(util));
                         ViewBag.ErrorHash = "Le hashage n'a pas été correctement fait";
