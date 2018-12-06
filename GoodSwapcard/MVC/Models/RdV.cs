@@ -19,5 +19,12 @@ namespace MVC.Models
         [Required]
         [Display(Name = "Candidat2")]
         public Utilisateur IdRep { get; set; }
+        [Display(Name ="Accepté")]
+        public bool RdvState { get; set; }
+
+        public RdV()
+        {
+            RdvState = false;
+        }
     }
 }

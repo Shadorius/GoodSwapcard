@@ -12,5 +12,6 @@ namespace ModelClient
         public int IdHour { get; set; }
         public int IdCandidat { get; set; }
         public int IdRep { get; set; }
+        public bool RdvState { get; set; }
     }
 }

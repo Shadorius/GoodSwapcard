@@ -71,6 +71,7 @@ namespace BusinessLayer
 
             evenementMC.Id = evenementMS.Id;
             evenementMC.EvenementName = evenementMS.EvenementName;
+            evenementMC.EventDesc = evenementMS.EventDesc;
             evenementMC.DateEvent = evenementMS.DateEvent;
             evenementMC.IdUserCreator = evenementMS.IdUserCreator;
             evenementMC.IdPlace = evenementMS.IdPlace;
@@ -84,6 +85,7 @@ namespace BusinessLayer
 
             evenementMS.Id = evenementMC.Id;
             evenementMS.EvenementName = evenementMC.EvenementName;
+            evenementMS.EventDesc = evenementMC.EventDesc;
             evenementMS.DateEvent = evenementMC.DateEvent;
             evenementMS.IdUserCreator = evenementMC.IdUserCreator;
             evenementMS.IdPlace = evenementMC.IdPlace;
@@ -200,6 +202,7 @@ namespace BusinessLayer
             rdvMC.IdHour = rdvMS.IdHour;
             rdvMC.IdCandidat = rdvMS.IdCandidat;
             rdvMC.IdRep = rdvMS.IdRep;
+            rdvMC.RdvState = rdvMS.RdvState;
 
             return rdvMC;
         }
@@ -212,6 +215,7 @@ namespace BusinessLayer
             rdvMS.IdHour = rdvMC.IdHour;
             rdvMS.IdCandidat = rdvMC.IdCandidat;
             rdvMS.IdRep = rdvMC.IdRep;
+            rdvMS.RdvState = rdvMC.RdvState;
 
             return rdvMS;
         }

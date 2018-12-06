@@ -31,6 +31,7 @@ namespace Repostory
                 {
                     Id = (int)Result[0]["Id"],
                     EvenementName = (string)Result[0]["EvenementName"],
+                    EventDesc = (string)Result[0]["EventDesc"],
                     DateEvent = (DateTime?)Result[0]["DateEvent"],
                     IdUserCreator = (int)Result[0]["IdUserCreator"],
                     IdPlace = (int)Result[0]["IdPlace"]
@@ -52,6 +53,7 @@ namespace Repostory
                     {
                         Id = (int)Result[i]["Id"],
                         EvenementName = (string)Result[i]["EvenementName"],
+                        EventDesc = (string)Result[i]["EventDesc"],
                         DateEvent = (DateTime?)Result[i]["DateEvent"],
                         IdUserCreator = (int)Result[i]["IdUserCreator"],
                         IdPlace = (int)Result[i]["IdPlace"]
@@ -66,6 +68,7 @@ namespace Repostory
         {
             string Query = "INSERT INTO [Evenement] Values (";
             Query += "'" + item.EvenementName + "',";
+            Query += "'" + item.EventDesc + "',";
             Query += "'" + item.DateEvent.ToString() + "'";
             Query += "," + item.IdUserCreator;
             Query += "," + item.IdPlace;
@@ -79,6 +82,7 @@ namespace Repostory
         {
             string Query = "UPDATE [Evenement] SET";
             Query += "EvenementName = '" + item.EvenementName + "'";
+            Query += ", EventDesc = '" + item.EventDesc + "'";
             Query += ", DateEvent = '" + item.DateEvent.ToString() + "'";
             Query += ", IdUserCreator = " + item.IdUserCreator + "";
             Query += ", IdPlace = " + item.IdPlace + "";

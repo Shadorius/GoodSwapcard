@@ -12,6 +12,8 @@ namespace MVC.Models
         [Required]
         [Display(Name ="Nom")]
         public string EvenementName { get; set; }
+        [Display(Name = "Description")]
+        public string EventDesc { get; set; }
         [Required]
         [Display(Name = "Date")]
         public DateTime? DateEvent { get; set; }
