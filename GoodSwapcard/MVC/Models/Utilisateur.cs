@@ -10,17 +10,16 @@ namespace MVC.Models
     {
         public int Id { get; set; }
         [Required]
-        [StringLength(50)]
-        [RegularExpression(@"[a-zA-Z]", ErrorMessage ="couco")]
+        [RegularExpression(@"[a-zA-Z]{1,50}", ErrorMessage ="Le nom ne peut contenir que de 1 à 50 à  caracthère")]
         [Display(Name = "Nom")]
         public string LastName { get; set; }
         [Required]
         [StringLength(50)]
-        [RegularExpression(@"[a-zA-Z]")]
+        [RegularExpression(@"[a-zA-Z]{50}")]
         [Display(Name = "Prénom")]
         public string FirstName { get; set; }
         [Required]
-        [RegularExpression(@"^(?=.*[A - Z])(?=.*[a - z])(?=.*\d)(?=.*[-+!*$@% _])([-+!*$@% _\w]{8,15})$", ErrorMessage ="coucou")] //https://codes-sources.commentcamarche.net/source/49715-validation-de-mot-de-passe
+        [RegularExpression(@"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})$", ErrorMessage ="coucou")] //https://codes-sources.commentcamarche.net/source/49715-validation-de-mot-de-passe
         [Display(Name ="Mot de passe")]
         public string PsW { get; set; }
         [Required]
