@@ -64,7 +64,7 @@ namespace Repostory
             Query += "'" + util.FirstName + "', ";
             Query += "'" + util.PsW + "', ";
             Query += "'" + util.Email + "', ";
-            Query +=       util.Phone     == null ? "null, "    : "'" + util.LastName   + "', ";
+            Query +=       util.Phone     == null ? "null, "    : "'" + util.Phone + "', ";
             Query +=       util.Birthdate == null ? "null)"     : "'" + util.Birthdate  + "')";
 
             bool QueryResult = _con.Insert(Query);

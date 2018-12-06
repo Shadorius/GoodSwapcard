@@ -14,8 +14,7 @@ namespace MVC.Models
         [Display(Name = "Nom")]
         public string LastName { get; set; }
         [Required]
-        [StringLength(50)]
-        [RegularExpression(@"[a-zA-Z]{50}")]
+        [RegularExpression(@"[a-zA-Z]{1,50}")]
         [Display(Name = "Prénom")]
         public string FirstName { get; set; }
         [Required]
