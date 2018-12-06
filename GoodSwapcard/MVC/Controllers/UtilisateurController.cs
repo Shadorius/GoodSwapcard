@@ -37,7 +37,8 @@ namespace MVC.Controllers
         {
             try
             {
-                repo.Insert(MappingModel.UtilisateurtoS(util));
+                if(ModelState.IsValid)
+                    repo.Insert(MappingModel.UtilisateurtoS(util));
 
                 return RedirectToAction("Index");
             }
