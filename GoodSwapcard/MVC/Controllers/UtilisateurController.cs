@@ -21,6 +21,12 @@ namespace MVC.Controllers
             return View(repo.GetAll().Select(x => MappingModel.UtilisateurCtoMVC(x)).ToList());
         }
 
+        public ActionResult Participant()
+        {
+            return View(repo.GetAll().Select(x => MappingModel.UtilisateurCtoMVC(x)).ToList());
+        }
+
+
         // GET: Utilisateur/Create
         public ActionResult Create()
         {
