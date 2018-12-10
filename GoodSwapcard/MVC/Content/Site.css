@@ -169,6 +169,13 @@ a:hover{
     border: none;
 }
 
+.card-footer {
+    background-color: #303030;
+    padding: 0.2rem 1rem;
+}
+.card-img-top{
+    max-height: 10rem;
+}
 @media (min-width: 34em) {
     .card-columns {
         -webkit-column-count: 2;

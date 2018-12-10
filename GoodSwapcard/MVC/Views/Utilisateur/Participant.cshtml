@@ -1,19 +1,22 @@
 ﻿@model IEnumerable<MVC.Models.Utilisateur>
 <h2>Liste des participants de l'event</h2>
 <br />
-<div class="card-columns">
-    @foreach (var item in Model)
-    {
-        <div class="card">
-            <img class="card-img-top" src="~/Img/mdr.jpg" height="160" width="368" alt="Card image cap">
-            <div class="card-body bg-dark">
-                <h5 class="card-title">@Html.DisplayFor(modelItem => item.LastName) @Html.DisplayFor(modelItem => item.FirstName)</h5>
-                <p class="card-text">iejfijfoifjzi</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+<section>
+    <div class="card-columns">
+        @foreach (var item in Model)
+        {
+            <div class="card">
+                <img class="card-img-top" src="~/Img/mdr.jpg" alt="Card image cap">
+                <div class="card-body bg-dark">
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.LastName) @Html.DisplayFor(modelItem => item.FirstName)</h5>
+                    <p class="card-text">Desc de l'Util</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
             </div>
-        </div>
-    }
+        }
 
-</div>
-
+    </div>
+</section>
 
