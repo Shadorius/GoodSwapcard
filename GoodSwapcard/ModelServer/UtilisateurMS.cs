@@ -17,6 +17,6 @@ namespace ModelServer
         public string Email { get; set; }
         public string Phone { get; set; }
         public DateTime? Birthdate { get; set; }
-        public StatutMS Statut { get; set; }
+        public int Statut { get; set; }
     }
 }

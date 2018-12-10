@@ -22,7 +22,7 @@ namespace BusinessLayer
             utiMC.Email = utiMS.Email;
             utiMC.Phone = utiMS.Phone;
             utiMC.Birthdate = utiMS.Birthdate;
-            utiMC.statut = StatutStoC(utiMS.Statut);
+            utiMC.statut = utiMS.Statut;
 
 
             return utiMC;
@@ -39,7 +39,7 @@ namespace BusinessLayer
             utiMS.Email = utiMC.Email;
             utiMS.Phone = utiMC.Phone;
             utiMS.Birthdate = utiMC.Birthdate;
-            utiMS.Statut = StatutCtoS(utiMC.statut);
+            utiMS.Statut = utiMC.statut;
 
 
             return utiMS;

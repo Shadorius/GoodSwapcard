@@ -15,6 +15,6 @@ namespace ModelClient
         public string Email { get; set; }
         public string Phone { get; set; }
         public DateTime? Birthdate { get; set; }
-        public StatutMC statut { get; set; }
+        public int statut { get; set; }
     }
 }
