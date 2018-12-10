@@ -30,7 +30,7 @@ namespace MVC.Controllers
         // GET: Utilisateur/Create
         public ActionResult Create()
         {
-            return View();
+            return PartialView("_Create", new Utilisateur());
         }
 
         // POST: Utilisateur/Create

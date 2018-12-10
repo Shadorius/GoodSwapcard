@@ -1,0 +1,95 @@
+﻿@model MVC.Models.Utilisateur
+
+<h2>Utilisateur</h2>
+<section>
+    @using (Html.BeginForm("Create", "Utilisateur", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+
+                    <div class="form-horizontal">
+            <h4>Ajouter</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-label-group">
+                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control col-12", @placeholder = "Nom" } })
+                        @Html.LabelFor(model => model.LastName)
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-label-group">
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control col-12", @placeholder = "Prénom" } })
+                        @Html.LabelFor(model => model.FirstName)
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-label-group">
+                        @Html.EditorFor(model => model.PsW, new { htmlAttributes = new { @class = "form-control col-12", @placeholder = "Mot de passe" } })
+                        @Html.LabelFor(model => model.PsW)
+                        @Html.ValidationMessageFor(model => model.PsW, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-label-group">
+                        @Html.EditorFor(model => model.ConfirmPsW, new { htmlAttributes = new { @class = "form-control col-12", @placeholder = "Mot de passe" } })
+                        @Html.LabelFor(model => model.ConfirmPsW)
+                        @Html.ValidationMessageFor(model => model.ConfirmPsW, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-label-group">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control col-12", @placeholder = "Email" } })
+                        @Html.LabelFor(model => model.Email)
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-label-group">
+                        @Html.EditorFor(model => model.ConfirmEmail, new { htmlAttributes = new { @class = "form-control col-12", @placeholder = "Email" } })
+                        @Html.LabelFor(model => model.ConfirmEmail)
+                        @Html.ValidationMessageFor(model => model.ConfirmEmail, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-label-group">
+                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control col-12", @placeholder = "Tel" } })
+                        @Html.LabelFor(model => model.Phone)
+                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-label-group">
+                        @Html.EditorFor(model => model.Birthdate, new { htmlAttributes = new { @class = "form-control col-12", @placeholder = "Date" } })
+                        @Html.LabelFor(model => model.Birthdate)
+                        @Html.ValidationMessageFor(model => model.Birthdate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix">
+                <div class="float-right">
+                    <input type="submit" value="Ajouter" class="btn btn-success btn-block" />
+                    @*<input type="reset" value="Reset" class="btn btn-secondary" />*@
+                </div>
+            </div>
+
+
+        </div>
+
+    }
+</section>
