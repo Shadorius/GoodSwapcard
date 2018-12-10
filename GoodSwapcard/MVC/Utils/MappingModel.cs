@@ -31,6 +31,7 @@ namespace MVC.Utils
             uti.Email = utiMS.Email;
             uti.Phone = utiMS.Phone;
             uti.Birthdate = utiMS.Birthdate;
+            uti.statut = StatutCtoM(utiMS.statut);
 
 
             return uti;
@@ -47,6 +48,7 @@ namespace MVC.Utils
             utilMC.Email = utiMC.Email;
             utilMC.Phone = utiMC.Phone;
             utilMC.Birthdate = utiMC.Birthdate;
+            utilMC.statut = StatutMtoC(utiMC.statut);
 
 
             return utilMC;
