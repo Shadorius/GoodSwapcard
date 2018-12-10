@@ -1,5 +1,6 @@
 ﻿using BusinessLayer;
 using MVC.Models;
+using MVC.Models.Views;
 using MVC.Utils;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace MVC.Controllers
     public class UtilisateurController : Controller
     {
         BLRUtilisateur repo = new BLRUtilisateur();
+        BLRStatut repoS = new BLRStatut();
 
         // GET: Utilisateur
         public ActionResult Index()
@@ -26,6 +28,15 @@ namespace MVC.Controllers
             return View(repo.GetAll().Select(x => MappingModel.UtilisateurCtoMVC(x)).ToList());
         }
 
+        public ActionResult test()
+        {
+            TestView testView = new TestView();
+
+            testView.Statuts = repoS.GetAll().Select(x => MappingModel.StatutCtoM(x)).ToList();
+            testView.Utilisateur = new Utilisateur();
+
+            return View(testView);
+        }
 
         // GET: Utilisateur/Create
         public ActionResult Create()

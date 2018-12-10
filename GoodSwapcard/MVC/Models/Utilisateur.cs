@@ -38,6 +38,7 @@ namespace MVC.Models
         [Display(Name = "Date de naissance")]
         [DataType(DataType.Date)]
         public DateTime? Birthdate { get; set; }
+        public Statut statut { get; set; }
     }
 }
 

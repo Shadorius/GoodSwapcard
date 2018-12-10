@@ -7,6 +7,12 @@ CREATE DATABASE GoodSwapCardDB;
 GO
 USE GoodSwapCardDB
 GO
+--Table Statut
+CREATE TABLE Statut (
+	Id int IDENTITY(1,1) Primary Key,
+	StatutName varchar(50) NOT NULL
+);
+
 
 -- Création des tables
 --Table Utilisateurs
@@ -17,13 +23,8 @@ CREATE TABLE Utils (
 	PsW varchar(256) NOT NULL,
 	Email varchar(100) UNIQUE NOT NULL,
 	Phone varchar(20),
-	Birthdate DateTime 
-);
-
---Table Statut
-CREATE TABLE Statut (
-	Id int IDENTITY(1,1) Primary Key,
-	StatutName varchar(50) NOT NULL
+	Birthdate DateTime, 
+	IdStatut int NOT NULL CONSTRAINT FK_Statut_User FOREIGN KEY (IdStatut) REFERENCES Statut (Id)
 );
 
 --Table Pays
@@ -92,19 +93,19 @@ CREATE TABLE Notifications(
 
 GO
 
---Populations des tables
---Table Utilisateurs
-INSERT INTO Utils (LastName, FirstName, PsW, Email) VALUES ('Adnet', 'Geoffroy', 'aqwzsx', 'emaila@mail.be');
-INSERT INTO Utils (LastName, FirstName, PsW, Email) VALUES ('Bouillon', 'Jeremy', '123456', 'emailb@mail.be');
-INSERT INTO Utils (LastName, FirstName, PsW, Email) VALUES ('Fontesse', 'Axel', '789456', 'emailc@mail.be');
-INSERT INTO Utils (LastName, FirstName, PsW, Email) VALUES ('Ghost', 'Man', 'poiuyt', 'emaild@mail.be')
-INSERT INTO Utils (LastName, FirstName, PsW, Email) VALUES ('Brasseur', 'Xavier', '9515951', 'emaile@mail.be');
-
 --Table Statut
 INSERT INTO Statut (StatutName) VALUES ('Admin'); --admin
 INSERT INTO Statut (StatutName) VALUES ('Modo'); --groupe pour création/administration des events
 INSERT INTO Statut (StatutName) VALUES ('Util');
 INSERT INTO Statut (StatutName) VALUES ('Visiteur');
+
+--Populations des tables
+--Table Utilisateurs
+INSERT INTO Utils VALUES ('Adnet', 'Geoffroy', 'aqwzsx', 'emaila@mail.be','' ,'',3);
+INSERT INTO Utils VALUES ('Bouillon', 'Jeremy', '123456', 'emailb@mail.be','' ,'', 1);
+INSERT INTO Utils VALUES ('Fontesse', 'Axel', '789456', 'emailc@mail.be','' ,'', 2);
+INSERT INTO Utils VALUES ('Ghost', 'Man', 'poiuyt', 'emaild@mail.be','' ,'', 4)
+INSERT INTO Utils VALUES ('Brasseur', 'Xavier', '9515951', 'emaile@mail.be','' ,'', 3);
 
 --Table Country
 INSERT INTO Country (CountryName) VALUES ('Belgique');
