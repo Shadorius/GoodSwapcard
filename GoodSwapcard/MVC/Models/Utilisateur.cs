@@ -37,6 +37,7 @@ namespace MVC.Models
         public string Phone { get; set; }
         [Display(Name = "Date de naissance")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? Birthdate { get; set; }
     }
 }

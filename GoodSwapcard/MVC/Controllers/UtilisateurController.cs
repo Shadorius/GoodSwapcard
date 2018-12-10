@@ -45,9 +45,9 @@ namespace MVC.Controllers
 
                     if (HashageMD5.VerifyMd5Hash(md5Hash, util.PsW, hash))
                     {
-                        if(util.Birthdate != null)
+                        if(util.Birthdate.HasValue)
                         {
-                            DateTime date = (DateTime)util.Birthdate;
+                            DateTime date = util.Birthdate.Value;
                             util.Birthdate = date;
                         }
 
