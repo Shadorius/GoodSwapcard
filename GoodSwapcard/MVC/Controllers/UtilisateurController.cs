@@ -74,7 +74,7 @@ namespace MVC.Controllers
         // GET: Utilisateur/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(MappingModel.UtilisateurCtoMVC(repo.Get(id)));            
         }
 
         // POST: Utilisateur/Edit/5
@@ -84,7 +84,7 @@ namespace MVC.Controllers
             try
             {
                 // TODO: Add update logic here
-
+                
                 return RedirectToAction("Index");
             }
             catch
@@ -96,7 +96,8 @@ namespace MVC.Controllers
         // GET: Utilisateur/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            repo.Delete(id);
+            return RedirectToAction("Index");
         }
 
         // POST: Utilisateur/Delete/5
@@ -106,7 +107,11 @@ namespace MVC.Controllers
             try
             {
                 // TODO: Add delete logic here
-
+                if (!ModelState.IsValid)
+                {
+                    return View(MappingModel.UtilisateurCtoMVC(repo.Get(id)));
+                }
+                repo.Delete(id);
                 return RedirectToAction("Index");
             }
             catch
