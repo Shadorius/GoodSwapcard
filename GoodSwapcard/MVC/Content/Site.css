@@ -124,7 +124,7 @@ textarea {
     justify-content: center;
     border-radius: 1em 1em 1em 1em;
     padding: 1em;
-    margin: 10em auto 10em auto;
+    margin: 1rem auto 10rem auto;
 }
 
 section {
@@ -132,7 +132,7 @@ section {
     color: #303030;
     border-radius: 5px;
     padding: 2em;
-    margin: 1em 2em 0 2em;
+    margin: 0 2rem 0 2rem;
 }
 
 footer {
@@ -148,6 +148,25 @@ footer {
 
 form {
     padding-bottom: 1em;
+}
+
+
+a{
+    color: #0099CC;
+}
+a:hover{
+    color: #0099CC;
+}
+
+.nav-link:hover {
+    background-color: #CECECE;
+    color: #0099CC;
+}
+.modal{
+    color: #303030;
+}
+#deleteModal div {
+    border: none;
 }
 
 @media (min-width: 34em) {
