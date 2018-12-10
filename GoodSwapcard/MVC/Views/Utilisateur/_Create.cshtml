@@ -3,11 +3,11 @@
 <h2>Utilisateur</h2>
 <section>
     @using (Html.BeginForm("Create", "Utilisateur", FormMethod.Post))
-                {
-                    @Html.AntiForgeryToken()
+    {
+        @Html.AntiForgeryToken()
 
 
-                    <div class="form-horizontal">
+        <div class="form-horizontal">
             <h4>Ajouter</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -93,3 +93,4 @@
 
     }
 </section>
+
