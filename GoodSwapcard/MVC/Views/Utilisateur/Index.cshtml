@@ -67,7 +67,7 @@
                             @Html.DisplayFor(modelItem => item.Birthdate)
                         </td>
                         <td class="text-center">
-                                <button onclick="location.href='@Url.Action("Edit", "Utilisateur", new { id = item.Id })'" type="button" class="btn btn-success"> <a class="fas fa-edit"></a>      </button>
+                                <button onclick="location.href='@Url.Action("Edit", "Utilisateur", new { id = item.Id })'" type="button" class="btn btn-success"> <a class="fas fa-user-edit"></a>      </button>
                                 <button data-toggle="modal" data-target="#deleteModal" data-id="@item.Id" type="button" class="open-DeleteUserDialog btn btn-danger">  <a class="far fa-trash-alt"></a> </button>
                            
                         </td>
