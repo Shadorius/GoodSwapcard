@@ -144,6 +144,7 @@
     <Compile Include="Models\Place.cs" />
     <Compile Include="Models\RdV.cs" />
     <Compile Include="Models\Statut.cs" />
+    <Compile Include="Models\StatutEvent.cs" />
     <Compile Include="Models\Utilisateur.cs" />
     <Compile Include="Models\Views\TestView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -227,11 +228,9 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Utilisateur\Create.cshtml" />
     <Content Include="Views\Utilisateur\Index.cshtml" />
     <Content Include="Views\Utilisateur\Participant.cshtml" />
     <Content Include="Views\Utilisateur\test.cshtml" />
-    <Content Include="Views\Utilisateur\Delete.cshtml" />
     <Content Include="Views\Utilisateur\_Create.cshtml" />
   </ItemGroup>
   <ItemGroup>

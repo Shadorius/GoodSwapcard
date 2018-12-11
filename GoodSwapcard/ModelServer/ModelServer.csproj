@@ -49,6 +49,7 @@
     <Compile Include="NotifictionsMS.cs" />
     <Compile Include="PlaceMS.cs" />
     <Compile Include="RdVMS.cs" />
+    <Compile Include="StatutEventMS.cs" />
     <Compile Include="StatutMS.cs" />
     <Compile Include="UtilisateurMS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

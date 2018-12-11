@@ -13,6 +13,11 @@ CREATE TABLE Statut (
 	StatutName varchar(50) NOT NULL
 );
 
+CREATE TABLE StatutEvent (
+	Id int IDENTITY(1,1) Primary Key,
+	StatutEventName varchar(50) NOT NULL
+);
+
 
 -- Création des tables
 --Table Utilisateurs
@@ -65,7 +70,7 @@ CREATE TABLE EventUser (
 	Id int IDENTITY(1,1) Primary Key,
 	IdUser int NOT NULL CONSTRAINT FK_User FOREIGN KEY (IdUser) REFERENCES Utils (Id),
 	IdEvent int NOT NULL  CONSTRAINT FK_Event FOREIGN KEY (IdEvent) REFERENCES Evenement (Id),
-	IdStatut int NOT NULL CONSTRAINT FK_Statut FOREIGN KEY (IdStatut) REFERENCES Statut (Id)
+	IdStatutEvent int NOT NULL CONSTRAINT FK_StatutEvent FOREIGN KEY (IdStatutEvent) REFERENCES StatutEvent (Id)
 );
 
 --Table Heure

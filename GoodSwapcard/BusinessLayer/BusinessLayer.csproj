@@ -50,6 +50,7 @@
     <Compile Include="BLREventUser.cs" />
     <Compile Include="BLRHourTime.cs" />
     <Compile Include="BLRLocality.cs" />
+    <Compile Include="BLRStatutEvent.cs" />
     <Compile Include="BLRUtilisateur.cs" />
     <Compile Include="MappingModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -51,6 +51,7 @@
     <Compile Include="RepoNotifications.cs" />
     <Compile Include="RepoPlace.cs" />
     <Compile Include="RepoRDV.cs" />
+    <Compile Include="RepoStatutEvent.cs" />
     <Compile Include="RepoUtilisateur.cs" />
     <Compile Include="RepoStatut.cs" />
   </ItemGroup>
