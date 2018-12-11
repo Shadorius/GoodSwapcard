@@ -50,6 +50,7 @@
     <Compile Include="PlaceMC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RdVMC.cs" />
+    <Compile Include="StatutEventMC.cs" />
     <Compile Include="StatutMC.cs" />
     <Compile Include="UtilisateurMC.cs" />
   </ItemGroup>

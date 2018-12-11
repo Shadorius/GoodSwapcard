@@ -9,47 +9,47 @@ using System.Threading.Tasks;
 
 namespace Repostory
 {
-    public class RepoStatut : IRepository<StatutMS, int>
+    public class RepoStatutEvent : IRepository<StatutEventMS, int>
     {
         Connexion _con = new Connexion();
         public bool Delete(int id)
         {
-            string Query = "Delete from [Statut] where [Id]=" + id;
+            string Query = "Delete from [StatutEvent] where [Id]=" + id;
             bool QueryState = _con.Delete(Query);
             return QueryState;
         }
 
-        public StatutMS Get(int id)
+        public StatutEventMS Get(int id)
         {
-            string Query = "Select * from [Statut] where [Id] =" + id;
+            string Query = "Select * from [StatutEvent] where [Id] =" + id;
             List<Dictionary<string, object>> Result = _con.getData(Query);
-            StatutMS CurrentStatut = null;
+            StatutEventMS CurrentStatut = null;
 
             if (Result.Count != 0)
             {
-                CurrentStatut = new StatutMS
+                CurrentStatut = new StatutEventMS
                 {
                     Id = (int)Result[0]["Id"],
-                    StatutName = (string)Result[0]["StatutName"]
+                    StatutEventName = (string)Result[0]["StatutEventName"]
                 };
             }
 
             return CurrentStatut;
         }
 
-        public List<StatutMS> GetAll()
+        public List<StatutEventMS> GetAll()
         {
-            string Query = "Select * from [Statut]";
+            string Query = "Select * from [StatutEvent]";
             List<Dictionary<string, object>> Result = _con.getData(Query);
-            List<StatutMS> CurrentList = new List<StatutMS>();
+            List<StatutEventMS> CurrentList = new List<StatutEventMS>();
             if (Result.Count != 0)
             {
                 for (int i = 0; i < Result.Count; i++)
                 {
-                    StatutMS temp = new StatutMS
+                    StatutEventMS temp = new StatutEventMS
                     {
                         Id = (int)Result[i]["Id"],
-                        StatutName = (string)Result[i]["StatutName"]
+                        StatutEventName = (string)Result[i]["StatutEventName"]
                     };
                     CurrentList.Add(temp);
                 }
@@ -57,20 +57,20 @@ namespace Repostory
             return CurrentList;
         }
 
-        public bool Insert(StatutMS item)
+        public bool Insert(StatutEventMS item)
         {
-            string Query = "INSERT INTO [Statut] Values(";
-            Query += "'" + item.StatutName + "'";
+            string Query = "INSERT INTO [StatutEvent] Values(";
+            Query += "'" + item.StatutEventName + "'";
             Query += ")";
 
             bool QueryResult = _con.Insert(Query);
             return QueryResult;
         }
 
-        public bool Update(StatutMS item)
+        public bool Update(StatutEventMS item)
         {
-            string Query = "UPDATE [Statut] SET";
-            Query += "StatutName = '" + item.StatutName + "'";
+            string Query = "UPDATE [StatutEvent] SET";
+            Query += "StatutEventName = '" + item.StatutEventName + "'";
             Query += " WHERE Id=" + item.Id;
 
             bool QueryResult = _con.Insert(Query);
