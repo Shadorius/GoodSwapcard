@@ -241,5 +241,23 @@ namespace MVC.Utils
                 IdStatut = p.UserStatut.Id
             };
         }
+
+        //Mapping StatutEvent
+        internal static StatutEvent StatutEventCtoM(StatutEventMC s)
+        {
+            return new StatutEvent()
+            {
+                Id = s.Id,
+                StatutEventName = s.StatutEventName
+            };
+        }
+        internal static StatutEventMC StatutEventMtoC(StatutEvent s)
+        {
+            return new StatutEventMC()
+            {
+                Id = s.Id,
+                StatutEventName = s.StatutEventName
+            };
+        }
     }
 }
