@@ -1,22 +1,28 @@
 ﻿@model IEnumerable<MVC.Models.Utilisateur>
 <h2>Liste des participants de l'event</h2>
 <br />
-<section>
-    <div class="card-columns">
-        @foreach (var item in Model)
-        {
-            <div class="card">
-                <img class="card-img-top" src="~/Img/mdr.jpg" alt="Card image cap">
-                <div class="card-body bg-dark">
-                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.LastName) @Html.DisplayFor(modelItem => item.FirstName)</h5>
-                    <p class="card-text">Desc de l'Util</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </div>
-            </div>
-        }
+<section class="cards-columns">
+    @foreach (var item in Model)
+    {
+        <article class="cards">
+            <img class="cards-img-top" src="~/Img/mdr.jpg" alt="Card image cap">
+            <div class="cards-body">
+                <h5 class="cards-title">@Html.DisplayFor(modelItem => item.LastName) @Html.DisplayFor(modelItem => item.FirstName)</h5>
+                <p class="cards-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum nunc id ipsum pretium dignissim. Donec eu velit mi. Pellentesque semper tristique molestie. Cras feugiat viverra vehicula. Maecenas nec suscipit diam. Nulla eget iaculis nisl. In ac bibendum mauris. Praesent gravida, justo aliquam hendrerit sollicitudin, eros felis malesuada orci, sit amet aliquet massa justo ac ipsum. Quisque euismod tincidunt pellentesque. Vivamus ullamcorper metus ac ullamcorper rutrum.
 
-    </div>
+                    Pellentesque semper euismod sagittis. Vestibulum tincidunt nisi nec sodales volutpat. Integer convallis non urna sed rutrum. Curabitur elementum iaculis velit. Nullam nisl mi, cursus non mauris vitae, luctus accumsan libero. Suspendisse lacus urna, eleifend id nisl eget, accumsan tempus risus. In nec dictum elit.
+                </p>
+            </div>
+            <footer class="cards-footer">
+                <div class="btn-group btn-block">
+                    <button onclick="location.href='@Url.Action("Index", "Utilisateur", new { id = item.Id })'" type="button" class="btn btn-outline-info"> <i class="far fa-calendar-alt"></i>    </button>
+                    <button onclick="location.href='@Url.Action("Index", "Utilisateur", new { id = item.Id })'" type="button" class="btn btn-outline-info"> <i class="far fa-comments"></i>    </button>
+                    <button onclick="location.href='@Url.Action("Edit", "Utilisateur", new { id = item.Id })'" type="button" class="btn btn-outline-info"> <i class="far fa-address-card"></i>    </button>
+                </div>
+                
+            </footer>
+        </article>
+    }
 </section>
 
