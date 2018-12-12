@@ -6,8 +6,18 @@
 body {
     background: url("../Img/background.gif") center top fixed repeat-y;
     padding-top: 3em;
+    font-smooth: always;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
+
+/********************************************************************************************************/
+/*                                                                                                      */
+/*                                        CSS for input                                                 */
+/*                                                                                                      */
+/********************************************************************************************************/
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -116,7 +126,11 @@ textarea {
     }
 }
 
-
+/********************************************************************************************************/
+/*                                                                                                      */
+/*                                           General                                                    */
+/*                                                                                                      */
+/********************************************************************************************************/
 .body-content {
     min-height: 110%;
     background: rgba(30,30,30,0.6);
@@ -159,7 +173,7 @@ a:hover{
 }
 
 .nav-link:hover {
-    background-color: #CECECE;
+    background-color: #343A40;
     color: #0099CC;
 }
 .modal{
@@ -169,7 +183,11 @@ a:hover{
     border: none;
 }
 
-/* Cards remplacing bootstrap card */
+/********************************************************************************************************/
+/*                                                                                                      */
+/*                             Cards remplacing bootstrap card                                          */
+/*                                                                                                      */
+/********************************************************************************************************/
 .cards-columns{
     display:flex;
     flex-wrap: wrap;
@@ -237,7 +255,11 @@ a:hover{
     width: 100%;
 
 }
-/* Cards Entreprise */
+/********************************************************************************************************/
+/*                                                                                                      */
+/*                                      Enterprise cards                                                */
+/*                                                                                                      */
+/********************************************************************************************************/
 .enterprise {
     max-width: 28.5rem;
 }
@@ -286,7 +308,20 @@ a:hover{
     height: 7rem;
 }
 
+.section-form-add {
+    color: white;
+    border-radius: 5px;
+    padding: 2em;
+    margin: 0rem 2rem 2rem 2rem;
+}
+
 /* media Queries */
+/********************************************************************************************************/
+/*                                                                                                      */
+/*                                        media Queries                                                 */
+/*                                                                                                      */
+/********************************************************************************************************/
+
 
 @media screen and (max-width: 1199px) {
     .cards-columns .enterprise {
@@ -297,23 +332,24 @@ a:hover{
         max-width: 100%;
     }
 
-        .enterprise > .cards-img-top {
+    .enterprise > .cards-img-top {
             margin: 1rem 40%;
             height: 10%;
             width: 20%;
-        }
+    }
+    
+    .enterprise > .cards-body {
+        max-height: 15rem;
+    }
+    
+    .enterprise > .cards-body > p {
+        max-height: 6rem;
+    }
+    
+    .enterprise > .cards-body > .btn {
+        margin-left: 85%;
 
-        .enterprise > .cards-body {
-            max-height: 15rem;
-        }
-
-            .enterprise > .cards-body > p {
-                max-height: 6rem;
-            }
-
-            .enterprise > .cards-body > .btn {
-                margin-left: 85%;
-            }
+    }
 }
 
 @media screen and (max-width: 991px) {
@@ -321,27 +357,32 @@ a:hover{
         max-width: 42%;
         margin: 1rem 0 1rem 2rem;
     }
+
     .enterprise {
         max-width: 100%;
     }
+    
+    .enterprise > .cards-img-top {
+        margin: 1rem 37%;
+        height: 10%;
+        width: 30%;
 
-        .enterprise > .cards-img-top {
-            margin: 1rem 37%;
-            height: 10%;
-            width: 30%;
-        }
+    }
 
-        .enterprise > .cards-body {
-            max-height: 15rem;
-        }
+    .enterprise > .cards-body {
+        max-height: 15rem;
 
-            .enterprise > .cards-body > p {
-                max-height: 6rem;
-            }
+    }
 
-            .enterprise > .cards-body > .btn {
-                margin-left: 80%;
-            }
+    .enterprise > .cards-body > p {
+        max-height: 6rem;
+
+    }
+    
+    .enterprise > .cards-body > .btn {
+        margin-left: 80%;
+
+    }
 }
 @media screen and (max-width: 767px) {
     .cards-columns {
@@ -358,10 +399,11 @@ a:hover{
         height: 0;
         width: 0;
     }
+    
+    .enterprise > .cards-body > .btn {
+        margin-left: 55%;
 
-        .enterprise > .cards-body > .btn {
-            margin-left: 55%;
-        }
+    }
 
     .cards-img-footer{
         visibility: hidden;
