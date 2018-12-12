@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MVC.Models.Utilisateur>
+﻿@model MVC.Models.Views.AddListUser
 
 @{
     ViewBag.Title = "Index";
@@ -30,10 +30,13 @@
                 <thead class="thead-dark">
                     <tr>
                         <th class="text-center">
-                            @Html.DisplayNameFor(model => model.LastName)
+                            @Html.DisplayNameFor(model => model.listUsers[0].LastName)
+                        </th>
+                        @*<th class="text-center">
+                            @Html.DisplayNameFor(model => model.FirstName)
                         </th>
                         <th class="text-center">
-                            @Html.DisplayNameFor(model => model.FirstName)
+                            @Html.DisplayNameFor(model => model.statut)
                         </th>
                         <th class="text-center">
                             @Html.DisplayNameFor(model => model.Email)
@@ -44,18 +47,21 @@
                         <th class="text-center">
                             @Html.DisplayNameFor(model => model.Birthdate)
                         </th>
-                        <th></th>
+                        <th></th>*@
                     </tr>
                 </thead>
 
-                @foreach (var item in Model)
+                @foreach (var item in Model.listUsers)
                 {
                     <tr>
                         <td class="text-center">
                             @Html.DisplayFor(modelItem => item.LastName)
-                        </td>
+                        @*</td>
                         <td class="text-center">
                             @Html.DisplayFor(modelItem => item.FirstName)
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.statut.StatutName)
                         </td>
                         <td class="text-center">
                             @Html.DisplayFor(modelItem => item.Email)
@@ -67,10 +73,10 @@
                             @Html.DisplayFor(modelItem => item.Birthdate)
                         </td>
                         <td class="text-center">
-                                <button onclick="location.href='@Url.Action("Edit", "Utilisateur", new { id = item.Id })'" type="button" class="btn btn-success"> <a class="fas fa-user-edit"></a>      </button>
-                                <button data-toggle="modal" data-target="#deleteModal" data-id="@item.Id" type="button" class="open-DeleteUserDialog btn btn-danger">  <a class="far fa-trash-alt"></a> </button>
+                                <button onclick="location.href='@Url.Action("Edit", "Utilisateur", new { id = item.Id })'" type="button" class="btn btn-success"> <i class="fas fa-edit"></i>      </button>
+                                <button data-toggle="modal" data-target="#deleteModal" data-id="@item.Id" type="button" class="open-DeleteUserDialog btn btn-danger">  <i class="far fa-trash-alt"></i> </button>
                            
-                        </td>
+                        </td>*@
                     </tr>
                 }
 
@@ -78,7 +84,7 @@
         </div>
     </div>
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-        @Html.Action("Create")
+        @Html.Partial("Create", Model.ajoutUser)
     </div>
     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">addadd.</div>
 </div>

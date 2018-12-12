@@ -35,14 +35,6 @@ CREATE TABLE Locality (
 	IdCountry int NOT NULL CONSTRAINT FK_Country FOREIGN KEY (IdCountry) REFERENCES Country (Id)
 );
 
-CREATE TABLE Society (
-	Id int IDENTITY(1,1) Primary Key,
-	SocietyName varchar(50) NOT NULL,
-	SocietyDesc text,
-	Phone varchar(20),
-	IdLoc int CONSTRAINT FK_Loc FOREIGN KEY (IdLoc) REFERENCES Locality (Id)
-);
-
 --Table Utilisateurs
 CREATE TABLE Utils (
 	Id int IDENTITY(1,1) Primary Key,
@@ -52,8 +44,24 @@ CREATE TABLE Utils (
 	Email varchar(100) UNIQUE NOT NULL,
 	Phone varchar(20),
 	Birthdate DateTime, 
-	IdStatut int NOT NULL CONSTRAINT FK_Statut_User FOREIGN KEY (IdStatut) REFERENCES Statut (Id),
-	IdSociety int CONSTRAINT FK_Society FOREIGN KEY (IdSociety) REFERENCES Society (Id)
+	IdStatut int NOT NULL CONSTRAINT FK_Statut_User FOREIGN KEY (IdStatut) REFERENCES Statut (Id)
+);
+
+--Table Society
+CREATE TABLE Society (
+	Id int IDENTITY(1,1) Primary Key,
+	SocietyName varchar(50) NOT NULL,
+	SocietyDesc text,
+	Phone varchar(20),
+	IdLoc int NOT NULL CONSTRAINT FK_Loc FOREIGN KEY (IdLoc) REFERENCES Locality (Id),
+	IdBoss int NOT NULL CONSTRAINT FK_Boss FOREIGN KEY (IdBoss) REFERENCES Utils (Id)
+);
+
+--Table SocietyUser
+CREATE TABLE SocietyUser (
+	Id int IDENTITY(1,1) Primary Key,
+	IdUser int NOT NULL CONSTRAINT FK_UserSociety FOREIGN KEY (IdUser) REFERENCES Utils (Id),
+	IdSociety int NOT NULL CONSTRAINT FK_Society FOREIGN KEY (IdSociety) REFERENCES Society (Id)
 );
 
 --Table Place
@@ -171,19 +179,22 @@ INSERT INTO Locality (LocalityName, CP, IdCountry) VALUES ('Court-Saint-Etienne'
 INSERT INTO Locality (LocalityName, CP, IdCountry) VALUES ('Nivelles','1400',1);
 INSERT INTO Locality (LocalityName, CP, IdCountry) VALUES ('Cologne','50441',2);
 
---Table Society
-INSERT INTO Society VALUES('Genesis Conult','', '023233232',1);
-INSERT INTO Society VALUES('Ingenico','', '0233636564',1);
-INSERT INTO Society VALUES('Fusor','', '023233982',2);
-INSERT INTO Society VALUES('Odoo','', '010111111',3);
-INSERT INTO Society VALUES('Intergraph','', '023233232',1);
-
 --Table Utilisateurs
-INSERT INTO Utils VALUES ('Adnet', 'Geoffroy', 'aqwzsx', 'emaila@mail.be','' ,'', 1, 5);
-INSERT INTO Utils VALUES ('Bouillon', 'Jeremy', '123456', 'emailb@mail.be','' ,'', 1, 1);
-INSERT INTO Utils VALUES ('Fontesse', 'Axel', '789456', 'emailc@mail.be','' ,'', 1, 3);
-INSERT INTO Utils (LastName, FirstName, PsW, Email, Phone, BirthDate, IdStatut) VALUES ('Ghost', 'Man', 'poiuyt', 'emaild@mail.be','' ,'', 2)
-INSERT INTO Utils (LastName, FirstName, PsW, Email, Phone, BirthDate, IdStatut) VALUES ('Brasseur', 'Xavier', '9515951', 'emaile@mail.be','' ,'', 2);
+INSERT INTO Utils VALUES ('Adnet', 'Geoffroy', 'aqwzsx', 'emaila@mail.be','' ,'', 1);
+INSERT INTO Utils VALUES ('Bouillon', 'Jeremy', '123456', 'emailb@mail.be','' ,'', 1);
+INSERT INTO Utils VALUES ('Fontesse', 'Axel', '789456', 'emailc@mail.be','' ,'', 1);
+INSERT INTO Utils VALUES ('Ghost', 'Man', 'poiuyt', 'emaild@mail.be','' ,'', 2)
+INSERT INTO Utils VALUES ('Brasseur', 'Xavier', '9515951', 'emaile@mail.be','' ,'', 2);
+
+--Table Society
+INSERT INTO Society VALUES('Genesis Conult','', '023233232',1, 2);
+INSERT INTO Society VALUES('Odoo','', '010111111',3,3);
+INSERT INTO Society VALUES('Intergraph','', '023233232',1, 1);
+
+--Table SocietyUser
+INSERT INTO SocietyUser VALUES (1,2);
+INSERT INTO SocietyUser VALUES (2,3);
+INSERT INTO SocietyUser VALUES (3,1);
 
 --Table Place
 INSERT INTO Place (PlaceName, Street, Number, IdLoc) VALUES ('PAM Expo', 'rue du coin', '5', 4);

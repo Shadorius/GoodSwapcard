@@ -20,7 +20,10 @@ namespace MVC.Controllers
         // GET: Utilisateur
         public ActionResult Index()
         {
-            return View(repo.GetAll().Select(x => MappingModel.UtilisateurCtoMVC(x)).ToList());
+            //return View(repo.GetAll().Select(x => MappingModel.UtilisateurCtoMVC(x)).ToList());
+            AddListUser a = new AddListUser();
+            a.listUsers = repo.GetAll().Select(x => MappingModel.UtilisateurCtoMVC(x)).ToList();
+            return View(a);
         }
 
         public ActionResult Participant()
@@ -30,7 +33,7 @@ namespace MVC.Controllers
 
         public ActionResult test()
         {
-            TestView testView = new TestView();
+            AddUser testView = new AddUser();
 
             testView.Statuts = repoS.GetAll().Select(x => MappingModel.StatutCtoM(x)).ToList();
             testView.Utilisateur = new Utilisateur();
@@ -39,15 +42,24 @@ namespace MVC.Controllers
         }
 
         // GET: Utilisateur/Create
-        public ActionResult Create()
+        [ChildActionOnly]
+        public ActionResult Create(AddUser viewAddUser)
         {
-            return PartialView("_Create", new Utilisateur());
+            viewAddUser.Statuts = repoS.GetAll().Select(x => MappingModel.StatutCtoM(x)).ToList();
+            viewAddUser.Utilisateur = new Utilisateur();
+
+            return PartialView("_Create", viewAddUser);
         }
 
         // POST: Utilisateur/Create
         [HttpPost]
-        public ActionResult Create(Utilisateur util)
+        public PartialViewResult Create(Utilisateur util)
         {
+            AddUser viewAddUser = new AddUser();
+
+            viewAddUser.Statuts = repoS.GetAll().Select(x => MappingModel.StatutCtoM(x)).ToList();
+            viewAddUser.Utilisateur = util;
+
             if (ModelState.IsValid)
             {
                 using (MD5 md5Hash = MD5.Create())
@@ -68,18 +80,14 @@ namespace MVC.Controllers
                     }
                     else
                     {
-                        return View(util);
+                        return PartialView("_Create", viewAddUser);
                     }
                 }
 
-
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
             }
 
-            return View(util);
-
-
-
+            return PartialView("_Create", viewAddUser);
         }
 
         // GET: Utilisateur/Edit/5

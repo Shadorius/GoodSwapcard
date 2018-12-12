@@ -39,6 +39,7 @@ namespace MVC.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? Birthdate { get; set; }
+        [Required]
         public Statut statut { get; set; }
     }
 }
