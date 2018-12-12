@@ -69,11 +69,11 @@ namespace Repostory
         public bool Insert(SocietyMS item)
         {
             string Query = "INSERT INTO [Society] Values (";
-            Query += "'" + item.SocietyName + "'";
-            Query += "'" + item.SocietyDesc + "'";
-            Query += "'" + item.Phone + "'";
-            Query += "'" + item.IdLoc + "'";
-            Query += "'" + item.IdBoss + "')";
+            Query += "'" + item.SocietyName + "',";
+            Query += "'" + item.SocietyDesc + "',";
+            Query += "'" + item.Phone + "',";
+            Query += " " + item.IdLoc + ",";
+            Query += " " + item.IdBoss + ")";
 
             bool QueryResult = con.Insert(Query);
             return QueryResult;
@@ -82,12 +82,12 @@ namespace Repostory
         public bool Update(SocietyMS item)
         {
             string Query = "UPDATE [Society] SET";
-            Query += "SocietyName = '" + item.SocietyName + "'";
-            Query += "SocietyDesc = '" + item.SocietyDesc + "'";
-            Query += "Phone = '" + item.Phone + "'";
-            Query += "IdLoc = '" + item.IdLoc + "'";
-            Query += "IdBoss = '" + item.IdBoss + "'";
-            Query += " WHERE Id=" + item.Id;
+            Query += "SocietyName = '" + item.SocietyName + "',";
+            Query += "SocietyDesc = '" + item.SocietyDesc + "',";
+            Query += "Phone = '" + item.Phone + "',";
+            Query += "IdLoc = " + item.IdLoc + ",";
+            Query += "IdBoss = " + item.IdBoss + " ";
+            Query += "WHERE Id=" + item.Id;
 
             bool QueryResult = con.Insert(Query);
 

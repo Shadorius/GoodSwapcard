@@ -262,6 +262,19 @@ namespace MVC.Utils
         }
 
         //Mapping Society
-        
+        internal static Society SocietyCtoM(SocietyMC s)
+        {
+            return new Society()
+            {
+                Id = s.Id,
+                SocietyName = s.SocietyName,
+                SocietyDesc = s.SocietyDesc,
+                Phone = s.Phone,
+                IdLoc = s.IdLoc,
+                IdBoss = s.IdBoss
+            };
+        }
+
+        //internal static SocietyMC S
     }
 }
