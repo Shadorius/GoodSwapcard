@@ -232,7 +232,7 @@ a:hover{
     background-color: #303030;
 }
 
-.cards-footer .btn {
+.cards-footer-btn {
     border-radius: 0 0 5px 5px;
     width: 100%;
 
@@ -244,11 +244,19 @@ a:hover{
 
 .enterprise > .cards-img-top {
     max-width: 8rem;
-    margin: 1rem 10rem;
+    margin: 1rem 38%;
 }
 .enterprise > .cards-body{
     max-height: 25rem;
 }
+    .enterprise > .cards-body > p {
+        max-height: 8rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+    }
 .cards-img-footer {
     height: 4rem;
     width: 5rem;
@@ -268,24 +276,72 @@ a:hover{
     border-radius: 5px;
 }
 
-.enterprise .btn-group:first-child {
-    border-top-left-radius: 5px;
+
+.enterprise > .cards-body > .btn {
+    margin: 1rem 0 0 20rem;
 }
 
-.enterprise > .cards-footer > .btn
-{
-    border-radius: 5px;
-}
 .enterprise > .cards-footer > .list-group{
     overflow-y: scroll;
-    max-height: 7rem;
+    height: 7rem;
 }
 
-@media screen and (max-width: 992px) {
-    .cards {
-         max-width: 42%;
-         margin: 1rem 0 1rem 2rem;
+/* media Queries */
+
+@media screen and (max-width: 1199px) {
+    .cards-columns .enterprise {
+        align-content: center;
+        margin: 1rem 0 1rem 0;
     }
+    .enterprise {
+        max-width: 100%;
+    }
+
+        .enterprise > .cards-img-top {
+            margin: 1rem 40%;
+            height: 10%;
+            width: 20%;
+        }
+
+        .enterprise > .cards-body {
+            max-height: 15rem;
+        }
+
+            .enterprise > .cards-body > p {
+                max-height: 6rem;
+            }
+
+            .enterprise > .cards-body > .btn {
+                margin-left: 85%;
+            }
+}
+
+@media screen and (max-width: 991px) {
+    .cards {
+        max-width: 42%;
+        margin: 1rem 0 1rem 2rem;
+    }
+    .enterprise {
+        max-width: 100%;
+    }
+
+        .enterprise > .cards-img-top {
+            margin: 1rem 37%;
+            height: 10%;
+            width: 30%;
+        }
+
+        .enterprise > .cards-body {
+            max-height: 15rem;
+        }
+
+            .enterprise > .cards-body > p {
+                max-height: 6rem;
+            }
+
+            .enterprise > .cards-body > .btn {
+                margin-left: 80%;
+            }
 }
 @media screen and (max-width: 767px) {
     .cards-columns {
@@ -296,5 +352,24 @@ a:hover{
     .cards {
         max-width: 100%;
         margin: 1rem 0rem;
+    }
+    .enterprise > .cards-img-top {
+        visibility: hidden;
+        height: 0;
+        width: 0;
+    }
+
+        .enterprise > .cards-body > .btn {
+            margin-left: 55%;
+        }
+
+    .cards-img-footer{
+        visibility: hidden;
+        width: 0;
+    }
+    .cards-footer-p{
+        font-size: 0.8rem;
+        margin: 0.5rem;
+        text-align: left;
     }
 }
