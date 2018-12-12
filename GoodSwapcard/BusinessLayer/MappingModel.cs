@@ -260,5 +260,26 @@ namespace BusinessLayer
                 IdUser = Notifs.IdUser
             };
         }
+
+        //Mapping StatutEvent
+        internal static StatutEventMC StatutEventStoC(StatutEventMS statutEventMS)
+        {
+            StatutEventMC statutEventMC = new StatutEventMC();
+
+            statutEventMC.Id = statutEventMS.Id;
+            statutEventMC.StatutEventName = statutEventMS.StatutEventName;
+
+            return statutEventMC;
+        }
+
+        internal static StatutEventMS StatutEventCtoS(StatutEventMC statutEventMC)
+        {
+            StatutEventMS statutEventMS = new StatutEventMS();
+
+            statutEventMS.Id = statutEventMC.Id;
+            statutEventMS.StatutEventName = statutEventMC.StatutEventName;
+
+            return statutEventMS;
+        }
     }
 }

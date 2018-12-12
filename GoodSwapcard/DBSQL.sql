@@ -7,24 +7,18 @@ CREATE DATABASE GoodSwapCardDB;
 GO
 USE GoodSwapCardDB
 GO
+
+-- Création des tables
 --Table Statut
 CREATE TABLE Statut (
 	Id int IDENTITY(1,1) Primary Key,
 	StatutName varchar(50) NOT NULL
 );
 
-
--- Création des tables
---Table Utilisateurs
-CREATE TABLE Utils (
+--Table StatutEvent
+CREATE TABLE StatutEvent (
 	Id int IDENTITY(1,1) Primary Key,
-	LastName varchar(50) NOT NULL,
-	FirstName varchar(50) NOT NULL,
-	PsW varchar(256) NOT NULL,
-	Email varchar(100) UNIQUE NOT NULL,
-	Phone varchar(20),
-	Birthdate DateTime, 
-	IdStatut int NOT NULL CONSTRAINT FK_Statut_User FOREIGN KEY (IdStatut) REFERENCES Statut (Id)
+	StatutEventName varchar(50) NOT NULL
 );
 
 --Table Pays
@@ -39,6 +33,27 @@ CREATE TABLE Locality (
 	LocalityName varchar (50) NOT NULL,
 	CP varchar (10) NOT NULL,
 	IdCountry int NOT NULL CONSTRAINT FK_Country FOREIGN KEY (IdCountry) REFERENCES Country (Id)
+);
+
+CREATE TABLE Society (
+	Id int IDENTITY(1,1) Primary Key,
+	SocietyName varchar(50) NOT NULL,
+	SocietyDesc text,
+	Phone varchar(20),
+	IdLoc int CONSTRAINT FK_Loc FOREIGN KEY (IdLoc) REFERENCES Locality (Id)
+);
+
+--Table Utilisateurs
+CREATE TABLE Utils (
+	Id int IDENTITY(1,1) Primary Key,
+	LastName varchar(50) NOT NULL,
+	FirstName varchar(50) NOT NULL,
+	PsW varchar(256) NOT NULL,
+	Email varchar(100) UNIQUE NOT NULL,
+	Phone varchar(20),
+	Birthdate DateTime, 
+	IdStatut int NOT NULL CONSTRAINT FK_Statut_User FOREIGN KEY (IdStatut) REFERENCES Statut (Id),
+	IdSociety int CONSTRAINT FK_Society FOREIGN KEY (IdSociety) REFERENCES Society (Id)
 );
 
 --Table Place
@@ -65,7 +80,7 @@ CREATE TABLE EventUser (
 	Id int IDENTITY(1,1) Primary Key,
 	IdUser int NOT NULL CONSTRAINT FK_User FOREIGN KEY (IdUser) REFERENCES Utils (Id),
 	IdEvent int NOT NULL  CONSTRAINT FK_Event FOREIGN KEY (IdEvent) REFERENCES Evenement (Id),
-	IdStatut int NOT NULL CONSTRAINT FK_Statut FOREIGN KEY (IdStatut) REFERENCES Statut (Id)
+	IdStatutEvent int NOT NULL CONSTRAINT FK_StatutEvent FOREIGN KEY (IdStatutEvent) REFERENCES StatutEvent (Id)
 );
 
 --Table Heure
@@ -93,24 +108,60 @@ CREATE TABLE Notifications(
 
 GO
 
+--Populations des tables
 --Table Statut
 INSERT INTO Statut (StatutName) VALUES ('Admin'); --admin
-INSERT INTO Statut (StatutName) VALUES ('Modo'); --groupe pour création/administration des events
-INSERT INTO Statut (StatutName) VALUES ('Util');
 INSERT INTO Statut (StatutName) VALUES ('Visiteur');
 
---Populations des tables
---Table Utilisateurs
-INSERT INTO Utils VALUES ('Adnet', 'Geoffroy', 'aqwzsx', 'emaila@mail.be','' ,'',3);
-INSERT INTO Utils VALUES ('Bouillon', 'Jeremy', '123456', 'emailb@mail.be','' ,'', 1);
-INSERT INTO Utils VALUES ('Fontesse', 'Axel', '789456', 'emailc@mail.be','' ,'', 2);
-INSERT INTO Utils VALUES ('Ghost', 'Man', 'poiuyt', 'emaild@mail.be','' ,'', 4)
-INSERT INTO Utils VALUES ('Brasseur', 'Xavier', '9515951', 'emaile@mail.be','' ,'', 3);
+--Table StatutEvent
+INSERT INTO StatutEvent (StatutEventName) VALUES ('Modo'); --groupe pour création/administration des events
+INSERT INTO StatutEvent (StatutEventName) VALUES ('Util');
 
 --Table Country
-INSERT INTO Country (CountryName) VALUES ('Belgique');
+INSERT INTO Country (CountryName) VALUES ('Afghanistan');
+INSERT INTO Country (CountryName) VALUES ('Afrique du Sud');
+INSERT INTO Country (CountryName) VALUES ('Algérie');
 INSERT INTO Country (CountryName) VALUES ('Allemagne');
+INSERT INTO Country (CountryName) VALUES ('Arabie saoudite');
+INSERT INTO Country (CountryName) VALUES ('Argentine');
+INSERT INTO Country (CountryName) VALUES ('Belgique');
+INSERT INTO Country (CountryName) VALUES ('Burkina Faso');
+INSERT INTO Country (CountryName) VALUES ('Canada');
+INSERT INTO Country (CountryName) VALUES ('Chine');
+INSERT INTO Country (CountryName) VALUES ('Espagne');
+INSERT INTO Country (CountryName) VALUES ('États-Unis');
+INSERT INTO Country (CountryName) VALUES ('France');
+INSERT INTO Country (CountryName) VALUES ('Grèce');
+INSERT INTO Country (CountryName) VALUES ('Hong Kong');
+INSERT INTO Country (CountryName) VALUES ('Hongrie');
+INSERT INTO Country (CountryName) VALUES ('Iles Cayman');
+INSERT INTO Country (CountryName) VALUES ('Irlande');
+INSERT INTO Country (CountryName) VALUES ('Islande');
+INSERT INTO Country (CountryName) VALUES ('Italie');
+INSERT INTO Country (CountryName) VALUES ('Japon');
 INSERT INTO Country (CountryName) VALUES ('Luxembourg');
+INSERT INTO Country (CountryName) VALUES ('Malte');
+INSERT INTO Country (CountryName) VALUES ('Maroc');
+INSERT INTO Country (CountryName) VALUES ('Mexique');
+INSERT INTO Country (CountryName) VALUES ('Nouvelle-Zélande');
+INSERT INTO Country (CountryName) VALUES ('Pérou');
+INSERT INTO Country (CountryName) VALUES ('Paraguay');
+INSERT INTO Country (CountryName) VALUES ('Pays-Bas');
+INSERT INTO Country (CountryName) VALUES ('Portugal');
+INSERT INTO Country (CountryName) VALUES ('Qatar');
+INSERT INTO Country (CountryName) VALUES ('République dominicaine');
+INSERT INTO Country (CountryName) VALUES ('République tchèque');
+INSERT INTO Country (CountryName) VALUES ('Réunion');
+INSERT INTO Country (CountryName) VALUES ('Royaume-Uni');
+INSERT INTO Country (CountryName) VALUES ('Russie');
+INSERT INTO Country (CountryName) VALUES ('Rwanda');
+INSERT INTO Country (CountryName) VALUES ('Suisse');
+INSERT INTO Country (CountryName) VALUES ('Thaïlande');
+INSERT INTO Country (CountryName) VALUES ('Tunisie');
+INSERT INTO Country (CountryName) VALUES ('Turquie');
+INSERT INTO Country (CountryName) VALUES ('Yougoslavie');
+INSERT INTO Country (CountryName) VALUES ('Zimbabwe');
+INSERT INTO Country (CountryName) VALUES ('Macédoine');
 
 --Table Locality
 INSERT INTO Locality (LocalityName, CP, IdCountry) VALUES ('Bruxelles','1000',1);
@@ -119,6 +170,20 @@ INSERT INTO Locality (LocalityName, CP, IdCountry) VALUES ('Gembloux','5030',1);
 INSERT INTO Locality (LocalityName, CP, IdCountry) VALUES ('Court-Saint-Etienne','1490',1);
 INSERT INTO Locality (LocalityName, CP, IdCountry) VALUES ('Nivelles','1400',1);
 INSERT INTO Locality (LocalityName, CP, IdCountry) VALUES ('Cologne','50441',2);
+
+--Table Society
+INSERT INTO Society VALUES('Genesis Conult','', '023233232',1);
+INSERT INTO Society VALUES('Ingenico','', '0233636564',1);
+INSERT INTO Society VALUES('Fusor','', '023233982',2);
+INSERT INTO Society VALUES('Odoo','', '010111111',3);
+INSERT INTO Society VALUES('Intergraph','', '023233232',1);
+
+--Table Utilisateurs
+INSERT INTO Utils VALUES ('Adnet', 'Geoffroy', 'aqwzsx', 'emaila@mail.be','' ,'', 1, 5);
+INSERT INTO Utils VALUES ('Bouillon', 'Jeremy', '123456', 'emailb@mail.be','' ,'', 1, 1);
+INSERT INTO Utils VALUES ('Fontesse', 'Axel', '789456', 'emailc@mail.be','' ,'', 1, 3);
+INSERT INTO Utils (LastName, FirstName, PsW, Email, Phone, BirthDate, IdStatut) VALUES ('Ghost', 'Man', 'poiuyt', 'emaild@mail.be','' ,'', 2)
+INSERT INTO Utils (LastName, FirstName, PsW, Email, Phone, BirthDate, IdStatut) VALUES ('Brasseur', 'Xavier', '9515951', 'emaile@mail.be','' ,'', 2);
 
 --Table Place
 INSERT INTO Place (PlaceName, Street, Number, IdLoc) VALUES ('PAM Expo', 'rue du coin', '5', 4);

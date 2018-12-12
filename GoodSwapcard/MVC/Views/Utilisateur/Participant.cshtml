@@ -2,21 +2,195 @@
 <h2>Liste des participants de l'event</h2>
 <br />
 <section>
-    <div class="card-columns">
-        @foreach (var item in Model)
-        {
-            <div class="card">
-                <img class="card-img-top" src="~/Img/mdr.jpg" alt="Card image cap">
-                <div class="card-body bg-dark">
-                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.LastName) @Html.DisplayFor(modelItem => item.FirstName)</h5>
-                    <p class="card-text">Desc de l'Util</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </div>
-            </div>
-        }
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#AllPart" role="tab" aria-controls="home" aria-selected="true">Les participants</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#AllEnterprises" role="tab" aria-controls="profile" aria-selected="false">Les entreprises</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#Search" role="tab" aria-controls="Search" aria-selected="false">Recherche</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="AllPart" role="tabpanel" aria-labelledby="AllPart-tab">
+            <div class="cards-columns">
+                @foreach (var item in Model)
+                {
+                    <article class="cards">
+                        <img class="cards-img-top" src="~/Img/mdr.jpg" alt="Card image cap">
+                        <div class="cards-body">
+                            <h5 class="cards-title">@Html.DisplayFor(modelItem => item.LastName) @Html.DisplayFor(modelItem => item.FirstName)</h5>
+                            <p class="cards-text">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum nunc id ipsum pretium dignissim. Donec eu velit mi. Pellentesque semper tristique molestie. Cras feugiat viverra vehicula. Maecenas nec suscipit diam. Nulla eget iaculis nisl. In ac bibendum mauris. Praesent gravida, justo aliquam hendrerit sollicitudin, eros felis malesuada orci, sit amet aliquet massa justo ac ipsum. Quisque euismod tincidunt pellentesque. Vivamus ullamcorper metus ac ullamcorper rutrum.
 
+                                Pellentesque semper euismod sagittis. Vestibulum tincidunt nisi nec sodales volutpat. Integer convallis non urna sed rutrum. Curabitur elementum iaculis velit. Nullam nisl mi, cursus non mauris vitae, luctus accumsan libero. Suspendisse lacus urna, eleifend id nisl eget, accumsan tempus risus. In nec dictum elit.
+                            </p>
+                        </div>
+                        <footer class="cards-footer">
+                            <div class="btn-group btn-block">
+                                <button onclick="location.href='@Url.Action("Index", "Utilisateur", new { id = item.Id })'" type="button" class="btn btn-outline-info"> <i class="far fa-calendar-alt"></i>    </button>
+                                <button onclick="location.href='@Url.Action("Index", "Utilisateur", new { id = item.Id })'" type="button" class="btn btn-outline-info"> <i class="far fa-comments"></i>    </button>
+                                <button onclick="location.href='@Url.Action("Edit", "Utilisateur", new { id = item.Id })'" type="button" class="btn btn-outline-info"> <i class="far fa-address-card"></i>    </button>
+                            </div>
+
+                        </footer>
+                    </article>
+                }
+            </div>
+        </div>
+        <div class="tab-pane fade" id="AllEnterprises" role="tabpanel" aria-labelledby="AllEnterprises-tab">
+            <div class="cards-columns">
+                <article class="cards enterprise">
+                    <img class="cards-img-top rounded-circle" src="~/Img/mdr.jpg" alt="Card image cap">
+                    <div class="cards-body">
+                        <h5 class="cards-title">Nom de l'entreprise</h5>
+
+                        <p class="cards-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum nunc id ipsum pretium dignissim. Donec eu velit mi. Pellentesque semper tristique molestie. Cras feugiat viverra vehicula. Maecenas nec suscipit diam. Nulla eget iaculis nisl. In ac bibendum mauris. Praesent gravida, justo aliquam hendrerit sollicitudin, eros felis malesuada orci, sit amet aliquet massa justo ac ipsum. Quisque euismod tincidunt pellentesque. Vivamus ullamcorper metus ac ullamcorper rutrum.
+
+                            Pellentesque semper euismod sagittis. Vestibulum tincidunt nisi nec sodales volutpat. Integer convallis non urna sed rutrum. Curabitur elementum iaculis velit. Nullam nisl mi, cursus non mauris vitae, luctus accumsan libero. Suspendisse lacus urna, eleifend id nisl eget, accumsan tempus risus. In nec dictum elit.
+                        </p>
+                        <button onclick="location.href='@Url.Action("Index", "Utilisateur")'" type="button" class="btn btn-outline-info">
+                            <i class="fas fa-globe"></i> Website
+                        </button>
+                    </div>
+                    <footer class="cards-footer">
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <img class="cards-img-footer rounded-circle" src="~/Img/mdr.jpg" alt="Card image cap">
+                                Nom Prenom
+
+                                <div class="btn-group btn-block">
+                                    <button onclick="location.href='@Url.Action("Index", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-calendar-alt"></i>    </button>
+                                    <button onclick="location.href='@Url.Action("Index", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-comments"></i>    </button>
+                                    <button onclick="location.href='@Url.Action("Edit", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-address-card"></i>    </button>
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <img class="cards-img-footer rounded-circle" src="~/Img/mdr.jpg" alt="Card image cap">
+                                Nom Prenom
+
+                                <div class="btn-group btn-block">
+                                    <button onclick="location.href='@Url.Action("Index", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-calendar-alt"></i>    </button>
+                                    <button onclick="location.href='@Url.Action("Index", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-comments"></i>    </button>
+                                    <button onclick="location.href='@Url.Action("Edit", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-address-card"></i>    </button>
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <img class="cards-img-footer rounded-circle" src="~/Img/mdr.jpg" alt="Card image cap">
+                                Nom Prenom
+
+                                <div class="btn-group btn-block">
+                                    <button onclick="location.href='@Url.Action("Index", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-calendar-alt"></i>    </button>
+                                    <button onclick="location.href='@Url.Action("Index", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-comments"></i>    </button>
+                                    <button onclick="location.href='@Url.Action("Edit", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-address-card"></i>    </button>
+                                </div>
+                            </li>
+                        </ul>
+                    </footer>
+                </article>
+                <article class="cards enterprise">
+                    <img class="cards-img-top rounded-circle" src="~/Img/mdr.jpg" alt="Card image cap">
+                    <div class="cards-body">
+                        <h5 class="cards-title">Nom de l'entreprise</h5>
+
+                        <p class="cards-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum nunc id ipsum pretium dignissim. Donec eu velit mi. Pellentesque semper tristique molestie. Cras feugiat viverra vehicula. Maecenas nec suscipit diam. Nulla eget iaculis nisl. In ac bibendum mauris. Praesent gravida, justo aliquam hendrerit sollicitudin, eros felis malesuada orci, sit amet aliquet massa justo ac ipsum. Quisque euismod tincidunt pellentesque. Vivamus ullamcorper metus ac ullamcorper rutrum.
+
+                            Pellentesque semper euismod sagittis. Vestibulum tincidunt nisi nec sodales volutpat. Integer convallis non urna sed rutrum. Curabitur elementum iaculis velit. Nullam nisl mi, cursus non mauris vitae, luctus accumsan libero. Suspendisse lacus urna, eleifend id nisl eget, accumsan tempus risus. In nec dictum elit.
+                        </p>
+                        <button onclick="location.href='@Url.Action("Index", "Utilisateur")'" type="button" class="btn btn-outline-info">
+                            <i class="fas fa-globe"></i> Website
+                        </button>
+                    </div>
+                    <footer class="cards-footer">
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <img class="cards-img-footer rounded-circle" src="~/Img/mdr.jpg" alt="Card image cap">
+                                Nom Prenom
+
+                                <div class="btn-group btn-block">
+                                    <button onclick="location.href='@Url.Action("Index", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-calendar-alt"></i>    </button>
+                                    <button onclick="location.href='@Url.Action("Index", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-comments"></i>    </button>
+                                    <button onclick="location.href='@Url.Action("Edit", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-address-card"></i>    </button>
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <img class="cards-img-footer rounded-circle" src="~/Img/mdr.jpg" alt="Card image cap">
+                                Nom Prenom
+
+                                <div class="btn-group btn-block">
+                                    <button onclick="location.href='@Url.Action("Index", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-calendar-alt"></i>    </button>
+                                    <button onclick="location.href='@Url.Action("Index", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-comments"></i>    </button>
+                                    <button onclick="location.href='@Url.Action("Edit", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-address-card"></i>    </button>
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <img class="cards-img-footer rounded-circle" src="~/Img/mdr.jpg" alt="Card image cap">
+                                Nom Prenom
+
+                                <div class="btn-group btn-block">
+                                    <button onclick="location.href='@Url.Action("Index", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-calendar-alt"></i>    </button>
+                                    <button onclick="location.href='@Url.Action("Index", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-comments"></i>    </button>
+                                    <button onclick="location.href='@Url.Action("Edit", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-address-card"></i>    </button>
+                                </div>
+                            </li>
+                        </ul>
+                    </footer>
+                </article>
+                <article class="cards enterprise">
+                    <img class="cards-img-top rounded-circle" src="~/Img/mdr.jpg" alt="Card image cap">
+                    <div class="cards-body">
+                        <h5 class="cards-title">Nom de l'entreprise</h5>
+
+                        <p class="cards-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum nunc id ipsum pretium dignissim. Donec eu velit mi. Pellentesque semper tristique molestie. Cras feugiat viverra vehicula. Maecenas nec suscipit diam. Nulla eget iaculis nisl. In ac bibendum mauris. Praesent gravida, justo aliquam hendrerit sollicitudin, eros felis malesuada orci, sit amet aliquet massa justo ac ipsum. Quisque euismod tincidunt pellentesque. Vivamus ullamcorper metus ac ullamcorper rutrum.
+
+                            Pellentesque semper euismod sagittis. Vestibulum tincidunt nisi nec sodales volutpat. Integer convallis non urna sed rutrum. Curabitur elementum iaculis velit. Nullam nisl mi, cursus non mauris vitae, luctus accumsan libero. Suspendisse lacus urna, eleifend id nisl eget, accumsan tempus risus. In nec dictum elit.
+                        </p>
+                        <button onclick="location.href='@Url.Action("Index", "Utilisateur")'" type="button" class="btn btn-outline-info">
+                            <i class="fas fa-globe"></i> Website
+                        </button>
+                    </div>
+                    <footer class="cards-footer">
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <img class="cards-img-footer rounded-circle" src="~/Img/mdr.jpg" alt="Card image cap">
+                                Nom Prenom
+                                <div class="btn-group btn-block">
+                                    <button onclick="location.href='@Url.Action("Index", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-calendar-alt"></i>    </button>
+                                    <button onclick="location.href='@Url.Action("Index", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-comments"></i>    </button>
+                                    <button onclick="location.href='@Url.Action("Edit", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-address-card"></i>    </button>
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <img class="cards-img-footer rounded-circle" src="~/Img/mdr.jpg" alt="Card image cap">
+                                Nom Prenom
+
+                                <div class="btn-group btn-block">
+                                    <button onclick="location.href='@Url.Action("Index", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-calendar-alt"></i>    </button>
+                                    <button onclick="location.href='@Url.Action("Index", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-comments"></i>    </button>
+                                    <button onclick="location.href='@Url.Action("Edit", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-address-card"></i>    </button>
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <img class="cards-img-footer rounded-circle" src="~/Img/mdr.jpg" alt="Card image cap">
+                                Nom Prenom
+
+                                <div class="btn-group btn-block">
+                                    <button onclick="location.href='@Url.Action("Index", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-calendar-alt"></i>    </button>
+                                    <button onclick="location.href='@Url.Action("Index", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-comments"></i>    </button>
+                                    <button onclick="location.href='@Url.Action("Edit", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-address-card"></i>    </button>
+                                </div>
+                            </li>
+                        </ul>
+                    </footer>
+                </article>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="Search" role="tabpanel" aria-labelledby="Search-tab">addadd.</div>
     </div>
 </section>
 
