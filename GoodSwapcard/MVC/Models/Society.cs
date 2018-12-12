@@ -11,7 +11,7 @@ namespace MVC.Models
         public string SocietyName { get; set; }
         public string SocietyDesc { get; set; }
         public string Phone { get; set; }
-        public int IdLoc { get; set; }
+        public Locality LLoc { get; set; }
         public int IdBoss { get; set; }
     }
 }

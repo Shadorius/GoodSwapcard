@@ -132,6 +132,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SocietyController.cs" />
     <Compile Include="Controllers\UtilisateurController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -240,6 +241,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Country\" />
+    <Folder Include="Views\Society\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
