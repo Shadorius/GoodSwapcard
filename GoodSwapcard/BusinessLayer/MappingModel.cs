@@ -281,5 +281,80 @@ namespace BusinessLayer
 
             return statutEventMS;
         }
+
+        //mapping Society
+        internal static SocietyMC SocietyStoC(SocietyMS societyMS)
+        {
+            SocietyMC societyMC = new SocietyMC();
+
+            societyMC.Id = societyMS.Id;
+            societyMC.SocietyName = societyMS.SocietyName;
+            societyMC.SocietyDesc = societyMS.SocietyDesc;
+            societyMC.Phone = societyMS.Phone;
+            societyMC.IdLoc = societyMS.IdLoc;
+            societyMC.IdBoss = societyMS.IdBoss;
+
+            return societyMC;
+        }
+
+        internal static SocietyMS SocietyCtoS(SocietyMC societyMC)
+        {
+            SocietyMS societyMS = new SocietyMS();
+
+            societyMS.Id = societyMC.Id;
+            societyMS.SocietyName = societyMC.SocietyName;
+            societyMS.SocietyDesc = societyMC.SocietyDesc;
+            societyMS.Phone = societyMC.Phone;
+            societyMS.IdLoc = societyMC.IdLoc;
+            societyMS.IdBoss = societyMC.IdBoss;
+
+            return societyMS;
+        }
+
+        //mapping SocietyUser
+        internal static SocietyUserMC SocietyUserStoC(SocietyUserMS societyUserMS)
+        {
+            SocietyUserMC societyUserMC = new SocietyUserMC();
+
+            societyUserMC.Id = societyUserMS.Id;
+            societyUserMC.IdUser = societyUserMS.IdUser;
+            societyUserMC.IdSociety = societyUserMS.IdSociety;
+
+            return societyUserMC;
+        }
+
+        internal static SocietyUserMS SocietyUserCtoS(SocietyUserMC societyUserMC)
+        {
+            SocietyUserMS societyUserMS = new SocietyUserMS();
+
+            societyUserMS.Id = societyUserMC.Id;
+            societyUserMS.IdUser = societyUserMC.IdUser;
+            societyUserMS.IdSociety = societyUserMC.IdSociety;
+
+            return societyUserMS;
+        }
+
+        //mapping Messagerie
+        internal static MessagerieMC MessagerieStoC(MessagerieMS Mess)
+        {
+            return new MessagerieMC()
+            {
+                Id = Mess.Id,
+                IdUserOne = Mess.IdUserOne,
+                IdUserTwo = Mess.IdUserTwo,
+                Content = Mess.Content
+            };
+        }
+
+        internal static MessagerieMS MessagerieCtoS(MessagerieMC Mess)
+        {
+            return new MessagerieMS()
+            {
+                Id = Mess.Id,
+                IdUserOne = Mess.IdUserOne,
+                IdUserTwo = Mess.IdUserTwo,
+                Content = Mess.Content
+            };
+        }
     }
 }

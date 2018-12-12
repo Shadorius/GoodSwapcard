@@ -17,6 +17,7 @@ namespace MVC.Utils
         static BLRHourTime repoHourTime = new BLRHourTime();
         static BLRLocality repoLocality = new BLRLocality();
         static BLRCountry repoCountry = new BLRCountry();
+        static BLRSociety BLRSociety = new BLRSociety();
 
 
         //Mapping Utilisateurs
@@ -259,5 +260,46 @@ namespace MVC.Utils
                 StatutEventName = s.StatutEventName
             };
         }
+
+        //Mapping Society
+        internal static Society SocietyCtoM(SocietyMC s)
+        {
+            return new Society()
+            {
+                Id = s.Id,
+                SocietyName = s.SocietyName,
+                SocietyDesc = s.SocietyDesc,
+                Phone = s.Phone,
+                IdLoc = s.IdLoc,
+                IdBoss = s.IdBoss
+            };
+        }
+
+
+        //internal static SocietyMC S
+
+
+        //Mapping Messagerie
+        internal static Messagerie MessagerieCtoMVC(MessagerieMC p)
+        {
+            return new Messagerie()
+            {
+                Id = p.Id,
+                UserOne = UtilisateurCtoMVC(repoUtil.Get(p.IdUserOne)),
+                UserTwo = UtilisateurCtoMVC(repoUtil.Get(p.IdUserTwo)),
+                Content = p.Content
+            };
+        }
+        internal static MessagerieMC MessagerieMVCtoC(Messagerie p)
+        {
+            return new MessagerieMC()
+            {
+                Id = p.Id,
+                IdUserOne = p.UserOne.Id,
+                IdUserTwo = p.UserTwo.Id,
+                Content = p.Content
+            };
+        }
+
     }
 }
