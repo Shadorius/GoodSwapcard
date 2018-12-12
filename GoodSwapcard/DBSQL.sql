@@ -191,6 +191,11 @@ INSERT INTO Society VALUES('Genesis Conult','', '023233232',1, 2);
 INSERT INTO Society VALUES('Odoo','', '010111111',3,3);
 INSERT INTO Society VALUES('Intergraph','', '023233232',1, 1);
 
+--Table SocietyUser
+INSERT INTO SocietyUser VALUES (1,2);
+INSERT INTO SocietyUser VALUES (2,3);
+INSERT INTO SocietyUser VALUES (3,1);
+
 --Table Place
 INSERT INTO Place (PlaceName, Street, Number, IdLoc) VALUES ('PAM Expo', 'rue du coin', '5', 4);
 INSERT INTO Place (PlaceName, Street, Number, IdLoc) VALUES ('Waux Hall', 'grand place', '2', 5);
