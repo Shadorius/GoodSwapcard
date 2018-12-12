@@ -11,7 +11,7 @@ namespace MVC.Models
         public int Id { get; set; }
         [Required]
         [RegularExpression(@"[a-zA-Z]{1,50}", ErrorMessage ="Le nom ne peut contenir que de 1 à 50 à  caracthère")]
-        [Display(Name = "Nom")]
+        [Display(Name = "Nome")]
         public string LastName { get; set; }
         [Required]
         [RegularExpression(@"[a-zA-Z]{1,50}")]

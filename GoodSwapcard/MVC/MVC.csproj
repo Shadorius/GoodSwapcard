@@ -142,6 +142,7 @@
     <Compile Include="Models\EventUser.cs" />
     <Compile Include="Models\HourTime.cs" />
     <Compile Include="Models\Locality.cs" />
+    <Compile Include="Models\Messagerie.cs" />
     <Compile Include="Models\Notifications.cs" />
     <Compile Include="Models\Place.cs" />
     <Compile Include="Models\RdV.cs" />
@@ -237,6 +238,7 @@
     <Content Include="Views\Utilisateur\Participant.cshtml" />
     <Content Include="Views\Utilisateur\test.cshtml" />
     <Content Include="Views\Utilisateur\_Create.cshtml" />
+    <Content Include="Views\Utilisateur\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

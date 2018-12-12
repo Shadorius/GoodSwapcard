@@ -21,9 +21,12 @@ namespace MVC.Controllers
         public ActionResult Index()
         {
             //return View(repo.GetAll().Select(x => MappingModel.UtilisateurCtoMVC(x)).ToList());
-            AddListUser a = new AddListUser();
-            a.listUsers = repo.GetAll().Select(x => MappingModel.UtilisateurCtoMVC(x)).ToList();
-            return View(a);
+            AddListUser viewAddUser = new AddListUser();
+            viewAddUser.ajoutUser.Statuts = repoS.GetAll().Select(x => MappingModel.StatutCtoM(x)).ToList();
+            viewAddUser.ajoutUser.Utilisateur = new Utilisateur();
+            viewAddUser.listUsers = repo.GetAll().Select(x => MappingModel.UtilisateurCtoMVC(x)).ToList();
+
+            return View(viewAddUser);
         }
 
         public ActionResult Participant()
@@ -41,53 +44,55 @@ namespace MVC.Controllers
             return View(testView);
         }
 
-        // GET: Utilisateur/Create
-        [ChildActionOnly]
-        public ActionResult Create(AddUser viewAddUser)
-        {
-            viewAddUser.Statuts = repoS.GetAll().Select(x => MappingModel.StatutCtoM(x)).ToList();
-            viewAddUser.Utilisateur = new Utilisateur();
+        //GET: Utilisateur/Create
+        //public ActionResult Create(AddUser viewAddUser)
+        //{
+        //    viewAddUser.Statuts = repoS.GetAll().Select(x => MappingModel.StatutCtoM(x)).ToList();
+        //    viewAddUser.Utilisateur = new Utilisateur();
 
-            return PartialView("_Create", viewAddUser);
-        }
+        //    return View();
+        //}
 
         // POST: Utilisateur/Create
         [HttpPost]
-        public PartialViewResult Create(Utilisateur util)
+        public ActionResult Create(AddUser util)
         {
-            AddUser viewAddUser = new AddUser();
-
-            viewAddUser.Statuts = repoS.GetAll().Select(x => MappingModel.StatutCtoM(x)).ToList();
-            viewAddUser.Utilisateur = util;
+            AddListUser viewAddUser = new AddListUser();
+            viewAddUser.ajoutUser = util;
+            viewAddUser.ajoutUser.Statuts = repoS.GetAll().Select(x => MappingModel.StatutCtoM(x)).ToList();
+            viewAddUser.listUsers = repo.GetAll().Select(x => MappingModel.UtilisateurCtoMVC(x)).ToList();
+            int id = int.Parse(util.Utilisateur.statut.Id.ToString());
+            viewAddUser.ajoutUser.Utilisateur.statut.Id = id;
+            viewAddUser.ajoutUser.Utilisateur.statut.StatutName = viewAddUser.ajoutUser.Statuts.Where(x => x.Id == id).Select(n => n.StatutName).SingleOrDefault();
 
             if (ModelState.IsValid)
             {
                 using (MD5 md5Hash = MD5.Create())
                 {
-                    string hash = HashageMD5.GetMd5Hash(md5Hash, util.PsW);
+                    string hash = HashageMD5.GetMd5Hash(md5Hash, util.Utilisateur.PsW);
 
-                    if (HashageMD5.VerifyMd5Hash(md5Hash, util.PsW, hash))
+                    if (HashageMD5.VerifyMd5Hash(md5Hash, util.Utilisateur.PsW, hash))
                     {
-                        if(util.Birthdate.HasValue)
+                        if(util.Utilisateur.Birthdate.HasValue)
                         {
-                            DateTime date = util.Birthdate.Value;
-                            util.Birthdate = date;
+                            DateTime date = util.Utilisateur.Birthdate.Value;
+                            util.Utilisateur.Birthdate = date;
                         }
 
-                        util.PsW = hash;
-                        repo.Insert(MappingModel.UtilisateurtoS(util));
+                        util.Utilisateur.PsW = hash;
+                        repo.Insert(MappingModel.UtilisateurtoS(util.Utilisateur));
                         ViewBag.ErrorHash = "Le hashage n'a pas été correctement fait";
                     }
                     else
                     {
-                        return PartialView("_Create", viewAddUser);
+                        return View("Index", viewAddUser);
                     }
                 }
 
-                //return RedirectToAction("Index");
+                return RedirectToAction("Index");
             }
 
-            return PartialView("_Create", viewAddUser);
+            return View("Index", viewAddUser);
         }
 
         // GET: Utilisateur/Edit/5

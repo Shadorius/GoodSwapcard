@@ -333,5 +333,28 @@ namespace BusinessLayer
 
             return societyUserMS;
         }
+
+        //mapping Messagerie
+        internal static MessagerieMC MessagerieStoC(MessagerieMS Mess)
+        {
+            return new MessagerieMC()
+            {
+                Id = Mess.Id,
+                IdUserOne = Mess.IdUserOne,
+                IdUserTwo = Mess.IdUserTwo,
+                Content = Mess.Content
+            };
+        }
+
+        internal static MessagerieMS MessagerieCtoS(MessagerieMC Mess)
+        {
+            return new MessagerieMS()
+            {
+                Id = Mess.Id,
+                IdUserOne = Mess.IdUserOne,
+                IdUserTwo = Mess.IdUserTwo,
+                Content = Mess.Content
+            };
+        }
     }
 }
