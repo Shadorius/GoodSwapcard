@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BusinessLayer;
+using MVC.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +10,12 @@ namespace MVC.Controllers
 {
     public class SocietyController : Controller
     {
+        BLRSociety repo = new BLRSociety();
         // GET: Society
         public ActionResult Index()
         {
-            return View();
+            var Societies = repo.GetAll().Select(x => MappingModel.SocietyCtoMVC(x)).ToList();
+            return View(Societies);
         }
 
         // GET: Society/Details/5

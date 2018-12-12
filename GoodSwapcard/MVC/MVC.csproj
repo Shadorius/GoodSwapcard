@@ -239,11 +239,11 @@
     <Content Include="Views\Utilisateur\test.cshtml" />
     <Content Include="Views\Utilisateur\_Create.cshtml" />
     <Content Include="Views\Utilisateur\Create.cshtml" />
+    <Content Include="Views\Society\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Country\" />
-    <Folder Include="Views\Society\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

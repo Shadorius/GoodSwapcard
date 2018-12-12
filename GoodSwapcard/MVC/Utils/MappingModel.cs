@@ -309,9 +309,6 @@ namespace MVC.Utils
             };
         }
 
-        //internal static SocietyMC S
-
-
         //Mapping Messagerie
         internal static Messagerie MessagerieCtoMVC(MessagerieMC p)
         {
