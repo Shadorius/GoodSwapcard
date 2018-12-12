@@ -5,7 +5,7 @@ using System.Web;
 
 namespace MVC.Models.Views
 {
-    public class TestView
+    public class AddUser
     {
         public Utilisateur Utilisateur { get; set; }
         public IEnumerable<Statut> Statuts { get; set; }
