@@ -45,6 +45,8 @@
     <Compile Include="BLRNotifications.cs" />
     <Compile Include="BLRPlace.cs" />
     <Compile Include="BLRRdV.cs" />
+    <Compile Include="BLRSociety.cs" />
+    <Compile Include="BLRSocietyUser.cs" />
     <Compile Include="BLRStatut.cs" />
     <Compile Include="BLREvenement.cs" />
     <Compile Include="BLREventUser.cs" />

@@ -144,6 +144,8 @@
     <Compile Include="Models\Notifications.cs" />
     <Compile Include="Models\Place.cs" />
     <Compile Include="Models\RdV.cs" />
+    <Compile Include="Models\Society.cs" />
+    <Compile Include="Models\SocietyUser.cs" />
     <Compile Include="Models\Statut.cs" />
     <Compile Include="Models\StatutEvent.cs" />
     <Compile Include="Models\Utilisateur.cs" />

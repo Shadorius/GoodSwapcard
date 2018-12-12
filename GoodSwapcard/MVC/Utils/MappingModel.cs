@@ -17,6 +17,7 @@ namespace MVC.Utils
         static BLRHourTime repoHourTime = new BLRHourTime();
         static BLRLocality repoLocality = new BLRLocality();
         static BLRCountry repoCountry = new BLRCountry();
+        static BLRSociety BLRSociety = new BLRSociety();
 
 
         //Mapping Utilisateurs
@@ -259,5 +260,8 @@ namespace MVC.Utils
                 StatutEventName = s.StatutEventName
             };
         }
+
+        //Mapping Society
+        
     }
 }
