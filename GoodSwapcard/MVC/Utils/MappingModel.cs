@@ -262,7 +262,7 @@ namespace MVC.Utils
         }
 
         //Mapping Society
-        internal static Society SocietyCtoM(SocietyMC s)
+        internal static Society SocietyCtoMVC(SocietyMC s)
         {
             return new Society()
             {
@@ -270,14 +270,44 @@ namespace MVC.Utils
                 SocietyName = s.SocietyName,
                 SocietyDesc = s.SocietyDesc,
                 Phone = s.Phone,
-                IdLoc = s.IdLoc,
+                LLoc = LocalityCtoM(repoLocality.Get(s.IdLoc)),
                 IdBoss = s.IdBoss
             };
         }
 
+        internal static SocietyMC SocietyMVCtoC(Society s)
+        {
+            return new SocietyMC()
+            {
+                Id = s.Id,
+                SocietyName = s.SocietyName,
+                SocietyDesc = s.SocietyDesc,
+                Phone = s.Phone,
+                IdLoc = s.LLoc.Id,
+                IdBoss = s.IdBoss
+            };
+        }
 
-        //internal static SocietyMC S
+        //Mapping SocietyUser
+        internal static SocietyUser SocietyUserCtoMVC(SocietyUserMC s)
+        {
+            return new SocietyUser()
+            {
+                Id = s.Id,
+                IdUser = s.IdUser,
+                IdSociety = s.IdSociety
+            };
+        }
 
+        internal SocietyUserMC SocietyUserMVCtoC(SocietyUser s)
+        {
+            return new SocietyUserMC()
+            {
+                Id = s.Id,
+                IdUser = s.IdUser,
+                IdSociety = s.IdSociety
+            };
+        }
 
         //Mapping Messagerie
         internal static Messagerie MessagerieCtoMVC(MessagerieMC p)
