@@ -64,8 +64,8 @@ namespace Repostory
         public bool Insert(SocietyUserMS item)
         {
             string Query = "INSERT INTO [SocietyUser] Values (";
-            Query += "'" + item.IdUser + "'";
-            Query += "'" + item.IdSociety + "')";
+            Query += " " + item.IdUser + ",";
+            Query += " " + item.IdSociety + ")";
 
             bool QueryResult = con.Insert(Query);
             return QueryResult;
@@ -74,9 +74,9 @@ namespace Repostory
         public bool Update(SocietyUserMS item)
         {
             string Query = "UPDATE [SocietyUser] SET";
-            Query += "IdUser = '" + item.IdUser + "'";
-            Query += "IdSociety = '" + item.IdSociety + "'";
-            Query += " WHERE Id=" + item.Id;
+            Query += "IdUser = " + item.IdUser + ",";
+            Query += "IdSociety = " + item.IdSociety + " ";
+            Query += "WHERE Id=" + item.Id;
 
             bool QueryResult = con.Insert(Query);
 
