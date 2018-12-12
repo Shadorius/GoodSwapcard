@@ -10,7 +10,6 @@ namespace MVC.Models
     public class Statut
     {
         public int Id { get; set; }
-        [Required]
         [Display(Name ="Statut")]
         public string StatutName { get; set; }
     }

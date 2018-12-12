@@ -61,12 +61,13 @@ namespace Repostory
         public bool Insert(UtilisateurMS util)
         {
             string Query = "INSERT INTO [Utils] Values(";
-            Query += "'" + util.LastName + "', ";
-            Query += "'" + util.FirstName + "', ";
-            Query += "'" + util.PsW + "', ";
-            Query += "'" + util.Email + "', ";
-            Query +=       util.Phone     == null ? "null, "    : "'" + util.Phone + "', ";
-            Query +=       util.Birthdate == null ? "null)"     : "'" + util.Birthdate  + "')";
+            Query += "'" + util.LastName    + "', ";
+            Query += "'" + util.FirstName   + "', ";
+            Query += "'" + util.PsW         + "', ";
+            Query += "'" + util.Email       + "', ";
+            Query +=       util.Phone     == null ? "null,"     : "'" + util.Phone + "', ";
+            Query +=       util.Birthdate == null ? "null,"     : "'" + util.Birthdate  + "',";
+            Query +=       util.Statut      + ")";
 
             bool QueryResult = _con.Insert(Query);
             return QueryResult;
@@ -82,7 +83,7 @@ namespace Repostory
                     Query += "Email     = '"    +   util.PsW          + "', ";
 
                     Query += ", Phone = ";
-                    Query += util.Phone == null ? "null" : "'" + util.Phone + "' ";
+                    Query += util.Phone     == null ? "null" : "'" + util.Phone + "' ";
                     Query += ", Birthdate = ";
                     Query += util.Birthdate == null ? "null" : "'" + util.Birthdate + "' ";
                     Query += " WHERE Id = " + util.Id;

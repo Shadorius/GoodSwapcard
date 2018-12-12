@@ -9,5 +9,11 @@ namespace MVC.Models.Views
     {
         public List<Utilisateur>  listUsers { get; set; }
         public AddUser ajoutUser { get; set; }
+
+        public AddListUser()
+        {
+            ajoutUser = new AddUser();
+        }
+
     }
 }
