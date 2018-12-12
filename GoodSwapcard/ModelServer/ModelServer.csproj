@@ -46,6 +46,7 @@
     <Compile Include="EventUserMS.cs" />
     <Compile Include="HourTimeMS.cs" />
     <Compile Include="LocalityMS.cs" />
+    <Compile Include="MessagerieMS.cs" />
     <Compile Include="NotifictionsMS.cs" />
     <Compile Include="PlaceMS.cs" />
     <Compile Include="RdVMS.cs" />

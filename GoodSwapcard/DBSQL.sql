@@ -114,6 +114,14 @@ CREATE TABLE Notifications(
 	IdUser int NOT NULL CONSTRAINT FK_NotifUser FOREIGN KEY (IdUser) REFERENCES Utils (Id)
 );
 
+CREATE TABLE Messagerie(
+	Id int IDENTITY(1,1) PRIMARY KEY,
+	IdUserOne int NOT NULL CONSTRAINT FK_UserMessOne FOREIGN KEY (IdUserOne) REFERENCES Utils (Id),
+	IdUserTwo int NOT NULL CONSTRAINT FK_UserMessTwo FOREIGN KEY (IdUserTwo) REFERENCES Utils (Id),
+	Content text,
+	DateSend datetime default datetime.NOW()
+);
+
 GO
 
 --Populations des tables

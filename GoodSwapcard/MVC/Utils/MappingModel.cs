@@ -262,6 +262,28 @@ namespace MVC.Utils
         }
 
         //Mapping Society
-        
+
+
+        //Mapping HourTime
+        internal static Messagerie MessagerieCtoMVC(MessagerieMC p)
+        {
+            return new Messagerie()
+            {
+                Id = p.Id,
+                UserOne = UtilisateurCtoMVC(repoUtil.Get(p.IdUserOne)),
+                UserTwo = UtilisateurCtoMVC(repoUtil.Get(p.IdUserTwo)),
+                Content = p.Content
+            };
+        }
+        internal static MessagerieMC MessagerieMVCtoC(Messagerie p)
+        {
+            return new MessagerieMC()
+            {
+                Id = p.Id,
+                IdUserOne = p.UserOne.Id,
+                IdUserTwo = p.UserTwo.Id,
+                Content = p.Content
+            };
+        }
     }
 }
