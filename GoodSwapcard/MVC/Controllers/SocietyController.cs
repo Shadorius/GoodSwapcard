@@ -3,6 +3,7 @@ using MVC.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -14,14 +15,23 @@ namespace MVC.Controllers
         // GET: Society
         public ActionResult Index()
         {
-            var Societies = repo.GetAll().Select(x => MappingModel.SocietyCtoMVC(x)).ToList();
+            var Societies = repo.GetAll().OrderBy(s => s.SocietyName).Select(x => MappingModel.SocietyCtoMVC(x)).ToList();
             return View(Societies);
         }
 
         // GET: Society/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var society = repo.Get((int)id);
+            if (society == null)
+            {
+                return HttpNotFound();
+            }
+            return View(society);
         }
 
         // GET: Society/Create
@@ -71,7 +81,8 @@ namespace MVC.Controllers
         // GET: Society/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            repo.Delete(id);
+            return RedirectToAction("Index");
         }
 
         // POST: Society/Delete/5
@@ -80,8 +91,10 @@ namespace MVC.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
-
+                if (!ModelState.IsValid)
+                {
+                    return View(MappingModel.SocietyCtoMVC(repo.Get(id)));
+                }
                 return RedirectToAction("Index");
             }
             catch
