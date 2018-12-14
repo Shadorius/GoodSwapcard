@@ -160,12 +160,8 @@ body footer {
     background-color: #303030;
 }
 
-form {
-    padding-bottom: 1em;
-}
 
-
-a{
+a {
     color: #0099CC;
 }
 a:hover{
@@ -181,6 +177,13 @@ a:hover{
 }
 #deleteModal div {
     border: none;
+}
+
+.section-form-add {
+    color: white;
+    border-radius: 5px;
+    padding: 2em;
+    margin: 0rem 2rem 0rem 2rem;
 }
 
 /********************************************************************************************************/
@@ -255,6 +258,7 @@ a:hover{
     width: 100%;
 
 }
+
 /********************************************************************************************************/
 /*                                                                                                      */
 /*                                      Enterprise cards                                                */
@@ -306,13 +310,6 @@ a:hover{
 .enterprise > .cards-footer > .list-group{
     overflow-y: scroll;
     height: 7rem;
-}
-
-.section-form-add {
-    color: white;
-    border-radius: 5px;
-    padding: 2em;
-    margin: 0rem 2rem 2rem 2rem;
 }
 
 /* media Queries */
