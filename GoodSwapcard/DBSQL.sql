@@ -52,7 +52,12 @@ CREATE TABLE Society (
 	Id int IDENTITY(1,1) Primary Key,
 	SocietyName varchar(50) NOT NULL,
 	SocietyDesc text,
-	Phone varchar(20),
+	SocietyTinyDesc text,
+	Img varchar(255),
+	WebSite varchar(100),
+	Phone varchar(20)NOT NULL,
+	Street varchar(50) NOT NULL,
+	Number varchar(5) NOT NULL,
 	IdLoc int NOT NULL CONSTRAINT FK_Loc FOREIGN KEY (IdLoc) REFERENCES Locality (Id),
 	IdBoss int NOT NULL CONSTRAINT FK_Boss FOREIGN KEY (IdBoss) REFERENCES Utils (Id)
 );
@@ -119,7 +124,7 @@ CREATE TABLE Messagerie(
 	IdUserOne int NOT NULL CONSTRAINT FK_UserMessOne FOREIGN KEY (IdUserOne) REFERENCES Utils (Id),
 	IdUserTwo int NOT NULL CONSTRAINT FK_UserMessTwo FOREIGN KEY (IdUserTwo) REFERENCES Utils (Id),
 	Content text,
-	DateSend datetime default datetime.NOW()
+	DateSend datetime default GETDATE() 
 );
 
 GO
@@ -195,9 +200,9 @@ INSERT INTO Utils VALUES ('Ghost', 'Man', 'poiuyt', 'emaild@mail.be','' ,'', 2)
 INSERT INTO Utils VALUES ('Brasseur', 'Xavier', '9515951', 'emaile@mail.be','' ,'', 2);
 
 --Table Society
-INSERT INTO Society VALUES('Genesis Conult','', '023233232',1, 2);
-INSERT INTO Society VALUES('Odoo','', '010111111',3,3);
-INSERT INTO Society VALUES('Intergraph','', '023233232',1, 1);
+INSERT INTO Society VALUES('Genesis Conult','grande desc','petite description','image','website','023233232','La rue', 'numer', 1, 2);
+INSERT INTO Society VALUES('Odoo','grande desc','petite description','image','website','023233232','La rue', 'numer', 3,3);
+INSERT INTO Society VALUES('Intergraph','grande desc','petite description','image','website','023233232','La rue', 'numer', 1, 1);
 
 --Table SocietyUser
 INSERT INTO SocietyUser VALUES (1,2);

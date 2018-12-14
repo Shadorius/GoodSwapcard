@@ -11,7 +11,7 @@ namespace TestConsole
 {
     class Program
     {
-
+        /*
         // Jerem
         static void Main(string[] args)
         {
@@ -19,7 +19,7 @@ namespace TestConsole
             UtilisateurMS user = new UtilisateurMS();
 
             user = repo.Get(1);
-
+            
             string source = user.PsW;
             using (MD5 md5Hash = MD5.Create())
             {
@@ -81,14 +81,18 @@ namespace TestConsole
                 return false;
             }
         }
-
+        */
         //Axel
-        //static void Main(string[] args)
-        //{
+        static void Main(string[] args)
+        {
+            RepoUtilisateur repo = new RepoUtilisateur();
+            UtilisateurMS user = new UtilisateurMS();
+            user = repo.Get(1);
+            user.FirstName = "PineDhuitre";
+            Console.WriteLine(repo.Update(user));
 
-
-        //    Console.ReadKey();
-        //}
+            Console.ReadKey();
+        }
 
         //Geoffroy
         //static void Main(string[] args)

@@ -280,9 +280,14 @@ namespace MVC.Utils
                 Id = s.Id,
                 SocietyName = s.SocietyName,
                 SocietyDesc = s.SocietyDesc,
+                SocietyTinyDesc = s.SocietyTinyDesc,
+                Img = s.Img,
+                WebSite = s.WebSite,
                 Phone = s.Phone,
+                Street = s.Street,
+                Number = s.Number,
                 LLoc = LocalityCtoM(repoLocality.Get(s.IdLoc)),
-                IdBoss = s.IdBoss
+                Boss = UtilisateurCtoMVC(repoUtil.Get(s.IdBoss))
             };
         }
 
@@ -293,9 +298,14 @@ namespace MVC.Utils
                 Id = s.Id,
                 SocietyName = s.SocietyName,
                 SocietyDesc = s.SocietyDesc,
+                SocietyTinyDesc = s.SocietyTinyDesc,
+                Img = s.Img,
+                WebSite = s.WebSite,
                 Phone = s.Phone,
+                Street = s.Street,
+                Number = s.Number,
                 IdLoc = s.LLoc.Id,
-                IdBoss = s.IdBoss
+                IdBoss = s.Boss.Id
             };
         }
 

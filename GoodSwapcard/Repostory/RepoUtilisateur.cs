@@ -17,7 +17,7 @@ namespace Repostory
         {
             List<Dictionary<string, Object>> list;
             UtilisateurMS uti = new UtilisateurMS();
-            list = _con.getData("Select * from Utils where Id = " + id);
+            list = _con.getData("Select * from Utils where Id = @0", id);
 
             uti.Id          =   (int)     list[0]["Id"];
             uti.LastName    =   (string)  list[0]["LastName"];
@@ -26,7 +26,7 @@ namespace Repostory
             uti.Email       =   (string)  list[0]["Email"];
             uti.Phone       =   list[0]["Phone"] == DBNull.Value ? null : (string)list[0]["Phone"];
             uti.Birthdate   =   list[0]["Birthdate"] == DBNull.Value ? null :(DateTime?)list[0]["Birthdate"];
-            uti.Statut      =   (int)  list[0]["Statut"];
+            uti.Statut      =   (int)  list[0]["IdStatut"];
             return uti;
         }
 
@@ -60,42 +60,37 @@ namespace Repostory
 
         public bool Insert(UtilisateurMS util)
         {
-            string Query = "INSERT INTO [Utils] Values(";
-            Query += "'" + util.LastName    + "', ";
-            Query += "'" + util.FirstName   + "', ";
-            Query += "'" + util.PsW         + "', ";
-            Query += "'" + util.Email       + "', ";
-            Query +=       util.Phone     == null ? "null,"     : "'" + util.Phone + "', ";
-            Query +=       util.Birthdate == null ? "null,"     : "'" + util.Birthdate  + "',";
-            Query +=       util.Statut      + ")";
+            string optionnal = "";
+            string optionnal2 = "";
+            string optionnalParams = "";
 
-            bool QueryResult = _con.Insert(Query);
+            optionnal += (util.Phone == null ?"": ", Phone");
+            optionnalParams += (string.IsNullOrEmpty(optionnal) ? "" : ", @5");
+            optionnal2 += (util.Birthdate == null ? "" : ", Birthdate");
+            optionnalParams += (string.IsNullOrEmpty(optionnal2) ? "" : ", @6");
+
+            string query = "INSERT INTO [Utils](LastName,FirstName,PsW, Email, IdStatut" + optionnal + ") values(@0, @1, @2, @3, @4" + optionnalParams + ")";
+
+
+            bool QueryResult = _con.Insert(query, util.LastName, util.FirstName, util.PsW, util.Email, util.Statut, util.Phone, util.Birthdate);
             return QueryResult;
         }
 
         public bool Update(UtilisateurMS util)
         {
-            string  Query = "UPDATE [Utils] SET ";
+            string query = "UPDATE [Utils] SET LastName = @1, FirstName = @2, Psw = @3, Email = @4, IdStatut = @5";
+            query += util.Phone == null ? "" : ", Phone = @6";
+            query += util.Birthdate == null ? "" : ", Birthdate = @7";
+            query += " Where Id = @0";
 
-                    Query += "LastName  = '"    +   util.LastName     + "', ";
-                    Query += "FirstName = '"    +   util.FirstName    + "', ";
-                    Query += "PsW       = '"    +   util.PsW          + "', ";
-                    Query += "Email     = '"    +   util.PsW          + "', ";
-
-                    Query += ", Phone = ";
-                    Query += util.Phone     == null ? "null" : "'" + util.Phone + "' ";
-                    Query += ", Birthdate = ";
-                    Query += util.Birthdate == null ? "null" : "'" + util.Birthdate + "' ";
-                    Query += " WHERE Id = " + util.Id;
-
-            bool QueryResult = _con.Insert(Query);
+            bool QueryResult = _con.Update(query, util.Id, util.LastName, util.FirstName, util.PsW, util.Email, util.Statut, util.Phone, util.Birthdate);
 
             return QueryResult;
         }
 
         public bool Delete(int id)
         {
-            bool QueryResult = _con.Insert("delete from Utils where Id="+id);
+            bool QueryResult = _con.Delete("delete from Utils where Id=@0",id);
             return QueryResult;
         }
     }

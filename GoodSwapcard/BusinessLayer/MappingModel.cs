@@ -290,7 +290,12 @@ namespace BusinessLayer
             societyMC.Id = societyMS.Id;
             societyMC.SocietyName = societyMS.SocietyName;
             societyMC.SocietyDesc = societyMS.SocietyDesc;
+            societyMC.SocietyTinyDesc = societyMS.SocietyTinyDesc;
+            societyMC.Img = societyMS.Img;
+            societyMC.WebSite = societyMS.WebSite;
             societyMC.Phone = societyMS.Phone;
+            societyMC.Street = societyMS.Street;
+            societyMC.Number = societyMS.Number;
             societyMC.IdLoc = societyMS.IdLoc;
             societyMC.IdBoss = societyMS.IdBoss;
 
@@ -304,7 +309,12 @@ namespace BusinessLayer
             societyMS.Id = societyMC.Id;
             societyMS.SocietyName = societyMC.SocietyName;
             societyMS.SocietyDesc = societyMC.SocietyDesc;
+            societyMS.SocietyTinyDesc = societyMC.SocietyTinyDesc;
+            societyMS.Img = societyMC.Img;
+            societyMS.WebSite = societyMC.WebSite;
             societyMS.Phone = societyMC.Phone;
+            societyMS.Street = societyMC.Street;
+            societyMS.Number = societyMC.Number;
             societyMS.IdLoc = societyMC.IdLoc;
             societyMS.IdBoss = societyMC.IdBoss;
 

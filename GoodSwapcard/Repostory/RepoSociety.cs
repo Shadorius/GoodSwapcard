@@ -33,7 +33,12 @@ namespace Repostory
                     Id = (int)Result[0]["Id"],
                     SocietyName = (string)Result[0]["SocietyName"],
                     SocietyDesc = (string)Result[0]["SocietyDesc"],
+                    SocietyTinyDesc = (string)Result[0]["SocietyTinyDesc"],
+                    Img = (string)Result[0]["Img"],
+                    WebSite = (string)Result[0]["WebSite"],
                     Phone = (string)Result[0]["Phone"],
+                    Street = (string)Result[0]["Street"],
+                    Number = (string)Result[0]["Number"],
                     IdLoc = (int)Result[0]["IdLoc"],
                     IdBoss = (int)Result[0]["IdBoss"]
                 };
@@ -56,7 +61,12 @@ namespace Repostory
                         Id = (int)Result[i]["Id"],
                         SocietyName = (string)Result[i]["SocietyName"],
                         SocietyDesc = (string)Result[i]["SocietyDesc"],
+                        SocietyTinyDesc = (string)Result[i]["SocietyTinyDesc"],
+                        Img = (string)Result[i]["Img"],
+                        WebSite = (string)Result[i]["WebSite"],
                         Phone = (string)Result[i]["Phone"],
+                        Street = (string)Result[i]["Street"],
+                        Number = (string)Result[i]["Number"],
                         IdLoc = (int)Result[i]["IdLoc"],
                         IdBoss = (int)Result[i]["IdBoss"]
                     };
@@ -71,7 +81,12 @@ namespace Repostory
             string Query = "INSERT INTO [Society] Values (";
             Query += "'" + item.SocietyName + "',";
             Query += "'" + item.SocietyDesc + "',";
+            Query += "'" + item.SocietyTinyDesc + "',";
+            Query += "'" + item.Img + "',";
+            Query += "'" + item.WebSite + "',";
             Query += "'" + item.Phone + "',";
+            Query += "'" + item.Street + "',";
+            Query += "'" + item.Number + "',";
             Query += " " + item.IdLoc + ",";
             Query += " " + item.IdBoss + ")";
 
@@ -84,7 +99,12 @@ namespace Repostory
             string Query = "UPDATE [Society] SET";
             Query += "SocietyName = '" + item.SocietyName + "',";
             Query += "SocietyDesc = '" + item.SocietyDesc + "',";
+            Query += "SocietyTinyDesc = '" + item.SocietyTinyDesc + "',";
+            Query += "Img = '" + item.Img + "',";
+            Query += "WebSite = '" + item.WebSite + "',";
             Query += "Phone = '" + item.Phone + "',";
+            Query += "Street = '" + item.Street + "',";
+            Query += "Number = '" + item.Number + "',";
             Query += "IdLoc = " + item.IdLoc + ",";
             Query += "IdBoss = " + item.IdBoss + " ";
             Query += "WHERE Id=" + item.Id;
