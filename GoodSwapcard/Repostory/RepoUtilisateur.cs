@@ -26,7 +26,7 @@ namespace Repostory
             uti.Email       =   (string)  list[0]["Email"];
             uti.Phone       =   list[0]["Phone"] == DBNull.Value ? null : (string)list[0]["Phone"];
             uti.Birthdate   =   list[0]["Birthdate"] == DBNull.Value ? null :(DateTime?)list[0]["Birthdate"];
-            uti.Statut      =   (int)  list[0]["Statut"];
+            uti.Statut      =   (int)  list[0]["IdStatut"];
             return uti;
         }
 
