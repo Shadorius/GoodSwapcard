@@ -14,15 +14,15 @@ namespace Repostory
         Connexion _con = new Connexion();
         public bool Delete(int id)
         {
-            string Query = "Delete from [Statut] where [Id]=" + id;
-            bool QueryState = _con.Delete(Query);
+            string Query = "Delete from [Statut] where [Id]= @0";
+            bool QueryState = _con.Delete(Query, id);
             return QueryState;
         }
 
         public StatutMS Get(int id)
         {
-            string Query = "Select * from [Statut] where [Id] =" + id;
-            List<Dictionary<string, object>> Result = _con.getData(Query);
+            string Query = "Select * from [Statut] where [Id] = @0";
+            List<Dictionary<string, object>> Result = _con.getData(Query, id);
             StatutMS CurrentStatut = null;
 
             if (Result.Count != 0)
@@ -59,21 +59,19 @@ namespace Repostory
 
         public bool Insert(StatutMS item)
         {
-            string Query = "INSERT INTO [Statut] Values(";
-            Query += "'" + item.StatutName + "'";
-            Query += ")";
+            string Query = "INSERT INTO [Statut] Values(@0)";
 
-            bool QueryResult = _con.Insert(Query);
+            bool QueryResult = _con.Insert(Query, item.StatutName);
             return QueryResult;
         }
 
         public bool Update(StatutMS item)
         {
             string Query = "UPDATE [Statut] SET";
-            Query += "StatutName = '" + item.StatutName + "'";
-            Query += " WHERE Id=" + item.Id;
+            Query += "StatutName = @1";
+            Query += " WHERE Id= @0";
 
-            bool QueryResult = _con.Insert(Query);
+            bool QueryResult = _con.Insert(Query, item.Id, item.StatutName);
             return QueryResult;
         }
     }

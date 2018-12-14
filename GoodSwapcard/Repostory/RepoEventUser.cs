@@ -76,7 +76,7 @@ namespace Repostory
         }
         public bool Delete(int id)
         {
-            bool QueryResult = _con.Insert("Delete from EventUser where Id= @", id);
+            bool QueryResult = _con.Delete("Delete from EventUser where Id= @", id);
             return QueryResult;
         }
     }

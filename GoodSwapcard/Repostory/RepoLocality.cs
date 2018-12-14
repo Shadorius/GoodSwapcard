@@ -76,7 +76,7 @@ namespace Repostory
             Query += ", IdCountry = @3";
             Query += " WHERE Id= @0";
 
-            bool QueryResult = _con.Insert(Query, item.Id, item.LocalityName, item.CP, item.IdCountry);
+            bool QueryResult = _con.Update(Query, item.Id, item.LocalityName, item.CP, item.IdCountry);
             return QueryResult;
         }
     }

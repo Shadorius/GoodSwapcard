@@ -15,15 +15,15 @@ namespace Repostory
 
         public bool Delete(int id)
         {
-            string Query = "DELETE FROM [SocietyUser] WHERE [Id]=" + id;
-            bool QueryState = con.Delete(Query);
+            string Query = "DELETE FROM [SocietyUser] WHERE [Id]= @0";
+            bool QueryState = con.Delete(Query, id);
             return QueryState;
         }
 
         public SocietyUserMS Get(int id)
         {
-            string Query = "Select * from [Society] where [Id] =" + id;
-            List<Dictionary<string, object>> Result = con.getData(Query);
+            string Query = "Select * from [SocietyUser] where [Id] = @0";
+            List<Dictionary<string, object>> Result = con.getData(Query, id);
             SocietyUserMS societyUser = null;
 
             if (Result.Count != 0)
@@ -63,22 +63,20 @@ namespace Repostory
 
         public bool Insert(SocietyUserMS item)
         {
-            string Query = "INSERT INTO [SocietyUser] Values (";
-            Query += " " + item.IdUser + ",";
-            Query += " " + item.IdSociety + ")";
+            string Query = "INSERT INTO [SocietyUser] Values (@0,@1)";
 
-            bool QueryResult = con.Insert(Query);
+            bool QueryResult = con.Insert(Query, item.IdUser, item.IdSociety);
             return QueryResult;
         }
 
         public bool Update(SocietyUserMS item)
         {
             string Query = "UPDATE [SocietyUser] SET";
-            Query += "IdUser = " + item.IdUser + ",";
-            Query += "IdSociety = " + item.IdSociety + " ";
-            Query += "WHERE Id=" + item.Id;
+            Query += " IdUser = @1,";
+            Query += "IdSociety = @2";
+            Query += " WHERE Id= @0";
 
-            bool QueryResult = con.Insert(Query);
+            bool QueryResult = con.Update(Query, item.Id, item.IdUser, item.IdSociety);
 
             return QueryResult;
         }

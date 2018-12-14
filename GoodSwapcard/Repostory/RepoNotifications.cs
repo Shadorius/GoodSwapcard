@@ -74,7 +74,7 @@ namespace Repostory
             Query += ", IdUser = @2";
             Query += " WHERE Id=@0";
 
-            bool QueryResult = _con.Insert(Query, item.Id, item.Content, item.IdUser);
+            bool QueryResult = _con.Update(Query, item.Id, item.Content, item.IdUser);
             return QueryResult;
         }
     }
