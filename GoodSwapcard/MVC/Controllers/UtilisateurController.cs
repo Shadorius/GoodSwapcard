@@ -34,6 +34,47 @@ namespace MVC.Controllers
             return View(repo.GetAll().Select(x => MappingModel.UtilisateurCtoMVC(x)).ToList());
         }
 
+
+        public ActionResult Inscription()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Inscription(UtilisateurForInscription util)
+        {
+
+            if (ModelState.IsValid)
+            {
+                using (MD5 md5Hash = MD5.Create())
+                {
+                    string hash = HashageMD5.GetMd5Hash(md5Hash, util.PsW);
+
+                    if (HashageMD5.VerifyMd5Hash(md5Hash, util.PsW, hash))
+                    {
+                        if (util.Birthdate.HasValue)
+                        {
+                            DateTime date = util.Birthdate.Value;
+                            util.Birthdate = date;
+                        }
+
+                        Utilisateur uti = MappingModel.UtilisateurFI(util);
+
+                        util.PsW = hash;
+                        repo.Insert(MappingModel.UtilisateurtoS(uti));
+                        ViewBag.ErrorHash = "Le hashage n'a pas été correctement fait";
+                    }
+                    else
+                    {
+                        return View();
+                    }
+                }
+
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
         public ActionResult test()
         {
             AddUser testView = new AddUser();
@@ -43,15 +84,6 @@ namespace MVC.Controllers
 
             return View(testView);
         }
-
-        //GET: Utilisateur/Create
-        //public ActionResult Create(AddUser viewAddUser)
-        //{
-        //    viewAddUser.Statuts = repoS.GetAll().Select(x => MappingModel.StatutCtoM(x)).ToList();
-        //    viewAddUser.Utilisateur = new Utilisateur();
-
-        //    return View();
-        //}
 
         // POST: Utilisateur/Create
         [HttpPost]
@@ -85,6 +117,7 @@ namespace MVC.Controllers
                     }
                     else
                     {
+                        ViewBag.CodeError = 1;
                         return View("Index", viewAddUser);
                     }
                 }
@@ -92,6 +125,7 @@ namespace MVC.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.CodeError = 1;
             return View("Index", viewAddUser);
         }
 
