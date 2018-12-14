@@ -14,15 +14,15 @@ namespace Repostory
         private Connexion _con = new Connexion();
         public bool Delete(int id)
         {
-            string Query = "Delete from [RDV] where [Id]=" + id;
-            bool QueryState = _con.Delete(Query);
+            string Query = "Delete from [RDV] where [Id]= @0";
+            bool QueryState = _con.Delete(Query, id);
             return QueryState;
         }
 
         public RdVMS Get(int id)
         {
-            string Query = "Select * from [RDV] where [Id] =" + id;
-            List<Dictionary<string, object>> Result = _con.getData(Query);
+            string Query = "Select * from [RDV] where [Id] = @0";
+            List<Dictionary<string, object>> Result = _con.getData(Query, id);
             RdVMS CurrentRDV = null;
 
             if (Result.Count != 0)
@@ -64,28 +64,22 @@ namespace Repostory
 
         public bool Insert(RdVMS item)
         {
-            string Query = "INSERT INTO [RDV] Values (";
-            Query += "" + item.IdHour + ",";
-            Query += "," + item.IdCandidat;
-            Query += "," + item.IdRep+",";
-            Query += item.RdvState == true ? '1' : '0';
-            Query += ")";
+            string Query = "INSERT INTO [RDV] Values (@0, @1, @2, @3)";
 
-            bool QueryResult = _con.Insert(Query);
+            bool QueryResult = _con.Insert(Query, item.IdHour, item.IdCandidat, item.IdRep, item.RdvState);
             return QueryResult;
         }
 
         public bool Update(RdVMS item)
         {
-            string Query = "UPDATE [RDV] SET";
-            Query += "IdHour = " + item.IdHour + "";
-            Query += ", IdCandidat = " + item.IdCandidat + "";
-            Query += ", IdRep = " + item.IdRep + ", ";
-            Query += "RdvState =";
-            Query += item.RdvState == true ? '1' : '0';
-            Query += " WHERE Id=" + item.Id;
+            string Query = "UPDATE [RDV] SET ";
+            Query += "IdHour = @1";
+            Query += ", IdCandidat = @2";
+            Query += ", IdRep = @3, ";
+            Query += "RdvState = @4";
+            Query += " WHERE Id= @0";
 
-            bool QueryResult = _con.Insert(Query);
+            bool QueryResult = _con.Update(Query, item.Id, item.IdHour, item.IdCandidat, item.IdRep, item.RdvState);
             return QueryResult;
         }
     }

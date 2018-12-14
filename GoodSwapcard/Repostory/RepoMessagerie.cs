@@ -16,8 +16,8 @@ namespace Repostory
 
         public MessagerieMS Get(int id)
         {
-            string Query = "Select * from [Messagerie] where [Id] =" + id;
-            List<Dictionary<string, object>> Result = _con.getData(Query);
+            string Query = "Select * from [Messagerie] where [Id] = @0";
+            List<Dictionary<string, object>> Result = _con.getData(Query, id);
             MessagerieMS CurrentMessagerie = null;
 
             if (Result.Count != 0)
@@ -58,32 +58,28 @@ namespace Repostory
 
         public bool Insert(MessagerieMS item)
         {
-            string Query = "INSERT INTO [Messagerie] Values(";
-            Query += item.IdUserOne;
-            Query += ","+item.IdUserTwo;
-            Query += ",'"+item.Content+"'";
-            Query += ")";
+            string Query = "INSERT INTO [Messagerie] Values(@0,@1,@2)";
 
-            bool QueryResult = _con.Insert(Query);
+            bool QueryResult = _con.Insert(Query, item.IdUserOne, item.IdUserTwo, item.Content);
             return QueryResult;
         }
 
         public bool Update(MessagerieMS item)
         {
             string Query = "UPDATE [Messagerie] SET";
-            Query += "IdUserOne = " + item.IdUserOne;
-            Query += ", IdUserTwo = " + item.IdUserTwo;
-            Query += ", Content = '" + item.Content+"'";
-            Query += " WHERE Id=" + item.Id;
+            Query += " IdUserOne = @1";
+            Query += ", IdUserTwo = @2";
+            Query += ", Content = @3";
+            Query += " WHERE Id= @0";
 
-            bool QueryResult = _con.Insert(Query);
+            bool QueryResult = _con.Update(Query, item.Id, item.IdUserOne, item.IdUserTwo, item.Content);
             return QueryResult;
         }
 
         public bool Delete(int id)
         {
-            string Query = "Delete from [Messagerie] where [Id]=" + id;
-            bool QueryState = _con.Delete(Query);
+            string Query = "Delete from [Messagerie] where [Id]= @0";
+            bool QueryState = _con.Delete(Query, id);
             return QueryState;
         }
     }

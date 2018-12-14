@@ -15,8 +15,7 @@ namespace Repostory
 
         public CountryMS Get(int id)
         {
-            string Query = "Select * from [Country] where [Id] =" + id;
-            List<Dictionary<string, object>> Result = _con.getData(Query);
+            List<Dictionary<string, object>> Result = _con.getData("Select * from [Country] where Id = @0", id);
             CountryMS CurrentCountry = null;
 
             if (Result.Count != 0)
@@ -53,28 +52,25 @@ namespace Repostory
 
         public bool Insert(CountryMS item)
         {
-            string Query = "INSERT INTO [Country] Values(";
-            Query += "'"+item.CountryName+"'";
-            Query += ")";
+            string Query = "INSERT INTO (CountryName) [Country] Values(@0)";
 
-            bool QueryResult = _con.Insert(Query);
+            bool QueryResult = _con.Insert(Query,item.CountryName);
             return QueryResult;
         }
 
         public bool Update(CountryMS item)
         {
-            string Query = "UPDATE [Country] SET";
-            Query += "CountryName = '" + item.CountryName + "'";
-            Query += " WHERE Id="+item.Id;
+            string Query = "UPDATE [Country] SET CountryName = @1 ";
+            Query += " Where Id= @0";
 
-            bool QueryResult = _con.Insert(Query);
+            bool QueryResult = _con.Update(Query, item.Id, item.CountryName);
             return QueryResult;
         }
 
         public bool Delete(int id)
         {
-            string Query = "Delete from [Country] where [Id]=" + id;
-            bool QueryState = _con.Delete(Query);
+            string Query = "Delete from [Country] where [Id]= @0";
+            bool QueryState = _con.Delete(Query, id);
             return QueryState;
         }
     }

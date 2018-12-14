@@ -14,15 +14,15 @@ namespace Repostory
         private Connexion _con = new Connexion();
         public bool Delete(int id)
         {
-            string Query = "Delete from [HourTime] where [Id]=" + id;
-            bool QueryState = _con.Delete(Query);
+            string Query = "Delete from [HourTime] where [Id]= @0";
+            bool QueryState = _con.Delete(Query, id);
             return QueryState;
         }
 
         public HourTimeMS Get(int id)
         {
-            string Query = "Select * from [Evenement] where [Id] =" + id;
-            List<Dictionary<string, object>> Result = _con.getData(Query);
+            string Query = "Select * from [HourTime] where [Id] = @0";
+            List<Dictionary<string, object>> Result = _con.getData(Query, id);
             HourTimeMS CurrentHourTime = null;
 
             if (Result.Count != 0)
@@ -60,23 +60,20 @@ namespace Repostory
 
         public bool Insert(HourTimeMS item)
         {
-            string Query = "INSERT INTO [HourTime] Values (";
-            Query += "" + item.Hour + ",";
-            Query += "" + item.Minute;
-            Query += ")";
+            string Query = "INSERT INTO [HourTime] Values (@0, @1)";
 
-            bool QueryResult = _con.Insert(Query);
+            bool QueryResult = _con.Insert(Query, item.Hour, item.Minute);
             return QueryResult;
         }
 
         public bool Update(HourTimeMS item)
         {
-            string Query = "UPDATE [HourTime] SET";
-            Query += "[Hour] = " + item.Hour + "";
-            Query += ", [Minute] = " + item.Minute + "";
-            Query += " WHERE Id=" + item.Id;
+            string Query = "UPDATE [HourTime] SET ";
+            Query += "[Hour] = @1";
+            Query += ", [Minute] = @2";
+            Query += " WHERE Id=@0";
 
-            bool QueryResult = _con.Insert(Query);
+            bool QueryResult = _con.Update(Query, item.Id, item.Hour, item.Minute);
             return QueryResult;
         }
     }

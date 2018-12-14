@@ -82,7 +82,7 @@ CREATE TABLE Place (
 CREATE TABLE Evenement (
 	Id int IDENTITY(1,1) Primary Key,
 	EvenementName varchar(50) NOT NULL,
-	EventDesc text,
+	EventDesc text NOT NULL,
 	DateEvent DateTime NOT NUll,
 	IdUserCreator int NOT NULL CONSTRAINT FK_UserCreator FOREIGN KEY (IdUserCreator) REFERENCES Utils (Id),
 	IdPlace int NOT NULL CONSTRAINT FK_Place FOREIGN KEY (IdPlace) REFERENCES Place (Id)
@@ -123,7 +123,7 @@ CREATE TABLE Messagerie(
 	Id int IDENTITY(1,1) PRIMARY KEY,
 	IdUserOne int NOT NULL CONSTRAINT FK_UserMessOne FOREIGN KEY (IdUserOne) REFERENCES Utils (Id),
 	IdUserTwo int NOT NULL CONSTRAINT FK_UserMessTwo FOREIGN KEY (IdUserTwo) REFERENCES Utils (Id),
-	Content text,
+	Content text NOT NULL,
 	DateSend datetime default GETDATE() 
 );
 
