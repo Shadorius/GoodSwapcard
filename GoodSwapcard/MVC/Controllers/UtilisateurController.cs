@@ -20,13 +20,18 @@ namespace MVC.Controllers
         // GET: Utilisateur
         public ActionResult Index()
         {
-            //return View(repo.GetAll().Select(x => MappingModel.UtilisateurCtoMVC(x)).ToList());
             AddListUser viewAddUser = new AddListUser();
             viewAddUser.ajoutUser.Statuts = repoS.GetAll().Select(x => MappingModel.StatutCtoM(x)).ToList();
             viewAddUser.ajoutUser.Utilisateur = new Utilisateur();
             viewAddUser.listUsers = repo.GetAll().Select(x => MappingModel.UtilisateurCtoMVC(x)).ToList();
 
             return View(viewAddUser);
+        }
+
+        public ActionResult Profil()
+        {
+
+            return View();
         }
 
         public ActionResult Participant()
@@ -66,23 +71,13 @@ namespace MVC.Controllers
                     }
                     else
                     {
-                        return View();
+                        return View(util);
                     }
                 }
 
                 return RedirectToAction("Index");
             }
-            return View();
-        }
-
-        public ActionResult test()
-        {
-            AddUser testView = new AddUser();
-
-            testView.Statuts = repoS.GetAll().Select(x => MappingModel.StatutCtoM(x)).ToList();
-            testView.Utilisateur = new Utilisateur();
-
-            return View(testView);
+            return View(util);
         }
 
         // POST: Utilisateur/Create
@@ -156,26 +151,6 @@ namespace MVC.Controllers
         {
             repo.Delete(id);
             return RedirectToAction("Index");
-        }
-
-        // POST: Utilisateur/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-                if (!ModelState.IsValid)
-                {
-                    return View(MappingModel.UtilisateurCtoMVC(repo.Get(id)));
-                }
-                repo.Delete(id);
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }
