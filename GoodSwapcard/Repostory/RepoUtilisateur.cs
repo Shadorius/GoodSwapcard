@@ -90,7 +90,7 @@ namespace Repostory
 
         public bool Delete(int id)
         {
-            bool QueryResult = _con.Delete("delete from Utils where Id=@0",id);
+            bool QueryResult = _con.Delete("Delete from Utils where Id=@0",id);
             return QueryResult;
         }
     }

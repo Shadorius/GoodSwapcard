@@ -17,7 +17,7 @@ namespace Repostory
         {
             List<Dictionary<string, Object>> list;
             EventUserMS eventUser = new EventUserMS();
-            list = _con.getData("Select * from EventUser where Id = " + id);
+            list = _con.getData("Select * from EventUser where Id = @0", id);
 
             eventUser.Id          = (int)  list[0]["Id"];
             eventUser.IdUser      = (int)  list[0]["IdUser"];
@@ -29,7 +29,7 @@ namespace Repostory
 
         public List<EventUserMS> GetAll()
         {
-            string Query = "Select * EventUser Utils";
+            string Query = "Select * EventUser";
             List<Dictionary<string, object>> listResult = _con.getData(Query);
             List<EventUserMS> list = new List<EventUserMS>();
 
@@ -53,14 +53,9 @@ namespace Repostory
 
         public bool Insert(EventUserMS eventUser)
         {
-            string Query = "INSERT INTO [EventUser] Values(";
+            string Query = "INSERT INTO [EventUser] Values( @0, @1, @2)";
 
-            Query += "'" + eventUser.IdUser + "', ";
-            Query += "'" + eventUser.IdEvent + "', ";
-            Query += "'" + eventUser.IdStatut + "', ";
-
-
-            bool QueryResult = _con.Insert(Query);
+            bool QueryResult = _con.Insert(Query, eventUser.IdUser, eventUser.IdEvent, eventUser.IdStatut);
 
             return QueryResult;
         }
@@ -69,19 +64,19 @@ namespace Repostory
         {
             string Query = "UPDATE [EventUser] SET ";
 
-            Query += "FirstName = '" + eventUser.IdUser + "', ";
-            Query += "PsW       = '" + eventUser.IdEvent + "', ";
-            Query += "Email     = '" + eventUser.IdStatut + "', ";
+            Query += "FirstName = @1 ";
+            Query += ", PsW       = @2 ";
+            Query += ", Email     = @3 ";
 
-            Query += " WHERE Id = " + eventUser.Id;
+            Query += " WHERE Id = @0";
 
-            bool QueryResult = _con.Insert(Query);
+            bool QueryResult = _con.Update(Query,eventUser.Id, eventUser.IdUser, eventUser.IdEvent, eventUser.IdStatut);
 
             return QueryResult;
         }
         public bool Delete(int id)
         {
-            bool QueryResult = _con.Insert("delete from EventUser where Id=" + id);
+            bool QueryResult = _con.Insert("Delete from EventUser where Id= @", id);
             return QueryResult;
         }
     }

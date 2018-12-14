@@ -14,15 +14,14 @@ namespace Repostory
         private Connexion _con = new Connexion();
         public bool Delete(int id)
         {
-            string Query = "Delete from [Evenement] where [Id]=" + id;
-            bool QueryState = _con.Delete(Query);
+            string Query = "Delete from [Evenement] where [Id]=@0";
+            bool QueryState = _con.Delete(Query, id);
             return QueryState;
         }
 
         public EvenementMS Get(int id)
         {
-            string Query = "Select * from [Evenement] where [Id] =" + id;
-            List<Dictionary<string, object>> Result = _con.getData(Query);
+            List<Dictionary<string, object>> Result = _con.getData("Select * from [Evenement] where Id = @0", id);
             EvenementMS CurrentEvenement = null;
 
             if (Result.Count != 0)
@@ -66,29 +65,24 @@ namespace Repostory
 
         public bool Insert(EvenementMS item)
         {
-            string Query = "INSERT INTO [Evenement] Values (";
-            Query += "'" + item.EvenementName + "',";
-            Query += "'" + item.EventDesc + "',";
-            Query += "'" + item.DateEvent.ToString() + "'";
-            Query += "," + item.IdUserCreator;
-            Query += "," + item.IdPlace;
-            Query += ")";
+            string Query = "INSERT INTO [Evenement] Values (@0, @1, @2, @3, @4)";
 
-            bool QueryResult = _con.Insert(Query);
+            bool QueryResult = _con.Insert(Query, item.EvenementName, item.EventDesc, item.DateEvent, item.IdUserCreator, item.IdPlace);
             return QueryResult;
         }
 
         public bool Update(EvenementMS item)
         {
-            string Query = "UPDATE [Evenement] SET";
-            Query += "EvenementName = '" + item.EvenementName + "'";
-            Query += ", EventDesc = '" + item.EventDesc + "'";
-            Query += ", DateEvent = '" + item.DateEvent.ToString() + "'";
-            Query += ", IdUserCreator = " + item.IdUserCreator + "";
-            Query += ", IdPlace = " + item.IdPlace + "";
-            Query += " WHERE Id=" + item.Id;
+            string Query = "UPDATE [Evenement] SET ";
+            Query += "EvenementName = @1";
+            Query += ", EventDesc = @2";
+            Query += ", DateEvent = @3";
+            Query += ", IdUserCreator = @4";
+            Query += ", IdPlace = @5";
+            Query += " WHERE Id=@0";
 
-            bool QueryResult = _con.Insert(Query);
+            bool QueryResult = _con.Update(Query, item.Id, item.EvenementName, item.EventDesc, item.DateEvent, item.IdUserCreator, item.IdPlace);
+
             return QueryResult;
         }
     }
