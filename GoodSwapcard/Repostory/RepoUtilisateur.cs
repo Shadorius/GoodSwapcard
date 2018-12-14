@@ -69,7 +69,7 @@ namespace Repostory
             optionnal2 += (util.Birthdate == null ? "" : ", Birthdate");
             optionnalParams += (string.IsNullOrEmpty(optionnal2) ? "" : ", @6");
 
-            string query = "INSERT INTO [Utils](LastName,FirstName,PsW, Email, IdStatut" + optionnal + ") values(@0, @1, @2, @3, @4" + optionnalParams + ")";
+            string query = "INSERT INTO [Utils](LastName,FirstName,PsW, Email, IdStatut" + optionnal +optionnal2+ ") values(@0, @1, @2, @3, @4" + optionnalParams + ")";
 
 
             bool QueryResult = _con.Insert(query, util.LastName, util.FirstName, util.PsW, util.Email, util.Statut, util.Phone, util.Birthdate);
