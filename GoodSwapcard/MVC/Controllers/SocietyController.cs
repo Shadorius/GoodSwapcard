@@ -1,4 +1,7 @@
 ﻿using BusinessLayer;
+using ModelClient;
+using MVC.Models;
+using MVC.Models.Views;
 using MVC.Utils;
 using System;
 using System.Collections.Generic;
@@ -15,23 +18,22 @@ namespace MVC.Controllers
         // GET: Society
         public ActionResult Index()
         {
-            var Societies = repo.GetAll().OrderBy(s => s.SocietyName).Select(x => MappingModel.SocietyCtoMVC(x)).ToList();
+            AddListSociety Societies = new AddListSociety();
+            Societies.listSociety = repo.GetAll().OrderBy(s => s.SocietyName).Select(x => MappingModel.SocietyCtoMVC(x)).ToList();
             return View(Societies);
         }
 
         // GET: Society/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            var society = repo.Get((int)id);
-            if (society == null)
-            {
-                return HttpNotFound();
-            }
-            return View(society);
+             if (id != null)
+             {
+                AddListSociety society = new AddListSociety();
+                society.ajoutSociety.addSociety = MappingModel.SocietyCtoMVC(repo.Get((int)id));
+                return PartialView("_Details", society);
+             }
+             return HttpNotFound();
+            
         }
 
         // GET: Society/Create

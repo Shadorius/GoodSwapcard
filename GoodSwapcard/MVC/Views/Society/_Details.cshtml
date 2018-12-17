@@ -1,0 +1,100 @@
+﻿@model MVC.Models.Views.AddListSociety
+
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div class="table-responsive">
+            <div class="modal-header">
+                <h5 class="modal-title">Society</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                @*<hr />*@
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ajoutSociety.addSociety.SocietyName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ajoutSociety.addSociety.SocietyName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ajoutSociety.addSociety.SocietyDesc)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ajoutSociety.addSociety.SocietyDesc)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ajoutSociety.addSociety.SocietyTinyDesc)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ajoutSociety.addSociety.SocietyTinyDesc)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ajoutSociety.addSociety.Img)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ajoutSociety.addSociety.Img)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ajoutSociety.addSociety.WebSite)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ajoutSociety.addSociety.WebSite)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ajoutSociety.addSociety.Phone)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ajoutSociety.addSociety.Phone)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ajoutSociety.addSociety.Street)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ajoutSociety.addSociety.Street)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ajoutSociety.addSociety.Number)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ajoutSociety.addSociety.Number)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ajoutSociety.addSociety.LLoc.LocalityName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ajoutSociety.addSociety.LLoc.LocalityName)
+                    </dd>
+
+                </dl>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Back to List</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<p>*@
+    @*@Html.ActionLink("Edit", "Edit", new { id = model.addSociety.Id }) |*@
+    @*@Html.ActionLink("Back to List", "Index")*@
+@*</p>*@
