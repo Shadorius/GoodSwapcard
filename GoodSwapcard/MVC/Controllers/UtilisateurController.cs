@@ -28,6 +28,19 @@ namespace MVC.Controllers
             return View(viewAddUser);
         }
 
+        public ActionResult LogIn()
+        {
+            return PartialView();
+        }
+
+        [HttpPost]
+        public ActionResult LoGin(LogIn log)
+        {
+
+            return PartialView();
+        }
+
+
         public ActionResult Profil()
         {
 
