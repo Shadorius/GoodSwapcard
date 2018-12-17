@@ -20,7 +20,6 @@ namespace MVC.Controllers
         // GET: Utilisateur
         public ActionResult Index()
         {
-            //return View(repo.GetAll().Select(x => MappingModel.UtilisateurCtoMVC(x)).ToList());
             AddListUser viewAddUser = new AddListUser();
             viewAddUser.ajoutUser.Statuts = repoS.GetAll().Select(x => MappingModel.StatutCtoM(x)).ToList();
             viewAddUser.ajoutUser.Utilisateur = new Utilisateur();
@@ -29,29 +28,57 @@ namespace MVC.Controllers
             return View(viewAddUser);
         }
 
+        public ActionResult Profil()
+        {
+
+            return View();
+        }
+
         public ActionResult Participant()
         {
             return View(repo.GetAll().Select(x => MappingModel.UtilisateurCtoMVC(x)).ToList());
         }
 
-        public ActionResult test()
+
+        public ActionResult Inscription()
         {
-            AddUser testView = new AddUser();
-
-            testView.Statuts = repoS.GetAll().Select(x => MappingModel.StatutCtoM(x)).ToList();
-            testView.Utilisateur = new Utilisateur();
-
-            return View(testView);
+            return View();
         }
 
-        //GET: Utilisateur/Create
-        //public ActionResult Create(AddUser viewAddUser)
-        //{
-        //    viewAddUser.Statuts = repoS.GetAll().Select(x => MappingModel.StatutCtoM(x)).ToList();
-        //    viewAddUser.Utilisateur = new Utilisateur();
+        [HttpPost]
+        public ActionResult Inscription(UtilisateurForInscription util)
+        {
 
-        //    return View();
-        //}
+            if (ModelState.IsValid)
+            {
+                using (MD5 md5Hash = MD5.Create())
+                {
+                    string hash = HashageMD5.GetMd5Hash(md5Hash, util.PsW);
+
+                    if (HashageMD5.VerifyMd5Hash(md5Hash, util.PsW, hash))
+                    {
+                        if (util.Birthdate.HasValue)
+                        {
+                            DateTime date = util.Birthdate.Value;
+                            util.Birthdate = date;
+                        }
+
+                        Utilisateur uti = MappingModel.UtilisateurFI(util);
+
+                        util.PsW = hash;
+                        repo.Insert(MappingModel.UtilisateurtoS(uti));
+                        ViewBag.ErrorHash = "Le hashage n'a pas été correctement fait";
+                    }
+                    else
+                    {
+                        return View(util);
+                    }
+                }
+
+                return RedirectToAction("Index");
+            }
+            return View(util);
+        }
 
         // POST: Utilisateur/Create
         [HttpPost]
@@ -85,6 +112,7 @@ namespace MVC.Controllers
                     }
                     else
                     {
+                        ViewBag.CodeError = 1;
                         return View("Index", viewAddUser);
                     }
                 }
@@ -92,6 +120,7 @@ namespace MVC.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.CodeError = 1;
             return View("Index", viewAddUser);
         }
 
@@ -122,26 +151,6 @@ namespace MVC.Controllers
         {
             repo.Delete(id);
             return RedirectToAction("Index");
-        }
-
-        // POST: Utilisateur/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-                if (!ModelState.IsValid)
-                {
-                    return View(MappingModel.UtilisateurCtoMVC(repo.Get(id)));
-                }
-                repo.Delete(id);
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }

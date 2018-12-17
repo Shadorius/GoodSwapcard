@@ -15,15 +15,15 @@ namespace Repostory
 
         public bool Delete(int id)
         {
-            string Query = "DELETE FROM [Society] WHERE [Id]=" + id;
-            bool QueryState = con.Delete(Query);
+            string Query = "DELETE FROM [Society] WHERE [Id]= @0";
+            bool QueryState = con.Delete(Query, id);
             return QueryState;
         }
 
         public SocietyMS Get(int id)
         {
-            string Query = "Select * from [Society] where [Id] =" + id;
-            List<Dictionary<string, object>> Result = con.getData(Query);
+            string Query = "Select * from [Society] where [Id] = @0";
+            List<Dictionary<string, object>> Result = con.getData(Query, id);
             SocietyMS society = null;
 
             if (Result.Count != 0)
@@ -78,38 +78,27 @@ namespace Repostory
 
         public bool Insert(SocietyMS item)
         {
-            string Query = "INSERT INTO [Society] Values (";
-            Query += "'" + item.SocietyName + "',";
-            Query += "'" + item.SocietyDesc + "',";
-            Query += "'" + item.SocietyTinyDesc + "',";
-            Query += "'" + item.Img + "',";
-            Query += "'" + item.WebSite + "',";
-            Query += "'" + item.Phone + "',";
-            Query += "'" + item.Street + "',";
-            Query += "'" + item.Number + "',";
-            Query += " " + item.IdLoc + ",";
-            Query += " " + item.IdBoss + ")";
-
-            bool QueryResult = con.Insert(Query);
+            string Query = "INSERT INTO [Society] Values (@0, @1, @2, @3, @4, @5, @6, @7, @8, @9)";
+            bool QueryResult = con.Insert(Query, item.SocietyName, item.SocietyDesc, item.SocietyTinyDesc, item.Img, item.WebSite, item.Phone, item.Street, item.IdLoc, item.IdBoss);
             return QueryResult;
         }
 
         public bool Update(SocietyMS item)
         {
             string Query = "UPDATE [Society] SET";
-            Query += "SocietyName = '" + item.SocietyName + "',";
-            Query += "SocietyDesc = '" + item.SocietyDesc + "',";
-            Query += "SocietyTinyDesc = '" + item.SocietyTinyDesc + "',";
-            Query += "Img = '" + item.Img + "',";
-            Query += "WebSite = '" + item.WebSite + "',";
-            Query += "Phone = '" + item.Phone + "',";
-            Query += "Street = '" + item.Street + "',";
-            Query += "Number = '" + item.Number + "',";
-            Query += "IdLoc = " + item.IdLoc + ",";
-            Query += "IdBoss = " + item.IdBoss + " ";
-            Query += "WHERE Id=" + item.Id;
+            Query += "SocietyName = @1,";
+            Query += "SocietyDesc = @2,";
+            Query += "SocietyTinyDesc = @3,";
+            Query += "Img = @3,";
+            Query += "WebSite = @4,";
+            Query += "Phone = @5,";
+            Query += "Street = @6,";
+            Query += "Number = @7,";
+            Query += "IdLoc = @8,";
+            Query += "IdBoss = @9";
+            Query += " WHERE Id= @0";
 
-            bool QueryResult = con.Insert(Query);
+            bool QueryResult = con.Update(Query, item.Id,item.SocietyName, item.SocietyDesc, item.SocietyTinyDesc, item.Img, item.WebSite, item.Phone, item.Street, item.IdLoc, item.IdBoss);
 
             return QueryResult;
         }

@@ -9,9 +9,9 @@ namespace DAL
 {
     public class Connexion
     {
-        //private readonly string Cnstr = @"Data Source=PORTABLE-AXEL;Initial Catalog=GoodSwapCardDB;Persist Security Info=True;User ID=sa;Password=tftic@2012";
+        private readonly string Cnstr = @"Data Source=PORTABLE-AXEL;Initial Catalog=GoodSwapCardDB;Persist Security Info=True;User ID=sa;Password=tftic@2012";
         //private readonly string Cnstr = @"Data Source=PREDATOR;Initial Catalog = GoodSwapCardDB; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-        private readonly string Cnstr = @"Data Source=DESKTOP-BK95MHE\SQLEXPRESS;Initial Catalog=GoodSwapCardDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        //private readonly string Cnstr = @"Data Source=DESKTOP-BK95MHE\SQLEXPRESS;Initial Catalog=GoodSwapCardDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         private SqlConnection oConn;
         private SqlCommand oCmd;
@@ -43,12 +43,29 @@ namespace DAL
             }
         }
 
-        public bool Insert(String Query)
+        public bool Insert(string Query, params object[] parameters)
         {
             if (Connect())
             {
                 oCmd = oConn.CreateCommand();
                 oCmd.CommandText = Query;
+
+                if(parameters!=null && parameters.Length > 0)
+                {
+                    for(int i = 0; i< parameters.Length; i++)
+                    {
+                        object o = parameters[i];
+
+                        if (o != null)
+                        {
+
+                            SqlParameter param = new SqlParameter();
+                            param.ParameterName = i.ToString();
+                            param.Value = o;
+                            oCmd.Parameters.Add(param);
+                        }
+                    }
+                }
                 bool test;
                 try
                 {
@@ -65,12 +82,30 @@ namespace DAL
             }
             return false;
         }
-        public bool Update(String Query)
+        public bool Update(string Query, params object[] parameters)
         {
             if (Connect())
             {
                 oCmd = oConn.CreateCommand();
                 oCmd.CommandText = Query;
+
+                if (parameters != null && parameters.Length > 0)
+                {
+                    for (int i = 0; i < parameters.Length; i++)
+                    {
+                        object o = parameters[i];
+
+                        if (o != null)
+                        {
+
+                            SqlParameter param = new SqlParameter();
+                            param.ParameterName = i.ToString();
+                            param.Value = o;
+                            oCmd.Parameters.Add(param);
+                        }
+                    }
+                }
+
                 bool test;
                 try
                 {
@@ -78,7 +113,7 @@ namespace DAL
 
                     test = true;
                 }
-                catch (Exception)
+                catch 
                 {
                     test = false;
                 }
@@ -87,13 +122,32 @@ namespace DAL
             }
             return false;
         }
-        public List<Dictionary<string, object>> getData(string Query)
+        public List<Dictionary<string, object>> getData(string Query, params object[] parameters)
         {
             if (Connect())
             {
                 SqlDataReader oDr;
                 oCmd = oConn.CreateCommand();
                 oCmd.CommandText = Query;  //Query = "Select * from...."
+                if (parameters != null && parameters.Length > 0)
+                {
+                    for (int i = 0; i < parameters.Length; i++)
+                    {
+                        object o = parameters[i];
+
+                        if (o != null)
+                        {
+
+                            SqlParameter param = new SqlParameter();
+                            param.ParameterName = i.ToString();
+                            param.Value = o;
+                            oCmd.Parameters.Add(param);
+                        }
+                    }
+                }
+
+
+
                 List<Dictionary<string, object>> Enregistrements = new List<Dictionary<string, object>>();
                 try
                 {
@@ -119,7 +173,7 @@ namespace DAL
                     }
                     oDr.Close();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
 
                     //throw;
@@ -130,13 +184,29 @@ namespace DAL
             }
             return null;
         }
-        public bool Delete(string Query)
+        public bool Delete(string Query, params object[] parameters)
         {
             bool isOk = false;
             if (Connect())
             {
                 oCmd = oConn.CreateCommand();
                 oCmd.CommandText = Query;
+                if (parameters != null && parameters.Length > 0)
+                {
+                    for (int i = 0; i < parameters.Length; i++)
+                    {
+                        object o = parameters[i];
+
+                        if (o != null)
+                        {
+
+                            SqlParameter param = new SqlParameter();
+                            param.ParameterName = i.ToString();
+                            param.Value = o;
+                            oCmd.Parameters.Add(param);
+                        }
+                    }
+                }
                 try
                 {
                     oCmd.ExecuteNonQuery();

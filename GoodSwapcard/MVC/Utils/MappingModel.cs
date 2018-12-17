@@ -1,10 +1,8 @@
 ﻿using BusinessLayer;
 using ModelClient;
 using MVC.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using MVC.Models.Views;
+using MVC.Utils;
 
 namespace MVC.Utils
 {
@@ -19,6 +17,19 @@ namespace MVC.Utils
         static BLRCountry repoCountry = new BLRCountry();
         static BLRSociety BLRSociety = new BLRSociety();
 
+        internal static Utilisateur UtilisateurFI(UtilisateurForInscription uti)
+        {
+            return new Utilisateur()
+            {
+                LastName = uti.LastName,
+                FirstName = uti.FirstName,
+                PsW = uti.PsW,
+                Email = uti.Email,
+                Phone = uti.Phone,
+                Birthdate = uti.Birthdate,
+                statut = StatutCtoM(repoStatut.Get(ConstanteGlobal.DEFAULT_STATUS_USER)) // must be change if deleted second record into table Statut 
+            };
+        }
 
         //Mapping Utilisateurs
         internal static Utilisateur UtilisateurCtoMVC(UtilisateurMC utiMS)

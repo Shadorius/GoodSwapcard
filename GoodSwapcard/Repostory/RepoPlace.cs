@@ -14,15 +14,15 @@ namespace Repostory
         private Connexion _con = new Connexion();
         public bool Delete(int id)
         {
-            string Query = "Delete from [Place] where [Id]=" + id;
-            bool QueryState = _con.Delete(Query);
+            string Query = "Delete from [Place] where [Id]= @0";
+            bool QueryState = _con.Delete(Query, id);
             return QueryState;
         }
 
         public PlaceMS Get(int id)
         {
-            string Query = "Select * from [Place] where [Id] =" + id;
-            List<Dictionary<string, object>> Result = _con.getData(Query);
+            string Query = "Select * from [Place] where [Id] = @0";
+            List<Dictionary<string, object>> Result = _con.getData(Query, id);
             PlaceMS CurrentPlace = null;
 
             if (Result.Count != 0)
@@ -64,27 +64,22 @@ namespace Repostory
 
         public bool Insert(PlaceMS item)
         {
-            string Query = "INSERT INTO [Place] Values (";
-            Query += "'" + item.PlaceName + "'";
-            Query += ",'" + item.Street + "'";
-            Query += ",'" + item.Number+"'";
-            Query += "," + item.IdLoc;
-            Query += ")";
+            string Query = "INSERT INTO [Place] Values (@0,@1,@2,@3)";
 
-            bool QueryResult = _con.Insert(Query);
+            bool QueryResult = _con.Insert(Query, item.PlaceName, item.Street, item.Number, item.IdLoc);
             return QueryResult;
         }
 
         public bool Update(PlaceMS item)
         {
             string Query = "UPDATE [Place] SET";
-            Query += "PlaceName = '" + item.PlaceName + "'";
-            Query += ", Street = '" + item.Street + "'";
-            Query += ", Number = '" + item.Number + "'";
-            Query += ", IdLoc = " + item.IdLoc + "";
-            Query += " WHERE Id=" + item.Id;
+            Query += "PlaceName = @1";
+            Query += ", Street = @2";
+            Query += ", Number = @3";
+            Query += ", IdLoc = @4";
+            Query += " WHERE Id=@0";
 
-            bool QueryResult = _con.Insert(Query);
+            bool QueryResult = _con.Update(Query, item.Id, item.PlaceName, item.Street, item.Number, item.IdLoc, item.Number, item.IdLoc);
             return QueryResult;
         }
     }

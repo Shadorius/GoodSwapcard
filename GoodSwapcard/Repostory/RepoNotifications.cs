@@ -14,15 +14,15 @@ namespace Repostory
         private Connexion _con = new Connexion();
         public bool Delete(int id)
         {
-            string Query = "Delete from [Notifications] where [Id]=" + id;
-            bool QueryState = _con.Delete(Query);
+            string Query = "Delete from [Notifications] where [Id]= @0";
+            bool QueryState = _con.Delete(Query, id);
             return QueryState;
         }
 
         public NotifictionsMS Get(int id)
         {
-            string Query = "Select * from [Notifications] where [Id] =" + id;
-            List<Dictionary<string, object>> Result = _con.getData(Query);
+            string Query = "Select * from [Notifications] where [Id] = @0";
+            List<Dictionary<string, object>> Result = _con.getData(Query,id);
             NotifictionsMS CurrentNotif = null;
 
             if (Result.Count != 0)
@@ -61,23 +61,20 @@ namespace Repostory
 
         public bool Insert(NotifictionsMS item)
         {
-            string Query = "INSERT INTO [Notifications] Values (";
-            Query += "'" + item.Content + "',";
-            Query += "" + item.IdUser + "";
-            Query += ")";
-
-            bool QueryResult = _con.Insert(Query);
+            string Query = "INSERT INTO [Notifications] Values (@0,@1)";
+            
+            bool QueryResult = _con.Insert(Query, item.Content, item.IdUser);
             return QueryResult;
         }
 
         public bool Update(NotifictionsMS item)
         {
-            string Query = "UPDATE [Notifications] SET";
-            Query += "Content = '" + item.Content + "'";
-            Query += ", IdUser = " + item.IdUser + "";
-            Query += " WHERE Id=" + item.Id;
+            string Query = "UPDATE [Notifications] SET ";
+            Query += "Content = @1";
+            Query += ", IdUser = @2";
+            Query += " WHERE Id=@0";
 
-            bool QueryResult = _con.Insert(Query);
+            bool QueryResult = _con.Update(Query, item.Id, item.Content, item.IdUser);
             return QueryResult;
         }
     }

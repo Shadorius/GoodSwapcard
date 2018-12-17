@@ -4,13 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace MVC.Models
+namespace MVC.Models.Views
 {
-    public class Utilisateur
+    public class UtilisateurForInscription
     {
         public int Id { get; set; }
         [Required]
-        [RegularExpression(@"[a-zA-Z]{1,50}", ErrorMessage ="Le nom ne peut contenir que de 1 à 50 caracthère")]
+        [RegularExpression(@"[a-zA-Z]{1,50}", ErrorMessage = "Le nom ne peut contenir que de 1 à 50 caracthère")]
         [Display(Name = "Nom")]
         public string LastName { get; set; }
         [Required]
@@ -18,8 +18,8 @@ namespace MVC.Models
         [Display(Name = "Prénom")]
         public string FirstName { get; set; }
         [Required]
-        [RegularExpression(@"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})$", ErrorMessage ="De 15 dont une maj, min, un carac spécial")] //https://codes-sources.commentcamarche.net/source/49715-validation-de-mot-de-passe
-        [Display(Name ="Mot de passe")]
+        [RegularExpression(@"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})$", ErrorMessage = "De 15 dont une maj, min, un carac spécial")] //https://codes-sources.commentcamarche.net/source/49715-validation-de-mot-de-passe
+        [Display(Name = "Mot de passe")]
         [DataType(DataType.Password)]
         public string PsW { get; set; }
         [Required]
@@ -37,10 +37,7 @@ namespace MVC.Models
         public string Phone { get; set; }
         [Display(Name = "Date de naissance")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)] 
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? Birthdate { get; set; }
-        [Required(ErrorMessage ="Veuillez choisir un statut")]
-        public Statut statut { get; set; }
     }
 }
-

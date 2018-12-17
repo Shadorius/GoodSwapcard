@@ -42,7 +42,7 @@
             </ul>
             <ul class=" my-2 my-md-0 navbar-nav">
                 <li class="nav-item">
-                    <button class="btn btn-outline-info my-2 my-sm-0" type="submit">S'enregistrer</button>
+                    <button class="btn btn-outline-info my-2 my-sm-0" onclick="location.href='@Url.Action("Inscription", "Utilisateur")'">Inscription</button>
                     <button class="btn btn-outline-info my-2 my-sm-0" data-toggle="modal" data-target="#exampleModalCenter" type="submit">Se connecter</button>
                 </li>
             </ul>
@@ -72,18 +72,17 @@
                     <button type="button" class="btn btn-primary btn-block">Connexion</button>
                     <button type="button" class="btn btn-danger btn-block">Mot de passe oublié ?</button>
                 </div>
-
             </div>
         </div>
     </div>
 
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
+
+    <footer>
+        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
