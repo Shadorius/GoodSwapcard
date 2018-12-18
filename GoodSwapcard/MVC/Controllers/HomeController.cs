@@ -14,10 +14,18 @@ namespace MVC.Controllers
     public class HomeController : Controller
     {
         BLRUtilisateur repo = new BLRUtilisateur();
+        BLRMessagerie Mess_repo = new BLRMessagerie();
 
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult Messages()
+        {
+            List<Messagerie> list = new List<Messagerie>();
+            list = Mess_repo.GetAll(2).OrderBy(x => x.DateSend).Select(x => MappingModel.MessagerieCtoMVC(x)).ToList();
+            return View(list);
         }
 
         public ActionResult LogIn()
@@ -29,16 +37,21 @@ namespace MVC.Controllers
         public ActionResult LoGin(LogIn log)
         {
             Utilisateur u = repo.GetAll().Select(x => MappingModel.UtilisateurCtoMVC(x)).Where(x => x.Email == log.Login).SingleOrDefault();
-            if (u  == null)
-            {
+
+            if (u != null)
+            { 
+
                 using (MD5 md5Hash = MD5.Create())
                 {
                     string hash = HashageMD5.GetMd5Hash(md5Hash, log.PWD);
 
-                    if (HashageMD5.VerifyMd5Hash(md5Hash, log.PWD, hash))
+                    if (HashageMD5.VerifyMd5Hash(md5Hash, u.PsW, hash))
                     {
-                        log.PWD = hash;                        
-                        ViewBag.ErrorHash = "Le hashage n'a pas été correctement fait";
+                        UserSession.CurrentUser = u;
+                        ViewBag.CodeErrorConnection = 1;
+                        ViewBag.errorConnection = " t'es connecté fissdeup";
+                        return View("Index");
+                        //return RedirectToAction("Index");
                     }
                     else
                     {
@@ -47,10 +60,11 @@ namespace MVC.Controllers
                         return View("Index");
                     }
                 }
-
             }
 
-            return RedirectToAction("Index");
+            ViewBag.CodeErrorConnection = 1;
+            ViewBag.errorConnection = " L\'adresse ou mot de passe incorrecte";
+            return View("Index");
         }
 
         public ActionResult About()

@@ -215,6 +215,15 @@ INSERT INTO Place (PlaceName, Street, Number, IdLoc) VALUES ('Waux Hall', 'grand
 INSERT INTO Place (PlaceName, Street, Number, IdLoc) VALUES ('Palais 12', 'plateau du heysel', '12', 1);
 INSERT INTO Place (PlaceName, Street, Number, IdLoc) VALUES ('Namur Expo', 'rue du bois', '789', 2);
 
+--Table Messages
+INSERT INTO Messagerie (IdUserOne, IdUserTwo, Content) VALUES (1,2,'Blablablabla ojdihjo^hôuhg dzadnia diajdiazjd dzjdaohhd âoidhz doâihd ');
+INSERT INTO Messagerie (IdUserOne, IdUserTwo, Content) VALUES (2,1,'Blablablabla ojdihjo^hôuhg dzadnia diajdiazjd dzjdaohhd âoidhz doâihd ');
+INSERT INTO Messagerie (IdUserOne, IdUserTwo, Content) VALUES (2,3,'Blablablabla ojdihjo^hôuhg dzadnia diajdiazjd dzjdaohhd âoidhz doâihd ');
+INSERT INTO Messagerie (IdUserOne, IdUserTwo, Content) VALUES (3,2,'Blablablabla ojdihjo^hôuhg dzadnia diajdiazjd dzjdaohhd âoidhz doâihd ');
+INSERT INTO Messagerie (IdUserOne, IdUserTwo, Content) VALUES (4,5,'Blablablabla ojdihjo^hôuhg dzadnia diajdiazjd dzjdaohhd âoidhz doâihd ');
+INSERT INTO Messagerie (IdUserOne, IdUserTwo, Content) VALUES (1,2,'Blablablabla ojdihjo^hôuhg dzadnia diajdiazjd dzjdaohhd âoidhz doâihd ');
+INSERT INTO Messagerie (IdUserOne, IdUserTwo, Content) VALUES (1,2,'Blablablabla ojdihjo^hôuhg dzadnia diajdiazjd dzjdaohhd âoidhz doâihd ');
+
 --Table Heures
 INSERT INTO HourTime VALUES (9,0);
 INSERT INTO HourTime VALUES (9,15);

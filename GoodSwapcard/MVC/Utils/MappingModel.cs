@@ -338,7 +338,8 @@ namespace MVC.Utils
                 Id = p.Id,
                 UserOne = UtilisateurCtoMVC(repoUtil.Get(p.IdUserOne)),
                 UserTwo = UtilisateurCtoMVC(repoUtil.Get(p.IdUserTwo)),
-                Content = p.Content
+                Content = p.Content,
+                DateSend = p.DateSend
             };
         }
         internal static MessagerieMC MessagerieMVCtoC(Messagerie p)
@@ -348,7 +349,8 @@ namespace MVC.Utils
                 Id = p.Id,
                 IdUserOne = p.UserOne.Id,
                 IdUserTwo = p.UserTwo.Id,
-                Content = p.Content
+                Content = p.Content,
+                DateSend = p.DateSend
             };
         }
 

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Repostory
 {
-    public class RepoMessagerie : IRepository<MessagerieMS, int>
+    public class RepoMessagerie
     {
         private Connexion _con = new Connexion();
         
@@ -27,17 +27,18 @@ namespace Repostory
                     Id = (int)Result[0]["Id"],
                     IdUserOne = (int)Result[0]["IdUserOne"],
                     IdUserTwo = (int)Result[0]["IdUserTwo"],
-                    Content = (string)Result[0]["Content"]
+                    Content = (string)Result[0]["Content"],
+                    DateSend = (DateTime)Result[0]["DateSend"]
                 };
             }
 
             return CurrentMessagerie;
         }
 
-        public List<MessagerieMS> GetAll()
+        public List<MessagerieMS> GetAll(int id)
         {
-            string Query = "Select * from [Messagerie]";
-            List<Dictionary<string, object>> Result = _con.getData(Query);
+            string Query = "Select * from [Messagerie] Where [IdUserOne] = @0 OR [IdUserTwo] = @0";
+            List<Dictionary<string, object>> Result = _con.getData(Query, id);
             List<MessagerieMS> CurrentList = new List<MessagerieMS>();
             if (Result.Count != 0)
             {
@@ -48,7 +49,8 @@ namespace Repostory
                         Id = (int)Result[i]["Id"],
                         IdUserOne = (int)Result[i]["IdUserOne"],
                         IdUserTwo = (int)Result[i]["IdUserTwo"],
-                        Content = (string)Result[i]["Content"]
+                        Content = (string)Result[i]["Content"],
+                        DateSend = (DateTime)Result[i]["DateSend"]
                     };
                     CurrentList.Add(temp);
                 }

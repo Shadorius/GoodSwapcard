@@ -1,0 +1,25 @@
+﻿@model IEnumerable<MVC.Models.Messagerie>
+
+@{
+    ViewBag.Title = "Messages";
+}
+
+<h2>Messages</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserOne.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateSend)
+        </td>
+    </tr>
+}
+
+</table>
