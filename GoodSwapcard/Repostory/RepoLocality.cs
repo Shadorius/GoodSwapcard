@@ -49,10 +49,10 @@ namespace Repostory
                 {
                     LocalityMS temp = new LocalityMS
                     {
-                        Id = (int)Result[0]["Id"],
-                        LocalityName = (string)Result[0]["LocalityName"],
-                        CP = (string)Result[0]["CP"],
-                        IdCountry = (int)Result[0]["IdCountry"]
+                        Id = (int)Result[i]["Id"],
+                        LocalityName = (string)Result[i]["LocalityName"],
+                        CP = (string)Result[i]["CP"],
+                        IdCountry = (int)Result[i]["IdCountry"]
                     };
                     CurrentList.Add(temp);
                 }

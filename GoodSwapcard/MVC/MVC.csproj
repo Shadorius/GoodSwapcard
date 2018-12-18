@@ -247,6 +247,7 @@
     <Content Include="Views\Society\Index.cshtml" />
     <Content Include="Views\Society\_Details.cshtml" />
     <Content Include="Views\Utilisateur\Inscription.cshtml" />
+    <Content Include="Views\Society\_Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
