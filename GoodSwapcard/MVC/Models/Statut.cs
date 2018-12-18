@@ -9,8 +9,8 @@ namespace MVC.Models
 {
     public class Statut
     {
-        public int Id { get; set; }
         [Display(Name ="Statut")]
+        public int Id { get; set; }
         public string StatutName { get; set; }
     }
 }
