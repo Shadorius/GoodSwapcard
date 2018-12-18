@@ -9,5 +9,6 @@ namespace MVC.Models.Views
     {
         public Society addSociety { get; set; }
         public IEnumerable<Locality> Localities { get; set; }
+        public IEnumerable<Utilisateur> Utilisateurs { get; set; }
     }
 }

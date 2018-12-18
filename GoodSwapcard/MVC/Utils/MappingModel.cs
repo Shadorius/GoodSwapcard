@@ -286,8 +286,8 @@ namespace MVC.Utils
                 Phone = s.Phone,
                 Street = s.Street,
                 Number = s.Number,
-                LLoc = LocalityCtoM(repoLocality.Get(s.IdLoc)),
-                Boss = UtilisateurCtoMVC(repoUtil.Get(s.IdBoss))
+                LLoc = repoLocality.Get(s.IdLoc),
+                Boss = repoUtil.Get(s.IdBoss)
             };
         }
 

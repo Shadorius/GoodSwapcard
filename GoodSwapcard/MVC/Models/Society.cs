@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ModelClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -28,8 +29,8 @@ namespace MVC.Models
         [Display(Name = "Numéro")]
         public string Number { get; set; }
         [Required]
-        public Locality LLoc { get; set; }
+        public LocalityMC LLoc { get; set; }
         [Required]
-        public Utilisateur Boss { get; set; }
+        public UtilisateurMC Boss { get; set; }
     }
 }

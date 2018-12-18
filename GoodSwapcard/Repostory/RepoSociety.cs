@@ -85,20 +85,21 @@ namespace Repostory
 
         public bool Update(SocietyMS item)
         {
-            string Query = "UPDATE [Society] SET";
+            
+            string Query = "UPDATE [Society] SET ";
             Query += "SocietyName = @1,";
             Query += "SocietyDesc = @2,";
             Query += "SocietyTinyDesc = @3,";
-            Query += "Img = @3,";
-            Query += "WebSite = @4,";
-            Query += "Phone = @5,";
-            Query += "Street = @6,";
-            Query += "Number = @7,";
-            Query += "IdLoc = @8,";
-            Query += "IdBoss = @9";
+            Query += "Img = @4,";
+            Query += "WebSite = @5,";
+            Query += "Phone = @6,";
+            Query += "Street = @7,";
+            Query += "Number = @8,";
+            Query += "IdLoc = @9,";
+            Query += "IdBoss = @10";
             Query += " WHERE Id= @0";
-
-            bool QueryResult = con.Update(Query, item.Id,item.SocietyName, item.SocietyDesc, item.SocietyTinyDesc, item.Img, item.WebSite, item.Phone, item.Street, item.IdLoc, item.IdBoss);
+           
+            bool QueryResult = con.Update(Query, item.Id,item.SocietyName, item.SocietyDesc, item.SocietyTinyDesc, item.Img, item.WebSite, item.Phone, item.Street,item.Number, item.IdLoc, item.IdBoss);
 
             return QueryResult;
         }

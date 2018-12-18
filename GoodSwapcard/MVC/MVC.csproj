@@ -248,6 +248,7 @@
     <Content Include="Views\Society\Index.cshtml" />
     <Content Include="Views\Society\_Details.cshtml" />
     <Content Include="Views\Utilisateur\Inscription.cshtml" />
+    <Content Include="Views\Society\_Edit.cshtml" />
     <Content Include="Views\Shared\_LogIn.cshtml" />
     <Content Include="Views\Home\Logok.cshtml" />
     <Content Include="Views\Home\Messages.cshtml" />
