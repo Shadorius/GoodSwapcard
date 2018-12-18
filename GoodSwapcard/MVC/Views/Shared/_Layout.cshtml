@@ -58,6 +58,28 @@
                     </li>
                 }
 
+                <li class="nav-item">
+                    <a href="/Home/Messages" class="nav-link">
+                        <i class="far fa-comment"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Home/Notifications" class="nav-link">
+                        <i class="far fa-bell"></i>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown04">
+                        @Html.ActionLink("Utilisateur", "Index", "Utilisateur", new { area = "" }, htmlAttributes: new { @class = "dropdown-item" })
+                        @Html.ActionLink("Society", "Index", "Society", new { area = "" }, htmlAttributes: new { @class = "dropdown-item" })
+                        @Html.ActionLink("Participant", "Participant", "Utilisateur", new { area = "" }, htmlAttributes: new { @class = "dropdown-item" })
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-outline-info my-2 my-sm-0" onclick="location.href='@Url.Action("Inscription", "Utilisateur")'">Inscription</button>
+                    <button class="btn btn-outline-info my-2 my-sm-0" data-toggle="modal" data-target="#LoginModal" type="submit">Se connecter</button>
+                </li>
             </ul>
 
 

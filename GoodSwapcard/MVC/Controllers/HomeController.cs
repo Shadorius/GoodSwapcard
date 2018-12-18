@@ -14,10 +14,18 @@ namespace MVC.Controllers
     public class HomeController : Controller
     {
         BLRUtilisateur repo = new BLRUtilisateur();
+        BLRMessagerie Mess_repo = new BLRMessagerie();
 
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult Messages()
+        {
+            List<Messagerie> list = new List<Messagerie>();
+            list = Mess_repo.GetAll(2).OrderBy(x => x.DateSend).Select(x => MappingModel.MessagerieCtoMVC(x)).ToList();
+            return View(list);
         }
 
         public ActionResult LogIn()

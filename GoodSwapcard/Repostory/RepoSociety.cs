@@ -79,7 +79,7 @@ namespace Repostory
         public bool Insert(SocietyMS item)
         {
             string Query = "INSERT INTO [Society] Values (@0, @1, @2, @3, @4, @5, @6, @7, @8, @9)";
-            bool QueryResult = con.Insert(Query, item.SocietyName, item.SocietyDesc, item.SocietyTinyDesc, item.Img, item.WebSite, item.Phone, item.Street, item.IdLoc, item.IdBoss);
+            bool QueryResult = con.Insert(Query, item.SocietyName, item.SocietyDesc, item.SocietyTinyDesc, item.Img, item.WebSite, item.Phone, item.Street, item.Number, item.IdLoc, item.IdBoss);
             return QueryResult;
         }
 
