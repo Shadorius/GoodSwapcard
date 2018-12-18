@@ -352,7 +352,8 @@ namespace BusinessLayer
                 Id = Mess.Id,
                 IdUserOne = Mess.IdUserOne,
                 IdUserTwo = Mess.IdUserTwo,
-                Content = Mess.Content
+                Content = Mess.Content,
+                DateSend = Mess.DateSend
             };
         }
 
@@ -363,7 +364,8 @@ namespace BusinessLayer
                 Id = Mess.Id,
                 IdUserOne = Mess.IdUserOne,
                 IdUserTwo = Mess.IdUserTwo,
-                Content = Mess.Content
+                Content = Mess.Content,
+                DateSend = Mess.DateSend
             };
         }
     }

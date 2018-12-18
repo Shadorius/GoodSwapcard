@@ -250,6 +250,7 @@
     <Content Include="Views\Utilisateur\Inscription.cshtml" />
     <Content Include="Views\Shared\_LogIn.cshtml" />
     <Content Include="Views\Home\Logok.cshtml" />
+    <Content Include="Views\Home\Messages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

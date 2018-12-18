@@ -12,5 +12,6 @@ namespace ModelClient
         public int IdUserOne { get; set; }
         public int IdUserTwo { get; set; }
         public string Content { get; set; }
+        public DateTime DateSend { get; set; }
     }
 }
