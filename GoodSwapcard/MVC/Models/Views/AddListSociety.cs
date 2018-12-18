@@ -9,6 +9,7 @@ namespace MVC.Models.Views
     {
         public List<Society> listSociety { get; set; }
         public AddSociety ajoutSociety { get; set; }
+        public int ActionCode { get; set; }
 
         public AddListSociety()
         {

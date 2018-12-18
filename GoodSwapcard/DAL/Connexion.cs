@@ -10,8 +10,8 @@ namespace DAL
     public class Connexion
     {
         //private readonly string Cnstr = @"Data Source=PORTABLE-AXEL;Initial Catalog=GoodSwapCardDB;Persist Security Info=True;User ID=sa;Password=tftic@2012";
-        private readonly string Cnstr = @"Data Source=PREDATOR;Initial Catalog = GoodSwapCardDB; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-        //private readonly string Cnstr = @"Data Source=DESKTOP-BK95MHE\SQLEXPRESS;Initial Catalog=GoodSwapCardDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        //private readonly string Cnstr = @"Data Source=PREDATOR;Initial Catalog = GoodSwapCardDB; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        private readonly string Cnstr = @"Data Source=DESKTOP-BK95MHE\SQLEXPRESS;Initial Catalog=GoodSwapCardDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         private SqlConnection oConn;
         private SqlCommand oCmd;

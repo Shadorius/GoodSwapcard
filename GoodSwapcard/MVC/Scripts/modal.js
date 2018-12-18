@@ -6,12 +6,14 @@ $(document).on("click", ".open-DeleteUserDialog", function () {
 });
 
 //Code JS et Ajax de la partie Société
+//Delete
 $(document).on("click", ".open-DeleteSocietyDialog", function () {
     var currentSocietyId = $(this).data('id');
     $('#DeleteButton').attr("onclick", "location.href='/Society/Delete/" + currentSocietyId + "'");
 });
 
-var TeamDetailPostBackURL = '/Society/Details';
+//Details
+var DetailsBackURL = '/Society/Details';
 $(function () {
     $(".open-DetailsSocietyDialog").click(function () {
         var $buttonClicked = $(this);
@@ -19,7 +21,7 @@ $(function () {
         var options = { "backdrop": "static", keyboard: true };
         $.ajax({
             type: "GET",
-            url: TeamDetailPostBackURL,
+            url: DetailsBackURL,
             contentType: "application/json; charset=utf-8",
             data: { "Id": id },
             datatype: "json",
@@ -38,3 +40,49 @@ $(function () {
         $('#myModalSociety').modal('hide');
     });
 });
+
+//Edit
+var EditBackURL = '/Society/Edit';
+$(".open-EditSocietyDialog").click(function () {
+    var $buttonClicked = $(this);
+    var id = $buttonClicked.attr('data-id');
+    var options = { "backdrop": "static", keyboard: true };
+    $.ajax({
+        type: "GET",
+        url: EditBackURL,
+        contentType: "application/json",
+        data: { "Id": id },
+        datatype: "json",
+        success: function (data) {
+            $('#myModalSocietyContent').html(data);
+            $('#myModalSociety').modal(options);
+            $('#myModalSociety').modal('show');
+        },
+        error: function () {
+            alert("Dynamic content load failed.");
+        }
+    });
+});
+
+$("#closbtn").click(function () {
+    $('#myModalSociety').modal('hide');
+});
+
+function OpenEdit(id) {
+    console.log(id);
+    $.ajax({
+        type: "GET",
+        url: EditBackURL,
+        contentType: "application/json",
+        data: { "Id": id },
+        datatype: "json",
+        success: function (data) {
+            $('#myModalSocietyContent').html(data);
+            $('#myModalSociety').modal(options);
+            $('#myModalSociety').modal('show');
+        },
+        error: function () {
+            alert("Dynamic content load failed.");
+        }
+    });
+};
