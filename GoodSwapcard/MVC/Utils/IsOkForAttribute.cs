@@ -22,7 +22,7 @@ namespace MVC.Utils
                 filterContext.Result = new RedirectToRouteResult(
                                         new RouteValueDictionary {
                                                                     { "action", "Index" },
-                                                                    { "controler","Home"},
+                                                                    { "controller","Home"},
                                                                     { "Area", string.Empty}
                                                                 });
             }

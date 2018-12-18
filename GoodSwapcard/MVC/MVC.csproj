@@ -252,6 +252,7 @@
     <Content Include="Views\Shared\_LogIn.cshtml" />
     <Content Include="Views\Home\Logok.cshtml" />
     <Content Include="Views\Home\Messages.cshtml" />
+    <Content Include="Views\Society\_Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

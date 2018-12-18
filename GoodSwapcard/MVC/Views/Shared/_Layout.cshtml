@@ -1,7 +1,5 @@
-﻿
-
-@using MVC.Models.Views;
-
+﻿@using MVC.Models.Views;
+@using MVC.Utils;
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +21,7 @@
 
         <div class="collapse navbar-collapse ">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                @*<li class="nav-item active">
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
@@ -31,9 +29,35 @@
                 </li>
                 <li class="nav-item">
                     @Html.ActionLink("Participant", "Participant", "Utilisateur", new { area = "" }, new { @class = "nav-link" })
-                </li>
+                </li>*@
             </ul>
             <ul class=" my-3 my-md-0 navbar-nav">
+                @if (UserSession.CurrentUser != null && UserSession.CurrentUser.statut.StatutName == "Admin")
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown04">
+                            @Html.ActionLink("Utilisateur", "Index", "Utilisateur", new { area = "" }, htmlAttributes: new { @class = "dropdown-item" })
+                            @Html.ActionLink("Society", "Index", "Society", new { area = "" }, htmlAttributes: new { @class = "dropdown-item" })
+                            @Html.ActionLink("Participant", "Participant", "Utilisateur", new { area = "" }, htmlAttributes: new { @class = "dropdown-item" })
+                        </div>
+                    </li>
+                }
+
+                @if (UserSession.CurrentUser == null)
+                {
+                    <li class="nav-item">
+                        <button class="btn btn-outline-info my-2 my-sm-0" onclick="location.href='@Url.Action("Inscription", "Utilisateur")'">Inscription</button>
+                        <button class="btn btn-outline-info my-2 my-sm-0" data-toggle="modal" data-target="#LoginModal" type="submit">Se connecter</button>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <button class="btn btn-outline-info my-2 my-sm-0" onclick="location.href='@Url.Action("Deconnexion", "Home")'">Deconnexion</button>
+                    </li>
+                }
+
                 <li class="nav-item">
                     <a href="/Home/Messages" class="nav-link">
                         <i class="far fa-comment"></i>
@@ -59,6 +83,7 @@
                     <button class="btn btn-outline-info my-2 my-sm-0" data-toggle="modal" data-target="#LoginModal" type="submit">Se connecter</button>
                 </li>
             </ul>
+
 
         </div>
     </nav>

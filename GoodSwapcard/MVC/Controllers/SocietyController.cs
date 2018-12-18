@@ -23,6 +23,8 @@ namespace MVC.Controllers
         {
             AddListSociety Societies = new AddListSociety();
             Societies.listSociety = repo.GetAll().OrderBy(s => s.SocietyName).Select(x => MappingModel.SocietyCtoMVC(x)).ToList();
+            Societies.ajoutSociety.Localities = repoLoc.GetAll().Select(x => MappingModel.LocalityCtoM(x)).ToList();
+            Societies.ajoutSociety.Utilisateurs = repoUser.GetAll().Select(x => MappingModel.UtilisateurCtoMVC(x)).ToList();
 
             if (TempData["Society"] != null)
             {
@@ -68,7 +70,6 @@ namespace MVC.Controllers
             society.ajoutSociety.Localities = repoLoc.GetAll().Select(x => MappingModel.LocalityCtoM(x)).ToList();
             society.ajoutSociety.Utilisateurs = repoUser.GetAll().Select(x => MappingModel.UtilisateurCtoMVC(x)).ToList();
             int id = society.ajoutSociety.addSociety.LLoc.Id;
-            //society.ajoutSociety.addSociety.LLoc.Id = id;
             society.ajoutSociety.addSociety.LLoc.LocalityName = society.ajoutSociety.Localities.Where(x => x.Id == id).Select(n => n.LocalityName).SingleOrDefault();
             society.ajoutSociety.addSociety.Boss.LastName = society.ajoutSociety.Utilisateurs.Where(x => x.Id == id).Select(n => n.LastName).SingleOrDefault(); 
             if (ModelState.IsValid)
@@ -82,32 +83,34 @@ namespace MVC.Controllers
                 //Action 1: Edit, Action 2: Insert
                 TempData["SocietyAction"] = 1;
             }
-            //return PartialView("_Edit", society);
-            //string js = "OpenEdit(" + society.ajoutSociety.addSociety.Id + ")";
 
             return RedirectToAction("Index");
 
         }
 
-        // GET: Society/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
         // POST: Society/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(AddSociety society)
         {
-            try
-            {
-                // TODO: Add insert logic here
+            AddListSociety ListSociety = new AddListSociety();
+            ListSociety.ajoutSociety = society;
+            ListSociety.ajoutSociety.Localities = repoLoc.GetAll().Select(x => MappingModel.LocalityCtoM(x)).ToList();
+            ListSociety.ajoutSociety.Utilisateurs = repoUser.GetAll().Select(x => MappingModel.UtilisateurCtoMVC(x)).ToList();
+            int IdLoc = society.addSociety.LLoc.Id;
+            ListSociety.ajoutSociety.addSociety.LLoc.Id = IdLoc;
+            ListSociety.ajoutSociety.addSociety.LLoc.LocalityName = ListSociety.ajoutSociety.Localities.Where(x => x.Id == IdLoc).Select(n => n.LocalityName).SingleOrDefault();
+            int IdBoss = society.addSociety.Boss.Id;
+            ListSociety.ajoutSociety.addSociety.Boss.Id = IdBoss;
+            ListSociety.ajoutSociety.addSociety.Boss.LastName = ListSociety.ajoutSociety.Utilisateurs.Where(x => x.Id == IdBoss).Select(n => n.LastName).SingleOrDefault();
 
+            if (ModelState.IsValid)
+            {
+                repo.Insert(MappingModel.SocietyMVCtoC(society.addSociety));
                 return RedirectToAction("Index");
             }
-            catch
+            else
             {
-                return View();
+                return View("Index", ListSociety);
             }
         }
 

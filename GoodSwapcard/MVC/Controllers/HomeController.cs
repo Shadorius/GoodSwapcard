@@ -54,8 +54,7 @@ namespace MVC.Controllers
                         UserSession.CurrentUser = u;
                         ViewBag.CodeErrorConnection = 1;
                         ViewBag.errorConnection = " t'es connecté fissdeup";
-                        return View("Index");
-                        //return RedirectToAction("Index");
+                        return RedirectToAction("Index");
                     }
                     else
                     {
@@ -83,6 +82,12 @@ namespace MVC.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult Deconnexion()
+        {
+            Session.Abandon();
+            return RedirectToAction("Index");
         }
     }
 }
