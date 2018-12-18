@@ -107,8 +107,8 @@ CREATE TABLE HourTime (
 CREATE TABLE RDV (
 	Id int IDENTITY(1,1) Primary Key,
 	IdHour int NOT NULL CONSTRAINT FK_Hour FOREIGN KEY (IdHour) REFERENCES HourTime (Id),
-	IdCandidat int NOT NULL CONSTRAINT FK_Candidat FOREIGN KEY (IdCandidat) REFERENCES Utils (Id),
-	IdRep int NOT NULL CONSTRAINT FK_Rep FOREIGN KEY (IdRep) REFERENCES Utils (Id),
+	IdCandidat int NOT NULL CONSTRAINT FK_CandidatRDV FOREIGN KEY (IdCandidat) REFERENCES EventUser (Id),
+	IdRep int NOT NULL CONSTRAINT FK_RepRDV FOREIGN KEY (IdRep) REFERENCES EventUser (Id),
 	RdvState bit NOT NULL default 0
 );
 

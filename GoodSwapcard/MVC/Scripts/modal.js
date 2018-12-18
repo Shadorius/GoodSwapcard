@@ -13,11 +13,13 @@ $(document).on("click", ".open-DeleteSocietyDialog", function () {
 });
 
 //Details
+
 var DetailsBackURL = '/Society/Details';
 $(function () {
     $(".open-DetailsSocietyDialog").click(function () {
         var $buttonClicked = $(this);
         var id = $buttonClicked.attr('data-id');
+        console.log(id);
         var options = { "backdrop": "static", keyboard: true };
         $.ajax({
             type: "GET",
@@ -34,10 +36,6 @@ $(function () {
                 alert("Dynamic content load failed.");
             }
         });
-    });
-
-    $("#closbtn").click(function () {
-        $('#myModalSociety').modal('hide');
     });
 });
 

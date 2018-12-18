@@ -45,7 +45,12 @@
                 <article class="cards enterprise">
                     <img class="cards-img-top rounded-circle" src="~/Img/mdr.jpg" alt="Card image cap">
                     <div class="cards-body">
-                        <h5 class="cards-title">Nom de l'entreprise</h5>
+                        <h5 class="cards-title">
+                            <a href="#detailsModal" data-toggle="modal" data-target="#detailsModal" data-id="1" class="open-DetailsSocietyDialog">
+                                Nom de l'entreprise
+                            </a>
+                        </h5>
+                        
 
                         <p class="cards-text">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum nunc id ipsum pretium dignissim. Donec eu velit mi. Pellentesque semper tristique molestie. Cras feugiat viverra vehicula. Maecenas nec suscipit diam. Nulla eget iaculis nisl. In ac bibendum mauris. Praesent gravida, justo aliquam hendrerit sollicitudin, eros felis malesuada orci, sit amet aliquet massa justo ac ipsum. Quisque euismod tincidunt pellentesque. Vivamus ullamcorper metus ac ullamcorper rutrum.
@@ -78,3 +83,10 @@
     </div>
 </section>
 
+<div id="myModalSociety" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalSocietyContent'></div>
+        </div>
+    </div>
+</div>

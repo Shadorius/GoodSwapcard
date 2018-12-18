@@ -24,7 +24,11 @@ namespace MVC.Controllers
         public ActionResult Messages()
         {
             List<Messagerie> list = new List<Messagerie>();
-            list = Mess_repo.GetAll(2).OrderBy(x => x.DateSend).Select(x => MappingModel.MessagerieCtoMVC(x)).ToList();
+            if (UserSession.CurrentUser != null)
+            {
+                list = Mess_repo.GetAll(UserSession.CurrentUser.Id).OrderBy(x => x.DateSend).Select(x => MappingModel.MessagerieCtoMVC(x)).ToList();
+            }
+                        
             return View(list);
         }
 
