@@ -43,7 +43,7 @@ CREATE TABLE Utils (
 	PsW varchar(256) NOT NULL,
 	Email varchar(100) UNIQUE NOT NULL,
 	Phone varchar(20),
-	Birthdate DateTime, 
+	Birthdate DateTime,
 	IdStatut int NOT NULL CONSTRAINT FK_Statut_User FOREIGN KEY (IdStatut) REFERENCES Statut (Id)
 );
 
@@ -124,7 +124,7 @@ CREATE TABLE Messagerie(
 	IdUserOne int NOT NULL CONSTRAINT FK_UserMessOne FOREIGN KEY (IdUserOne) REFERENCES Utils (Id),
 	IdUserTwo int NOT NULL CONSTRAINT FK_UserMessTwo FOREIGN KEY (IdUserTwo) REFERENCES Utils (Id),
 	Content text NOT NULL,
-	DateSend datetime default GETDATE() 
+	DateSend datetime default GETDATE()
 );
 
 GO
@@ -214,6 +214,13 @@ INSERT INTO Place (PlaceName, Street, Number, IdLoc) VALUES ('PAM Expo', 'rue du
 INSERT INTO Place (PlaceName, Street, Number, IdLoc) VALUES ('Waux Hall', 'grand place', '2', 5);
 INSERT INTO Place (PlaceName, Street, Number, IdLoc) VALUES ('Palais 12', 'plateau du heysel', '12', 1);
 INSERT INTO Place (PlaceName, Street, Number, IdLoc) VALUES ('Namur Expo', 'rue du bois', '789', 2);
+
+--Table Event
+INSERT INTO Evenement (EvenementName, EventDesc, DateEvent, IdUserCreator, IdPlace) VALUES ('Salon de l''emploi', 'Salon de l''emploie dédié aux métiers du domaine de l''informatique','2018-11-09 08:00:00', 1,2);
+INSERT INTO Evenement (EvenementName, EventDesc, DateEvent, IdUserCreator, IdPlace) VALUES ('Blizzcon', 'Salon de dédié aux produits Blizzard','2018-11-24 09:30:00', 2,4);
+INSERT INTO Evenement (EvenementName, EventDesc, DateEvent, IdUserCreator, IdPlace) VALUES ('Salon de l''Erotisme', 'Faut vraiment vous dire ce qu''on y fait? (-_(-_-)_-)','2018-09-04 09:30:00', 2,4);
+INSERT INTO Evenement (EvenementName, EventDesc, DateEvent, IdUserCreator, IdPlace) VALUES ('Salon de l''emploi', 'Salon de l''emploie dédié aux métiers du domaine de l''informatique','2017-11-09 08:00:00', 1,3);
+INSERT INTO Evenement (EvenementName, EventDesc, DateEvent, IdUserCreator, IdPlace) VALUES ('Salon de l''emploi', 'Salon de l''emploie dédié aux métiers du domaine de l''informatique','2016-11-09 08:00:00', 1,4);
 
 --Table Messages
 INSERT INTO Messagerie (IdUserOne, IdUserTwo, Content) VALUES (1,2,'Blablablabla ojdihjo^hôuhg dzadnia diajdiazjd dzjdaohhd âoidhz doâihd ');

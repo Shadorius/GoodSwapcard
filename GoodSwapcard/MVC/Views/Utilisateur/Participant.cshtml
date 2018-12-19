@@ -1,20 +1,26 @@
 ﻿@model IEnumerable<MVC.Models.Utilisateur>
-<h2>Liste des participants de l'event</h2>
+<h2>Title de l'évent de mes couilles</h2>
 <br />
 <section>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#AllPart" role="tab" aria-controls="home" aria-selected="true">Les participants</a>
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#EventDetail" role="tab" aria-controls="home" aria-selected="true">Evènement</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="home-tab" data-toggle="tab" href="#AllPart" role="tab" aria-controls="home" aria-selected="true">Les participants</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#AllEnterprises" role="tab" aria-controls="profile" aria-selected="false">Les entreprises</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#Search" role="tab" aria-controls="Search" aria-selected="false">Recherche</a>
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#Event" role="tab" aria-controls="Search" aria-selected="false">Evènements</a>
         </li>
     </ul>
     <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="AllPart" role="tabpanel" aria-labelledby="AllPart-tab">
+        <div class="tab-pane fade show active" id="EventDetail" role="tabpanel" aria-labelledby="AllPart-tab">
+            Détails de l'event
+        </div>
+        <div class="tab-pane fade show" id="AllPart" role="tabpanel" aria-labelledby="AllPart-tab">
             <div class="cards-columns">
                 @foreach (var item in Model)
                 {
@@ -79,7 +85,25 @@
                 </article>
             </div>
         </div>
-        <div class="tab-pane fade" id="Search" role="tabpanel" aria-labelledby="Search-tab">addadd.</div>
+        <div class="tab-pane fade" id="Event" role="tabpanel" aria-labelledby="Search-tab">
+            <div class="cards-columns">
+                @foreach (var item in Model)
+                {
+                    <article class="card cards-Event" >
+                        <img class="card-img" src="~/Img/mdr.jpg" alt="Card image cap">
+                        <div class="card-img-overlay">
+                            <button onclick="location.href='@Url.Action("Subscribe", "Event",  new { item.Id})'" type="button" class="btn btn-info">Subscribe</button>
+                            @*<button onclick="location.href='@Url.Action("Subscribe", "Event",  new { item.Id})'" type="button" class="btn btn-danger">Unsubscribe</button>*@
+
+                            <a href="/Event/Details/@Html.DisplayFor(modelItem => item.Id)">
+                                <h4 class="cards-title">@Html.DisplayFor(modelItem => item.LastName) @Html.DisplayFor(modelItem => item.FirstName)</h4>
+                                <p class="cards-desc"> 19/12/2018 18:30 - Trou du cul d'un Elfe</p>
+                            </a>
+                        </div>
+                    </article>
+                }
+            </div>
+        </div>
     </div>
 </section>
 

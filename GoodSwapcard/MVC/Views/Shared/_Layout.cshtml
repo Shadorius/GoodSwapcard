@@ -7,6 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Mon application ASP.NET</title>
+    @Styles.Render("~/Content/dynatable")
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -21,15 +22,9 @@
 
         <div class="collapse navbar-collapse ">
             <ul class="navbar-nav mr-auto">
-                @*<li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
                 <li class="nav-item">
-                    @Html.ActionLink("Utilisateur", "Index", "Utilisateur", new { area = "" }, new { @class = "nav-link" })
+                    @Html.ActionLink("Evenements", "Index", "Evenement", new { area = "" }, new { @class = "nav-link" })
                 </li>
-                <li class="nav-item">
-                    @Html.ActionLink("Participant", "Participant", "Utilisateur", new { area = "" }, new { @class = "nav-link" })
-                </li>*@
             </ul>
             <ul class=" my-3 my-md-0 navbar-nav">
                 @if (UserSession.CurrentUser != null && UserSession.CurrentUser.statut.StatutName == "Admin")
