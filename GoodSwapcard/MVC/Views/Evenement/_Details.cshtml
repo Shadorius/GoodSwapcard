@@ -1,0 +1,36 @@
+﻿@model MVC.Models.Evenement
+
+<div>
+    <h4>Evenement</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EvenementName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EvenementName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateEvent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateEvent)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id })*@ |
+    @Html.ActionLink("Back to List", "Index")
+</p>

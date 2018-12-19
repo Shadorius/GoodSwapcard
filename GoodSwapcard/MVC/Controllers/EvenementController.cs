@@ -22,9 +22,15 @@ namespace MVC.Controllers
             return View(repoEvent.GetAll().Select(x => MappingModel.EvenementCtoM(x)).ToList());
         }
 
+        public PartialViewResult PartialDetail(int id)
+        {
+            return PartialView("_Details", MappingModel.EvenementCtoM(repoEvent.Get(id)));
+        }
+
         // GET: Evenement/Details/5
         public ActionResult Details(int id)
         {
+            ViewBag.idEvent = id;
             return View();
         }
 

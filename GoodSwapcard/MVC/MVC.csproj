@@ -257,6 +257,8 @@
     <Content Include="Views\Home\Messages.cshtml" />
     <Content Include="Views\Society\_Create.cshtml" />
     <Content Include="Views\Evenement\Index.cshtml" />
+    <Content Include="Views\Evenement\_Details.cshtml" />
+    <Content Include="Views\Evenement\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
