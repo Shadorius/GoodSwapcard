@@ -1,0 +1,55 @@
+﻿@model IEnumerable<MVC.Models.Evenement>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@Styles.Render("~/Content/dynatable")
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table" id="my-table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EvenementName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateEvent)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EvenementName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateEvent)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        </tbody>
+    }
+
+</table>
+
+@section Scripts {
+
+    <script>
+        $('#my-table').dynatable({
+            table: {
+                defaultColumnIdStyle: 'trimDash'
+            }
+        });
+    </script>
+}

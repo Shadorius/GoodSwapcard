@@ -91,6 +91,7 @@ namespace MVC.Utils
                 Id = c.Id,
                 EvenementName = c.EvenementName,
                 DateEvent = c.DateEvent,
+                EventDesc = c.EventDesc,
                 Creator = UtilisateurCtoMVC(repoUtil.Get(c.IdUserCreator)),
                 EventPlace = PlaceCtoM(repoPlace.Get(c.IdPlace))
             };

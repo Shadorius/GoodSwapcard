@@ -4,6 +4,7 @@
     ViewBag.Title = "Index";
 }
 
+@Styles.Render("~/Content/dynatable")
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
@@ -19,9 +20,10 @@
 
 <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <br />
         <div class="table-responsive">
-            <table class="table table-striped table-hover">
-                <thead class="thead-dark">
+            <table id="tableSociaty" class="table table-striped table-hover">
+                <thead>
                     <tr>
                         <th>
                             @Html.DisplayNameFor(Model => Model.ajoutSociety.addSociety.SocietyName)
@@ -42,26 +44,28 @@
 
                 @foreach (var item in Model.listSociety)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.SocietyName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.WebSite)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Phone)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Boss.LastName)
-                        </td>
-                        <td>
-                            <button data-toggle="modal" data-target="#editModal" data-id="@item.Id" type="button" class="open-EditSocietyDialog btn btn-success"> <i class="far fa-edit"></i></button>
-                            <button data-toggle="modal" data-target="#detailsModal" data-id="@item.Id" type="button" class="open-DetailsSocietyDialog btn btn-info"> <i class="far fa-address-card"></i></button>
-                            <button data-toggle="modal" data-target="#deleteModal" data-id="@item.Id" type="button" class="open-DeleteSocietyDialog btn btn-danger">  <i class="far fa-trash-alt"></i> </button>
-                        </td>
-                    </tr>
-                 }
+                    <tbody>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SocietyName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.WebSite)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Phone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Boss.LastName)
+                            </td>
+                            <td>
+                                <button data-toggle="modal" data-target="#editModal" data-id="@item.Id" type="button" class="open-EditSocietyDialog btn btn-success"> <i class="far fa-edit"></i></button>
+                                <button data-toggle="modal" data-target="#detailsModal" data-id="@item.Id" type="button" class="open-DetailsSocietyDialog btn btn-info"> <i class="far fa-address-card"></i></button>
+                                <button data-toggle="modal" data-target="#deleteModal" data-id="@item.Id" type="button" class="open-DeleteSocietyDialog btn btn-danger">  <i class="far fa-trash-alt"></i> </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                }
             </table>
         </div>
     </div>
@@ -113,6 +117,14 @@
                     break;
             }
         }
+
+
+        $('#tableSociaty').dynatable({
+            table: {
+                defaultColumnIdStyle: 'trimDash'
+            }
+        });
+
     </script>
     @Scripts.Render("~/bundles/jqueryval")
 }
