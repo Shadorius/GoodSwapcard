@@ -12,6 +12,7 @@ namespace MVC.Models.Views
         [Required]
         [Display(Name = "Nom")]
         public string EvenementName { get; set; }
+        [Required]
         [Display(Name = "Description")]
         public string EventDesc { get; set; }
         [Required]

@@ -42,7 +42,7 @@
     </div>
 
     <div class="form-label-group">
-        @Html.DropDownListFor(model => model.IdEvent.Id, new SelectList(Model.ListEventPlace, "Id", "Values"), "Choisir un statut", new { @class = "form-control col-12" })
+        @Html.DropDownListFor(model => model.IdEvent.Id, new SelectList(Model.ListEventPlace, "Id", "Values"), "Choisir une localité", new { @class = "form-control col-12" })
         @Html.ValidationMessageFor(model => model.IdEvent.Id, "", new { @class = "text-danger" })
         @*@Html.DropDownListFor(model => model.Utilisateur.statut.Id, new SelectList(Model.Statuts, "Id", "StatutName"), "Choisir un statut", new { @class = "form-control col-12" })
             @Html.ValidationMessageFor(model => model.Utilisateur.statut.Id, "", new { @class = "text-danger" })*@

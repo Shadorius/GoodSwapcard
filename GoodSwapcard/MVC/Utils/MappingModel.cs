@@ -134,6 +134,7 @@ namespace MVC.Utils
                 Id = c.Id,
                 EvenementName = c.EvenementName,
                 DateEvent = c.DateEvent,
+                EventDesc = c.EventDesc,
                 IdUserCreator = c.Creator.Id,
                 IdPlace = c.EventPlace.Id
             };
