@@ -4,14 +4,6 @@
     ViewBag.Title = "Index";
 }
 
-@*<h2>Index</h2>*@
-@*<section>*@
-@*<p>
-        @Html.ActionLink("Create New", "Create")
-    </p>*@
-
-
-
 <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Lister</a>
@@ -55,25 +47,33 @@
                 {
                     <tr>
                         <td class="text-center">
-                            @Html.DisplayFor(modelItem => item.LastName)
+                            @item.LastName
                         </td>
                         <td class="text-center">
-                            @Html.DisplayFor(modelItem => item.FirstName)
+                            @item.FirstName
                         </td>
                         <td class="text-center">
-                            @Html.DisplayFor(modelItem => item.statut.StatutName)
+                            @item.statut.StatutName
                         </td>
                         <td class="text-center">
-                            @Html.DisplayFor(modelItem => item.Email)
+                            @item.Email
                         </td>
                         <td class="text-center">
-                            @Html.DisplayFor(modelItem => item.Phone)
+                            @item.Phone
                         </td>
                         <td class="text-center">
-                            @Html.DisplayFor(modelItem => item.Birthdate)
+                            @if (item.Birthdate.HasValue)
+                            {
+                                @item.Birthdate.Value.ToString("dd-MM-yyyy")
+                            }
+                            else
+                            {
+                                @Html.DisplayFor(modelItem => item.Birthdate)
+                            }
                         </td>
                         <td class="text-center">
-                            <button onclick="location.href='@Url.Action("Edit", "Utilisateur", new { id = item.Id })'" type="button" class="btn btn-success"> <i class="fas fa-edit"></i>      </button>
+                            <button data-toggle="modal" data-target="#editModal" data-id="@item.Id" type="button" class="open-EditUserDialog btn btn-success"> <i class="far fa-edit"></i></button>
+                            <button data-toggle="modal" data-target="#detailsModal" data-id="@item.Id" type="button" class="open-DetailsUserDialog btn btn-info"> <i class="far fa-address-card"></i></button>
                             <button data-toggle="modal" data-target="#deleteModal" data-id="@item.Id" type="button" class="open-DeleteUserDialog btn btn-danger">  <i class="far fa-trash-alt"></i> </button>
 
                         </td>
@@ -109,6 +109,30 @@
     </div>
 </div>
 
+<div id="myModalUser" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalUserContent'></div>
+        </div>
+    </div>
+</div>
+
 @section Scripts {
+    <script>
+
+        @if (Model.ActionCode != 0)
+        {
+
+            switch (Model.ActionCode)
+            {
+
+                case 1:
+                        @: OpenEditUser(@Model.ajoutUser.Utilisateur.Id)
+                        break;
+
+            }
+         }
+
+    </script>
     @Scripts.Render("~/bundles/jqueryval")
 }

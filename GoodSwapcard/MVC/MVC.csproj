@@ -155,7 +155,9 @@
     <Compile Include="Models\Views\AddListUser.cs" />
     <Compile Include="Models\Views\AddSociety.cs" />
     <Compile Include="Models\Views\AddUser.cs" />
+    <Compile Include="Models\Views\EditUser.cs" />
     <Compile Include="Models\Views\LogIn.cs" />
+    <Compile Include="Models\Views\UtilisateurForEdit.cs" />
     <Compile Include="Models\Views\UtilisateurForInscription.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\ConstanteGlobal.cs" />
@@ -253,6 +255,8 @@
     <Content Include="Views\Home\Logok.cshtml" />
     <Content Include="Views\Society\_Create.cshtml" />
     <Content Include="Views\Home\Messages.cshtml" />
+    <Content Include="Views\Utilisateur\_Details.cshtml" />
+    <Content Include="Views\Utilisateur\_Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

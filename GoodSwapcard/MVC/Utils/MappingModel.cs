@@ -17,6 +17,36 @@ namespace MVC.Utils
         static BLRCountry repoCountry = new BLRCountry();
         static BLRSociety BLRSociety = new BLRSociety();
 
+        internal static UtilisateurForEdit UtilisateurModelToEdit(Utilisateur uti)
+        {
+            return new UtilisateurForEdit()
+            {
+                Id = uti.Id,
+                LastName = uti.LastName,
+                FirstName = uti.FirstName,
+                PsW = uti.PsW,
+                Email = uti.Email,
+                Phone = uti.Phone,
+                Birthdate = uti.Birthdate,
+                statut = uti.statut
+            };
+        }
+
+        internal static Utilisateur UtilisateurEdittoModel(UtilisateurForEdit uti)
+        {
+            return new Utilisateur()
+            {
+                Id = uti.Id,
+                LastName = uti.LastName,
+                FirstName = uti.FirstName,
+                PsW = uti.PsW,
+                Email = uti.Email,
+                Phone = uti.Phone,
+                Birthdate = uti.Birthdate,
+                statut = uti.statut
+            };
+        }
+
         internal static Utilisateur UtilisateurFI(UtilisateurForInscription uti)
         {
             return new Utilisateur()

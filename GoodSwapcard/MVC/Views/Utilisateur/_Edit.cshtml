@@ -1,0 +1,106 @@
+﻿@model MVC.Models.Views.EditUser
+
+@using (Html.BeginForm("Edit", "Utilisateur", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="table-responsive">
+                <div class="modal-header">
+                    <h5 class="modal-title">Society</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.Utilisateur.Id)
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-label-group">
+                                @Html.EditorFor(model => model.Utilisateur.LastName, new { htmlAttributes = new { @class = "form-control col-12", @placeholder = "Nom" } })
+                                @Html.LabelFor(model => model.Utilisateur.LastName)
+                                @Html.ValidationMessageFor(model => model.Utilisateur.LastName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-label-group">
+                                @Html.EditorFor(model => model.Utilisateur.FirstName, new { htmlAttributes = new { @class = "form-control col-12", @placeholder = "Prénom" } })
+                                @Html.LabelFor(model => model.Utilisateur.FirstName)
+                                @Html.ValidationMessageFor(model => model.Utilisateur.FirstName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-label-group">
+                                @Html.EditorFor(model => model.Utilisateur.PsW, new { htmlAttributes = new { @class = "form-control col-12", @placeholder = "Mot de passe", @value = "" } })
+                                @Html.LabelFor(model => model.Utilisateur.PsW)
+                                @Html.ValidationMessageFor(model => model.Utilisateur.PsW, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-label-group">
+                                @Html.EditorFor(model => model.Utilisateur.ConfirmPsW, new { htmlAttributes = new { @class = "form-control col-12", @placeholder = "Mot de passe", @value = "" } })
+                                @Html.LabelFor(model => model.Utilisateur.ConfirmPsW)
+                                @Html.ValidationMessageFor(model => model.Utilisateur.ConfirmPsW, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-label-group">
+                                @Html.EditorFor(model => model.Utilisateur.Email, new { htmlAttributes = new { @class = "form-control col-12", @placeholder = "Email", @readonly = "readonly" } })
+                                @Html.LabelFor(model => model.Utilisateur.Email)
+                                @Html.ValidationMessageFor(model => model.Utilisateur.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-label-group">
+                                @Html.EditorFor(model => model.Utilisateur.Phone, new { htmlAttributes = new { @class = "form-control col-12", @placeholder = "Tel" } })
+                                @Html.LabelFor(model => model.Utilisateur.Phone)
+                                @Html.ValidationMessageFor(model => model.Utilisateur.Phone, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-label-group">
+                                @Html.EditorFor(model => model.Utilisateur.Birthdate, new { htmlAttributes = new { @class = "form-control col-12", @placeholder = "Date" } })
+                                @Html.LabelFor(model => model.Utilisateur.Birthdate.Value)
+                                @Html.ValidationMessageFor(model => model.Utilisateur.Birthdate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-label-group">
+                                @Html.DropDownListFor(model => model.Utilisateur.statut.Id, new SelectList(Model.Statuts, "Id", "StatutName", Model.Utilisateur.statut.Id), new { @class = "form-control col-12" })
+                                @Html.ValidationMessageFor(model => model.Utilisateur.statut.StatutName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <input type="submit" value="Save" class="btn btn-success btn-block" />
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Back to List</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
