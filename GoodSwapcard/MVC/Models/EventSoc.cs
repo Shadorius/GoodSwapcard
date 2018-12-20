@@ -5,10 +5,10 @@ using System.Web;
 
 namespace MVC.Models
 {
-    public class SocietyUser
+    public class EventSoc
     {
         public int Id { get; set; }
-        public Utilisateur UserSoc { get; set; }
-        public Society CurrentSociety { get; set; }
+        public Society currentSoc { get; set; }
+        public Evenement currentEvent { get; set; }
     }
 }

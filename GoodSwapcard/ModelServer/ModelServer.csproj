@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="CountryMS.cs" />
     <Compile Include="EvenementMS.cs" />
+    <Compile Include="EventSocietyMS.cs" />
     <Compile Include="EventUserMS.cs" />
     <Compile Include="HourTimeMS.cs" />
     <Compile Include="LocalityMS.cs" />

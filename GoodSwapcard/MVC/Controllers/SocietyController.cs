@@ -17,6 +17,7 @@ namespace MVC.Controllers
         BLRSociety repo = new BLRSociety();
         BLRLocality repoLoc = new BLRLocality();
         BLRUtilisateur repoUser = new BLRUtilisateur();
+        BLRSocietyUser repoSocUser = new BLRSocietyUser();
 
         // GET: Society
         public ActionResult Index()
@@ -105,7 +106,14 @@ namespace MVC.Controllers
 
             if (ModelState.IsValid)
             {
+                //Insert new society into DB
                 repo.Insert(MappingModel.SocietyMVCtoC(society.addSociety));
+                //Insert First record auto boss as member of his society
+                SocietyUser temp = new SocietyUser() {
+                    UserSoc = MappingModel.UtilisateurCtoMVC(repoUser.Get(society.addSociety.Boss.Id)),
+                    CurrentSociety = society.addSociety                    
+                };
+                repoSocUser.Insert(MappingModel.SocietyUserMVCtoC(temp));
                 return RedirectToAction("Index");
             }
             else

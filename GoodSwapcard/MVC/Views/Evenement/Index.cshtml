@@ -1,0 +1,94 @@
+﻿@model IEnumerable<MVC.Models.Evenement>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table" id="my-table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EvenementName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateEvent)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EvenementName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateEvent)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        </tbody>
+    }
+
+</table>
+<ul class="cards-columns" id="my-table2">
+    @foreach (var item in Model)
+    {
+    <li>
+        <article class="card cards-Event">
+            <img class="card-img" src="~/Img/mdr.jpg" alt="Card image cap">
+            <div class="card-img-overlay">
+                <button onclick="location.href='@Url.Action("Subscribe", "Event",  new { item.Id})'" type="button" class="btn btn-info">Subscribe</button>
+                @*<button onclick="location.href='@Url.Action("Subscribe", "Event",  new { item.Id})'" type="button" class="btn btn-danger">Unsubscribe</button>*@
+
+                <a href="@Url.Action("Details",  new { item.Id})">
+                    <h4 class="cards-title">@Html.DisplayFor(modelItem => item.EvenementName) </h4>
+                    <p class="cards-desc"> @Html.DisplayFor(modelItem => item.DateEvent) - @Html.DisplayFor(modelItem => item.EventPlace.PlaceName) </p>
+                </a>
+            </div>
+        </article>
+      </li>
+    }
+</ul>
+
+@section Scripts {
+
+    <script>
+        function ulWriter(rowIndex,record, columns, cellWriter) {
+            var cssClass = "span4", li;
+            li = '<li class=""><article class="card cards-Event">bla</article><li>';
+            return li;
+        }
+        function ulReader(index, li, record) {
+            var $li = $(li),
+                $caption = $li.find('.caption');
+            record.thumbnail = $li.find('.thumbnail-image').html();
+            record.caption = $caption.html();
+            record.label = $caption.find('.cards-title').text();
+            record.description = $caption.find('.cards-desc').text();
+            record.color = $li.data('color');
+        }
+
+        $('#my-table2').dynatable({
+            table: {
+                bodyRowSelector: 'li',
+                defaultColumnIdStyle: 'trimDash'
+            },
+            writers: {
+                _rowWriter: ulWriter
+            },
+            readers: {
+                _rowReader: ulReader
+            }
+        });
+    </script>
+}

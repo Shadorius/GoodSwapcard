@@ -31,13 +31,6 @@ body {
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
-
 .form-signin {
     width: 100%;
     max-width: 420px;
@@ -186,6 +179,10 @@ a:hover{
     margin: 0rem 2rem 0rem 2rem;
 }
 
+.tab-content{
+    padding-top: 1rem;
+}
+
 /********************************************************************************************************/
 /*                                                                                                      */
 /*                             Cards remplacing bootstrap card                                          */
@@ -312,16 +309,52 @@ a:hover{
     height: 7rem;
 }
 
-/* media Queries */
-/********************************************************************************************************/
-/*                                                                                                      */
-/*                                        media Queries                                                 */
-/*                                                                                                      */
-/********************************************************************************************************/
 
+.cards-Event {
+    width: 28.5rem;
+    height: 10rem;
+    margin: 1rem;
+}
 
-@media screen and (max-width: 1199px) {
-    .cards-columns .enterprise {
+.cards-Event > .card-img{
+    height: 100%;
+}
+.cards-Event > .card-img-overlay{
+    padding: 1rem;
+}
+.cards-Event > .card-img-overlay > .btn{
+    position: absolute;
+    right: 1rem ;
+}
+.cards-Event > .card-img-overlay > a{
+    padding: auto 1rem 1rem 1rem;
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+}
+.cards-Event > .card-img-overlay > a:hover{
+    text-decoration: none;
+}
+    .cards-Event > .card-img-overlay > a > .cards-title {
+        font-weight: bold;
+        text-transform: uppercase;
+        text-shadow: 1px 1px 1px #000;
+        height: auto;
+        margin: 0;
+    }
+    .cards-Event > .card-img-overlay > a > .cards-desc {
+        text-shadow: 1px 1px 1px #000;
+        color: #cecece;
+        margin: 0;
+        bottom: 0;
+    }
+        /********************************************************************************************************/
+        /*                                                                                                      */
+        /*                                        media Queries                                                 */
+        /*                                                                                                      */
+        /********************************************************************************************************/
+        @media screen and (max-width: 1199px) {
+            .cards-columns .enterprise {
         align-content: center;
         margin: 1rem 0 1rem 0;
     }

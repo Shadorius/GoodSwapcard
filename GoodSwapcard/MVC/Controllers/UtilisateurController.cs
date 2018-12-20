@@ -16,7 +16,7 @@ namespace MVC.Controllers
     {
         BLRUtilisateur repo = new BLRUtilisateur();
         BLRStatut repoS = new BLRStatut();
-
+        [IsOkFor("Admin")]
         // GET: Utilisateur
         public ActionResult Index()
         {
@@ -86,6 +86,7 @@ namespace MVC.Controllers
             return View(util);
         }
 
+        [IsOkFor("Admin")]
         // POST: Utilisateur/Create
         [HttpPost]
         public ActionResult Create(AddUser util)
@@ -203,7 +204,7 @@ namespace MVC.Controllers
 
             return RedirectToAction("Index");
         }
-
+        [IsOkFor("Admin")]
         // GET: Utilisateur/Delete/5
         public ActionResult Delete(int id)
         {

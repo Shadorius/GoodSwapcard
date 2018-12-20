@@ -15,7 +15,7 @@ namespace MVC.Utils
         static BLRHourTime repoHourTime = new BLRHourTime();
         static BLRLocality repoLocality = new BLRLocality();
         static BLRCountry repoCountry = new BLRCountry();
-        static BLRSociety BLRSociety = new BLRSociety();
+        static BLRSociety repoSociety = new BLRSociety();
 
         internal static UtilisateurForEdit UtilisateurModelToEdit(Utilisateur uti)
         {
@@ -121,6 +121,7 @@ namespace MVC.Utils
                 Id = c.Id,
                 EvenementName = c.EvenementName,
                 DateEvent = c.DateEvent,
+                EventDesc = c.EventDesc,
                 Creator = UtilisateurCtoMVC(repoUtil.Get(c.IdUserCreator)),
                 EventPlace = PlaceCtoM(repoPlace.Get(c.IdPlace))
             };
@@ -345,18 +346,18 @@ namespace MVC.Utils
             return new SocietyUser()
             {
                 Id = s.Id,
-                IdUser = s.IdUser,
-                IdSociety = s.IdSociety
+                UserSoc = UtilisateurCtoMVC(repoUtil.Get(s.IdUser)),
+                CurrentSociety = SocietyCtoMVC(repoSociety.Get(s.IdSociety))
             };
         }
 
-        internal SocietyUserMC SocietyUserMVCtoC(SocietyUser s)
+        internal static SocietyUserMC SocietyUserMVCtoC(SocietyUser s)
         {
             return new SocietyUserMC()
             {
                 Id = s.Id,
-                IdUser = s.IdUser,
-                IdSociety = s.IdSociety
+                IdUser = s.UserSoc.Id,
+                IdSociety = s.CurrentSociety.Id
             };
         }
 
@@ -381,6 +382,26 @@ namespace MVC.Utils
                 IdUserTwo = p.UserTwo.Id,
                 Content = p.Content,
                 DateSend = p.DateSend
+            };
+        }
+
+        //Mapping EventSoc
+        internal static EventSoc EventSocCtoMVC(EventSocietyMC Esoc)
+        {
+            return new EventSoc() {
+                Id = Esoc.Id,
+                currentSoc = SocietyCtoMVC(repoSociety.Get(Esoc.IdSociety)),
+                currentEvent = EvenementCtoM(repoEvent.Get(Esoc.IdEvent))
+            };
+        }
+
+        internal static EventSocietyMC EventSocMVCtoC(EventSoc Esoc)
+        {
+            return new EventSocietyMC()
+            {
+                Id = Esoc.Id,
+                IdSociety = Esoc.currentSoc.Id,
+                IdEvent = Esoc.currentEvent.Id
             };
         }
 
