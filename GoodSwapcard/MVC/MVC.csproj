@@ -152,10 +152,12 @@
     <Compile Include="Models\Statut.cs" />
     <Compile Include="Models\StatutEvent.cs" />
     <Compile Include="Models\Utilisateur.cs" />
+    <Compile Include="Models\Views\AddEvent.cs" />
     <Compile Include="Models\Views\AddListSociety.cs" />
     <Compile Include="Models\Views\AddListUser.cs" />
     <Compile Include="Models\Views\AddSociety.cs" />
     <Compile Include="Models\Views\AddUser.cs" />
+    <Compile Include="Models\Views\ListLocalityEvent.cs" />
     <Compile Include="Models\Views\LogIn.cs" />
     <Compile Include="Models\Views\UtilisateurForInscription.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -259,6 +261,7 @@
     <Content Include="Views\Evenement\Index.cshtml" />
     <Content Include="Views\Evenement\_Details.cshtml" />
     <Content Include="Views\Evenement\Details.cshtml" />
+    <Content Include="Views\Evenement\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

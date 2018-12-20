@@ -65,6 +65,7 @@ namespace MVC.Utils
 
             return utilMC;
         }
+
         //Mapping Country
         internal static Country CountryCtoM(CountryMC c)
         {
@@ -191,6 +192,28 @@ namespace MVC.Utils
                 IdUser = p.UNotif.Id
             };
         }
+
+        internal static ListLocalityEvent EventMVCtoC(Place p)
+        {
+            return new ListLocalityEvent()
+            {
+                Id = p.Id,
+                Values = p.PlaceName +" : "+ p.Street + " " +p.Number + ", " + p.PLocality.CP + " " + p.PLocality.LocalityName + " - " + p.PLocality.LCountry.CountryName
+            };
+        }
+
+        internal static Evenement SetAddEvent(AddEvent c)
+        {
+            return new Evenement()
+            {
+                EvenementName = c.EvenementName,
+                DateEvent = c.DateEvent,
+                EventDesc = c.EventDesc,
+                Creator = UserSession.CurrentUser,
+                EventPlace = MappingModel.PlaceCtoM(repoPlace.Get(c.IdEvent.Id))
+            };
+        }
+
 
         //Mapping Locality
         internal static Locality LocalityCtoM(LocalityMC p)

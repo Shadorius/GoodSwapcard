@@ -94,7 +94,12 @@ body {
             font-size: 10px;
             color: #777;
         }
+textarea {
+    max-width: 100%;
+    width: 100%;
+}
 
+</style >
 /* Fallback for Edge
 -------------------------------------------------- */
 @supports (-ms-ime-align: auto) {

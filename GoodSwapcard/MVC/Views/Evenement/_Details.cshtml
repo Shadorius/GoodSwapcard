@@ -3,29 +3,43 @@
 <div>
     <h4>Evenement</h4>
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.EvenementName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.EvenementName)
-        </dd>
+        @* Nom *@
+        <dt>@Html.DisplayNameFor(model => model.EvenementName)</dt>
+        <dd>@Html.DisplayFor(model => model.EvenementName)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EventDesc)
-        </dt>
+        @* Description *@
+        <dt>@Html.DisplayNameFor(model => model.EventDesc)</dt>
+        <dd>@Html.DisplayFor(model => model.EventDesc)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.EventDesc)
-        </dd>
+        @* date *@
+        <dt>@Html.DisplayNameFor(model => model.DateEvent)</dt>
+        <dd>@Html.DisplayFor(model => model.DateEvent)</dd>
+        
+        @* Numéro / boite *@
+        <dt>@Html.DisplayNameFor(model => model.EventPlace.Number)</dt>        
+        <dd>@Html.DisplayFor(model => model.EventPlace.Number)</dd>
+        
+        @* Nom du lieu *@
+        <dt>@Html.DisplayNameFor(model => model.EventPlace.PlaceName)</dt>        
+        <dd>@Html.DisplayFor(model => model.EventPlace.PlaceName)</dd>
+        
+        @* Rue *@
+        <dt>@Html.DisplayNameFor(model => model.EventPlace.Street)</dt>        
+        <dd>@Html.DisplayFor(model => model.EventPlace.Street)</dd>
+        
+        @* Pays *@
+        <dt>@Html.DisplayNameFor(model => model.EventPlace.PLocality.LCountry)</dt>        
+        <dd>@Html.DisplayFor(model => model.EventPlace.PLocality.LCountry.CountryName)</dd>
+        
+        @* ville *@
+        <dt>@Html.DisplayNameFor(model => model.EventPlace.PLocality.LocalityName)</dt>        
+        <dd>@Html.DisplayFor(model => model.EventPlace.PLocality.LocalityName)</dd>
+        
+        @* code postal *@
+        <dt>@Html.DisplayNameFor(model => model.EventPlace.PLocality.CP)</dt>        
+        <dd>@Html.DisplayFor(model => model.EventPlace.PLocality.CP)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DateEvent)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateEvent)
-        </dd>
 
     </dl>
 </div>

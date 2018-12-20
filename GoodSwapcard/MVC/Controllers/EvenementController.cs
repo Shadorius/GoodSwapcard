@@ -1,4 +1,5 @@
 ﻿using BusinessLayer;
+using MVC.Models.Views;
 using MVC.Utils;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,6 @@ namespace MVC.Controllers
         // GET: Evenement
         public ActionResult Index()
         {
-            var a = repoEvent.GetAll().Select(x => MappingModel.EvenementCtoM(x)).ToList();
             return View(repoEvent.GetAll().Select(x => MappingModel.EvenementCtoM(x)).ToList());
         }
 
@@ -37,22 +37,33 @@ namespace MVC.Controllers
         // GET: Evenement/Create
         public ActionResult Create()
         {
-            return View();
+            AddEvent eventAdd = new AddEvent
+            {
+                ListEventPlace = repoPlace.GetAll().Select(x => MappingModel.PlaceCtoM(x)).Select(y => MappingModel.EventMVCtoC(y)).ToList()
+            };
+
+            return View(eventAdd);
         }
 
         // POST: Evenement/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(AddEvent eventAdd)
         {
             try
             {
-                // TODO: Add insert logic here
+                DateTime date = eventAdd.DateEvent.Value;
+                eventAdd.DateEvent = date;
+                repoEvent.Insert(MappingModel.EvenementMtoC(MappingModel.SetAddEvent(eventAdd)));
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                AddEvent eventAddreload = new AddEvent
+                {
+                    ListEventPlace = repoPlace.GetAll().Select(x => MappingModel.PlaceCtoM(x)).Select(y => MappingModel.EventMVCtoC(y)).ToList()
+                };
+                return View(eventAddreload);
             }
         }
 

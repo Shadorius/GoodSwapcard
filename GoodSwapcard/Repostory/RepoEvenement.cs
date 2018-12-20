@@ -65,7 +65,7 @@ namespace Repostory
 
         public bool Insert(EvenementMS item)
         {
-            string Query = "INSERT INTO [Evenement] Values (@0, @1, @2, @3, @4)";
+            string Query = "INSERT INTO [Evenement](EvenementName, EventDesc, DateEvent, IdUserCreator, IdPlace) Values (@0, @1, @2, @3, @4)";
 
             bool QueryResult = _con.Insert(Query, item.EvenementName, item.EventDesc, item.DateEvent, item.IdUserCreator, item.IdPlace);
             return QueryResult;

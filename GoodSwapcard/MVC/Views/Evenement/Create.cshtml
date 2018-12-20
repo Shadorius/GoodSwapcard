@@ -1,0 +1,111 @@
+﻿@model MVC.Models.Views.AddEvent
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Créer un évènement</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="row">
+        <div class="col-6">
+            @* Nom de l'event *@
+            <div class="form-label-group">
+                @Html.EditorFor(model => model.EvenementName, new { htmlAttributes = new { @class = "form-control ", @placeholder = "Nom" } })
+                @Html.LabelFor(model => model.EvenementName, htmlAttributes: new { @class = "control-label" })
+                @Html.ValidationMessageFor(model => model.EvenementName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-6">
+            @* date de l'event *@
+            <div class="form-label-group">
+                @Html.EditorFor(model => model.DateEvent, new { htmlAttributes = new { @class = "form-control col-12" } })
+                @Html.LabelFor(model => model.DateEvent.Value, htmlAttributes: new { @class = "control-label" })
+                @Html.ValidationMessageFor(model => model.DateEvent, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            @* Description *@
+            <div class="form-label-group">
+                @Html.TextAreaFor(model => model.EventDesc, new { htmlAttributes = new { @class = "form-control"} })
+                @Html.ValidationMessageFor(model => model.EventDesc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-label-group">
+        @Html.DropDownListFor(model => model.IdEvent.Id, new SelectList(Model.ListEventPlace, "Id", "Values"), "Choisir un statut", new { @class = "form-control col-12" })
+        @Html.ValidationMessageFor(model => model.IdEvent.Id, "", new { @class = "text-danger" })
+        @*@Html.DropDownListFor(model => model.Utilisateur.statut.Id, new SelectList(Model.Statuts, "Id", "StatutName"), "Choisir un statut", new { @class = "form-control col-12" })
+            @Html.ValidationMessageFor(model => model.Utilisateur.statut.Id, "", new { @class = "text-danger" })*@
+    </div>
+
+    <div class="clearfix">
+        <div class="float-right">
+            <input type="submit" value="Ajouter" class="btn btn-success btn-block" />
+            @*<input type="reset" value="Reset" class="btn btn-secondary" />*@
+        </div>
+    </div>
+</div>
+}
+
+@section Scripts {
+    <script type="text/javascript">
+        $(function () {
+            $("#EventDesc").html("Entre une description");
+        });
+    </script>
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+@*<div class="row">
+         lieu
+        <div class="col-5">
+            <div class="form-label-group">
+                @Html.EditorFor(model => model.EventPlace.PlaceName, new { htmlAttributes = new { @class = "form-control col-12" } })
+                @Html.LabelFor(model => model.EventPlace.PlaceName, htmlAttributes: new { @class = "control-label" })
+            </div>
+        </div>
+       Street
+        <div class="col-5">
+            <div class="form-label-group">
+                @Html.EditorFor(model => model.EventPlace.Street, new { htmlAttributes = new { @class = "form-control col-12" } })
+                @Html.LabelFor(model => model.EventPlace.Street, htmlAttributes: new { @class = "control-label" })
+            </div>
+        </div>
+        <div class="col-2">
+             Number
+            <div class="form-label-group">
+                @Html.EditorFor(model => model.EventPlace.Number, new { htmlAttributes = new { @class = "form-control col-12" } })
+                @Html.LabelFor(model => model.EventPlace.Number, htmlAttributes: new { @class = "control-label" })
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+          Ville
+            <div class="form-label-group">
+                @Html.EditorFor(model => model.EventPlace.PLocality.LocalityName, new { htmlAttributes = new { @class = "form-control col-12" } })
+                @Html.LabelFor(model => model.EventPlace.PLocality, htmlAttributes: new { @class = "control-label" })
+            </div>
+        </div>
+        <div class="col-6">
+            code postal
+            <div class="form-label-group">
+                @Html.EditorFor(model => model.EventPlace.PLocality.CP, new { htmlAttributes = new { @class = "form-control col-12" } })
+                @Html.LabelFor(model => model.EventPlace.PLocality.CP, htmlAttributes: new { @class = "control-label" })
+            </div>
+        </div>
+    </div>
+     Pays*@
