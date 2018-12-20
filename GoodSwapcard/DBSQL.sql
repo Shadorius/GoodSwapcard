@@ -96,6 +96,12 @@ CREATE TABLE EventUser (
 	IdStatutEvent int NOT NULL CONSTRAINT FK_StatutEvent FOREIGN KEY (IdStatutEvent) REFERENCES StatutEvent (Id)
 );
 
+CREATE TABLE EventSoc(
+	Id int IDENTITY(1,1) PRIMARY KEY,
+	IdSociety int NOT NULL CONSTRAINT FK_EventSoc FOREIGN KEY (IdSociety) REFERENCES Society(Id),
+	IdEvent int NOT NULL CONSTRAINT FK_EventSocId Foreign key (IdEvent) REFERENCES Evenement(Id)
+);
+
 --Table Heure
 CREATE TABLE HourTime (
 	Id int IDENTITY(1,1) Primary Key,

@@ -140,6 +140,7 @@
     </Compile>
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Evenement.cs" />
+    <Compile Include="Models\EventSoc.cs" />
     <Compile Include="Models\EventUser.cs" />
     <Compile Include="Models\HourTime.cs" />
     <Compile Include="Models\Locality.cs" />
