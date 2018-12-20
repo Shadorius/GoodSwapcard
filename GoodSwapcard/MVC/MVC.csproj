@@ -269,6 +269,7 @@
     <Content Include="Views\Evenement\Details.cshtml" />
     <Content Include="Views\Home\Edit.cshtml" />
     <Content Include="Views\Evenement\Create.cshtml" />
+    <Content Include="Views\Evenement\ListUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

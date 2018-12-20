@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = "Details";
 }
+@using MVC.Models
 
 
 <h2>@ViewBag.EventName</h2>
@@ -23,8 +24,9 @@
         </div>
         <div class="tab-pane fade show" id="AllPart" role="tabpanel" aria-labelledby="AllPart-tab">
             <div class="cards-columns">
+                @Html.Action("ListUser", "Evenement", new { id = ViewBag.idEvent })
                 @*@foreach (var item in Model)
-                    {*@
+        {*@
                 <article class="cards">
                     <img class="cards-img-top" src="~/Img/mdr.jpg" alt="Card image cap">
                     <div class="cards-body">

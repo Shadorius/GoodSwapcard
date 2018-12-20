@@ -23,6 +23,11 @@ namespace BusinessLayer
             return repo.GetAll().Select(x => MappingModel.EventUserStoC(x)).ToList();
         }
 
+        public List<EventUserMC> GetAllById(int id)
+        {
+            return repo.GetAllById(id).Select(x => MappingModel.EventUserStoC(x)).ToList();
+        }
+
         public bool Insert(EventUserMC item)
         {
             return repo.Insert(MappingModel.EventUserCtoS(item));

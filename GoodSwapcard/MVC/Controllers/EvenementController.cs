@@ -1,4 +1,5 @@
 ﻿using BusinessLayer;
+using MVC.Models;
 using MVC.Models.Views;
 using MVC.Utils;
 using System;
@@ -15,6 +16,8 @@ namespace MVC.Controllers
         BLRPlace repoPlace = new BLRPlace();
         BLRLocality repoLocality = new BLRLocality();
         BLRCountry repoCountry = new BLRCountry();
+        BLRUtilisateur repoUser = new BLRUtilisateur();
+        BLREventUser repoEventUser = new BLREventUser();
 
         // GET: Evenement
         public ActionResult Index()
@@ -30,9 +33,21 @@ namespace MVC.Controllers
         // GET: Evenement/Details/5
         public ActionResult Details(int id)
         {
+
+            //repoEvent.GetAll().Select(x => MappingModel.EvenementCtoM(x)).Where(y => y.id).ToList();
+            //repoUser.GetAll().Select(x => MappingModel.UtilisateurCtoMVC(x)).ToList();
+
             ViewBag.idEvent = id;
             ViewBag.EventName = repoEvent.Get(id).EvenementName;
             return View();
+        }
+
+        public PartialViewResult ListUser(int id)
+        {
+
+            List<Utilisateur> u = repoEventUser.GetAllById(id).Select(x => MappingModel.UtilisateurCtoMVC(repoUser.Get(x.IdUser))).ToList();
+
+            return PartialView("ListUser", u);
         }
 
         // GET: Evenement/Create
