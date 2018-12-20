@@ -15,6 +15,7 @@ namespace MVC.Controllers
     {
         BLRUtilisateur repo = new BLRUtilisateur();
         BLRMessagerie Mess_repo = new BLRMessagerie();
+        BLRStatut repoStatut = new BLRStatut();
 
         public ActionResult Index()
         {
@@ -68,6 +69,70 @@ namespace MVC.Controllers
             ViewBag.CodeErrorConnection = 1;
             ViewBag.errorConnection = " L\'adresse ou mot de passe incorrecte";
             return View("Index");
+        }
+
+        public ActionResult Edit(int? id)
+        {
+            if (id != null)
+            {
+                EditUser utilisateur = new EditUser();
+                utilisateur.Utilisateur = MappingModel.UtilisateurModelToEdit(MappingModel.UtilisateurCtoMVC(repo.Get((int)id)));
+                utilisateur.Utilisateur.PsW = "";
+                utilisateur.Statuts = repoStatut.GetAll().Select(x => MappingModel.StatutCtoM(x)).ToList();
+                return View(utilisateur);
+            }
+            return HttpNotFound();
+        }
+
+        [HttpPost]
+        public ActionResult Edit(UtilisateurForEdit utilisateur)
+        {
+            if (ModelState.IsValid)
+            {
+                if (utilisateur.PsW != null)
+                {
+                    using (MD5 md5Hash = MD5.Create())
+                    {
+                        string hash = HashageMD5.GetMd5Hash(md5Hash, utilisateur.PsW);
+                        if (HashageMD5.VerifyMd5Hash(md5Hash, utilisateur.PsW, hash))
+                        {
+                            utilisateur.PsW = hash;
+                        }
+                        else
+                        {
+                            ViewBag.CodeError = 1;
+                            return RedirectToAction("Index");
+                        }
+                    }
+                }
+                else
+                {
+                    int idUser = utilisateur.Id;
+                    AddUser userDB = new AddUser();
+                    userDB.Utilisateur = MappingModel.UtilisateurCtoMVC(repo.Get(idUser));
+                    utilisateur.PsW = userDB.Utilisateur.PsW;
+                }
+
+                if (utilisateur.Birthdate.HasValue)
+                {
+                    DateTime date = utilisateur.Birthdate.Value;
+                    utilisateur.Birthdate = date;
+                }
+               
+                Utilisateur test = new Utilisateur();
+                test = MappingModel.UtilisateurCtoMVC(repo.Get(utilisateur.Id));
+                
+                Utilisateur util = MappingModel.UtilisateurEdittoModel(utilisateur);
+                util.statut.Id = test.statut.Id;
+
+                repo.Update(MappingModel.UtilisateurtoS(util));
+            }
+            else
+            {
+                return View();
+            }
+
+            return RedirectToAction("Index");
         }
 
         public ActionResult About()

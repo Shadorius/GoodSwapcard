@@ -265,10 +265,12 @@
     <Content Include="Views\Evenement\Index.cshtml" />
     <Content Include="Views\Evenement\_Details.cshtml" />
     <Content Include="Views\Evenement\Details.cshtml" />
+    <Content Include="Views\Home\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Country\" />
+    <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
