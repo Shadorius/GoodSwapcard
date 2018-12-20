@@ -31,6 +31,7 @@ namespace MVC.Controllers
         public ActionResult Details(int id)
         {
             ViewBag.idEvent = id;
+            ViewBag.EventName = repoEvent.Get(id).EvenementName;
             return View();
         }
 

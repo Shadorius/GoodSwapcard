@@ -1,35 +1,17 @@
 ﻿@model MVC.Models.Evenement
 
 <div>
-    <h4>Evenement</h4>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.EvenementName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EvenementName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EventDesc)
-        </dt>
-
-        <dd>
+    <div class="EventDetails">
+        <address class="jumbotron addressEvent">
+            @Html.DisplayFor(model => model.DateEvent)<br />
+            <strong>@Html.DisplayFor(model => model.EventPlace.PlaceName)</strong><br />
+            @Html.DisplayFor(model => model.EventPlace.Street) @Html.DisplayFor(model => model.EventPlace.Number),<br />
+            @Html.DisplayFor(model => model.EventPlace.PLocality.CP) @Html.DisplayFor(model => model.EventPlace.PLocality.LocalityName)<br />
+            @Html.DisplayFor(model => model.EventPlace.PLocality.LCountry.CountryName)
+        </address>
+        <div class="desc">
             @Html.DisplayFor(model => model.EventDesc)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateEvent)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateEvent)
-        </dd>
-
-    </dl>
+        </div>
+    </div>
+    <button onclick="location.href='/Evenement/Index'" type="button" class="btn btn-outline-info"> <i class="far fa-arrow-alt-circle-left"></i> Retour aux évènements</button>
 </div>
-<p>
-    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id })*@ |
-    @Html.ActionLink("Back to List", "Index")
-</p>

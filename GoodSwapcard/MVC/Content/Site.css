@@ -20,8 +20,8 @@ body {
 /********************************************************************************************************/
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -183,13 +183,30 @@ a:hover{
     padding-top: 1rem;
 }
 
+.table-responsive {
+    overflow-x: inherit;
+}
+.lign-btn {
+    width: 1%;
+    padding: 0;
+}
+
+.addressEvent {
+    padding: 1rem;
+    width: auto;
+}
+
+.EventDetails > .desc {
+    margin: 1rem 1rem 3rem 1rem;
+}
 /********************************************************************************************************/
 /*                                                                                                      */
 /*                             Cards remplacing bootstrap card                                          */
 /*                                                                                                      */
 /********************************************************************************************************/
-.cards-columns{
-    display:flex;
+.cards-columns {
+    width: 100%;
+    display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: stretch;
@@ -309,9 +326,13 @@ a:hover{
     height: 7rem;
 }
 
-
+/********************************************************************************************************/
+/*                                                                                                      */
+/*                                      Evenement cards                                                 */
+/*                                                                                                      */
+/********************************************************************************************************/
 .cards-Event {
-    width: 28.5rem;
+    width: 30%;
     height: 10rem;
     margin: 1rem;
 }
@@ -348,13 +369,13 @@ a:hover{
         margin: 0;
         bottom: 0;
     }
-        /********************************************************************************************************/
-        /*                                                                                                      */
-        /*                                        media Queries                                                 */
-        /*                                                                                                      */
-        /********************************************************************************************************/
-        @media screen and (max-width: 1199px) {
-            .cards-columns .enterprise {
+/********************************************************************************************************/
+/*                                                                                                      */
+/*                                        media Queries                                                 */
+/*                                                                                                      */
+/********************************************************************************************************/
+@media screen and (max-width: 1199px) {
+    .cards-columns .enterprise {
         align-content: center;
         margin: 1rem 0 1rem 0;
     }
@@ -380,9 +401,15 @@ a:hover{
         margin-left: 85%;
 
     }
+            .cards-Event {
+                width: 45%;
+            }
 }
 
 @media screen and (max-width: 991px) {
+    .table-responsive {
+        overflow-x: auto;
+    }
     .cards {
         max-width: 42%;
         margin: 1rem 0 1rem 2rem;
@@ -413,8 +440,11 @@ a:hover{
         margin-left: 80%;
 
     }
+
+ 
 }
 @media screen and (max-width: 767px) {
+    
     .cards-columns {
         align-content: center;
         margin: 1rem 0 1rem 0;
@@ -443,5 +473,8 @@ a:hover{
         font-size: 0.8rem;
         margin: 0.5rem;
         text-align: left;
+    }
+    .cards-Event {
+        width: 100%;
     }
 }

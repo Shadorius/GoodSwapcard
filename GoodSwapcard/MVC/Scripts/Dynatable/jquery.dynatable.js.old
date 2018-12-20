@@ -719,7 +719,7 @@
       }
       text += recordsQueryCount + " " + collection_name;
       if (recordsQueryCount < recordsTotal) {
-        text += " ";
+        text += " (filtere depuis " + recordsTotal + " elements)";
       }
 
       return $('<span></span>', {
