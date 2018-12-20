@@ -368,5 +368,25 @@ namespace BusinessLayer
                 DateSend = Mess.DateSend
             };
         }
+
+        //mapping EventSoc
+        internal static EventSocietyMC EventSocStoC(EventSocietyMS Esoc)
+        {
+            return new EventSocietyMC() {
+                Id = Esoc.Id,
+                IdEvent = Esoc.IdEvent,
+                IdSociety = Esoc.IdSociety
+            };
+        }
+
+        internal static EventSocietyMS EventSocCtoS(EventSocietyMC Esoc)
+        {
+            return new EventSocietyMS()
+            {
+                Id = Esoc.Id,
+                IdEvent = Esoc.IdEvent,
+                IdSociety = Esoc.IdSociety
+            };
+        }
     }
 }

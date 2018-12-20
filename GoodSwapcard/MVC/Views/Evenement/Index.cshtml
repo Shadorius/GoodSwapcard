@@ -3,51 +3,61 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="float-left">
+    <button onclick="location.href='@Url.Action("Create", "Evenement")'" type="button" class="btn btn-info">Créer un nouvel Evenement</button>
+</div>
 
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table" id="my-table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.EvenementName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DateEvent)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
+<div class="cards-columns" id="my-table">
+    @foreach (var item in Model)
+    {
+        <article class="card cards-Event">
+            <img class="card-img" src="~/Img/mdr.jpg" alt="Card image cap">
+            <div class="card-img-overlay">
+                <div hidden class="id">@Html.DisplayFor(modelItem => item.Id)</div>
+                <button onclick="location.href='@Url.Action("Subscribe", "Evenement",  new { item.Id})'" type="button" class="btn btn-info">Subscribe</button>
+                @*<button onclick="location.href='@Url.Action("Subscribe", "Event",  new { item.Id})'" type="button" class="btn btn-danger">Unsubscribe</button>*@
 
-        @foreach (var item in Model)
-        {
-            <tbody>
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.EvenementName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DateEvent)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                    </td>
-                </tr>
-            </tbody>
+                <a href="@Url.Action("Details",  new { item.Id})">
+                    <h4 class="cards-title">@Html.DisplayFor(modelItem => item.EvenementName) </h4>
+                    <p class="cards-desc"> @Html.DisplayFor(modelItem => item.DateEvent) - @Html.DisplayFor(modelItem => item.EventPlace.PlaceName) </p>
+                </a>
+            </div>
+        </article>
+    }
+</div>
+
+@section Scripts {
+
+    <script>
+        function ulWriter(rowIndex,record, columns, cellWriter) {
+            var cssClass = "card cards-Event", article;
+            article = '<article class="' + cssClass + '"><img class="card-img" src="/Img/mdr.jpg" alt="card image cap"><div class="card-img-overlay"><div hidden class="id">' + record.Id + '</div><button onclick="/Subscribe/Event/' + record.Id + '" type="button" class="btn btn-info">Subscribe</button><a href="/Evenement/Details/' + record.Id + '"><h4 class="cards-title">' + record.label + '</h4><p class="cards-desc">' + record.description + '</p></a></div></article>';
+            return article;
+        }
+        function ulReader(index, article, record) {
+            var $article = $(article);
+            record.Id = $article.find('.id').text();
+            record.thumbnail = $article.find('.card-img').html();
+            record.label = $article.find('.cards-title').text();
+            record.description = $article.find('.cards-desc').text();
         }
 
-    </table>
-
-    @section Scripts {
-
-        <script>
-            $('#my-table').dynatable({
-                table: {
-                    defaultColumnIdStyle: 'trimDash'
-                }
-            });
-        </script>
-    }
+        $('#my-table').dynatable({
+            features: {
+                pagination: true,
+                search: true,
+                recordCount: true,
+                perPageSelect: false
+            },
+            table: {
+                bodyRowSelector: 'article',
+            },
+            writers: {
+                _rowWriter: ulWriter
+            },
+            readers: {
+                _rowReader: ulReader
+            }
+        });
+    </script>
+}

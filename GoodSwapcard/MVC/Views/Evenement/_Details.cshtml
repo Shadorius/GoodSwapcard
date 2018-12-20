@@ -1,49 +1,17 @@
 ﻿@model MVC.Models.Evenement
 
 <div>
-    <h4>Evenement</h4>
-    <dl class="dl-horizontal">
-
-        @* Nom *@
-        <dt>@Html.DisplayNameFor(model => model.EvenementName)</dt>
-        <dd>@Html.DisplayFor(model => model.EvenementName)</dd>
-
-        @* Description *@
-        <dt>@Html.DisplayNameFor(model => model.EventDesc)</dt>
-        <dd>@Html.DisplayFor(model => model.EventDesc)</dd>
-
-        @* date *@
-        <dt>@Html.DisplayNameFor(model => model.DateEvent)</dt>
-        <dd>@Html.DisplayFor(model => model.DateEvent)</dd>
-        
-        @* Numéro / boite *@
-        <dt>@Html.DisplayNameFor(model => model.EventPlace.Number)</dt>        
-        <dd>@Html.DisplayFor(model => model.EventPlace.Number)</dd>
-        
-        @* Nom du lieu *@
-        <dt>@Html.DisplayNameFor(model => model.EventPlace.PlaceName)</dt>        
-        <dd>@Html.DisplayFor(model => model.EventPlace.PlaceName)</dd>
-        
-        @* Rue *@
-        <dt>@Html.DisplayNameFor(model => model.EventPlace.Street)</dt>        
-        <dd>@Html.DisplayFor(model => model.EventPlace.Street)</dd>
-        
-        @* Pays *@
-        <dt>@Html.DisplayNameFor(model => model.EventPlace.PLocality.LCountry)</dt>        
-        <dd>@Html.DisplayFor(model => model.EventPlace.PLocality.LCountry.CountryName)</dd>
-        
-        @* ville *@
-        <dt>@Html.DisplayNameFor(model => model.EventPlace.PLocality.LocalityName)</dt>        
-        <dd>@Html.DisplayFor(model => model.EventPlace.PLocality.LocalityName)</dd>
-        
-        @* code postal *@
-        <dt>@Html.DisplayNameFor(model => model.EventPlace.PLocality.CP)</dt>        
-        <dd>@Html.DisplayFor(model => model.EventPlace.PLocality.CP)</dd>
-
-
-    </dl>
+    <div class="EventDetails">
+        <address class="jumbotron addressEvent">
+            @Html.DisplayFor(model => model.DateEvent)<br />
+            <strong>@Html.DisplayFor(model => model.EventPlace.PlaceName)</strong><br />
+            @Html.DisplayFor(model => model.EventPlace.Street) @Html.DisplayFor(model => model.EventPlace.Number),<br />
+            @Html.DisplayFor(model => model.EventPlace.PLocality.CP) @Html.DisplayFor(model => model.EventPlace.PLocality.LocalityName)<br />
+            @Html.DisplayFor(model => model.EventPlace.PLocality.LCountry.CountryName)
+        </address>
+        <div class="desc">
+            @Html.DisplayFor(model => model.EventDesc)
+        </div>
+    </div>
+    <button onclick="location.href='/Evenement/Index'" type="button" class="btn btn-outline-info"> <i class="far fa-arrow-alt-circle-left"></i> Retour aux évènements</button>
 </div>
-<p>
-    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id })*@ |
-    @Html.ActionLink("Back to List", "Index")
-</p>

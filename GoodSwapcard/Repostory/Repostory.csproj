@@ -45,6 +45,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interface\IRepository.cs" />
     <Compile Include="RepoEvenement.cs" />
+    <Compile Include="RepoEventSociety.Cs" />
     <Compile Include="RepoEventUser.cs" />
     <Compile Include="RepoHourTime.cs" />
     <Compile Include="RepoLocality.cs" />
