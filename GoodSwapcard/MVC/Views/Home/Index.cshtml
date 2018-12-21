@@ -4,8 +4,19 @@
 
 <section>
     <div class="jumbotron">
-        <video scr="~/Movies/movie.mp4" height="80%" width="auto" autoplay loop>
+        <video style="width:100%; height:auto;" autoplay  preload="auto">
+            <source src="~/Movies/movie.mp4" type="video/mp4">
+            <source src="~/Movies/ThierryMorre.ogg" type="video/ogg">
             Your Browser does not support the video tag.
         </video>
     </div>
 </section>
+
+@section scripts{
+    <script>
+        $('video').on('ended', function () {
+        this.load();
+        this.play();
+        });
+    </script>
+}
