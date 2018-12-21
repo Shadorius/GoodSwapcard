@@ -72,7 +72,7 @@ namespace MVC.Controllers
             //SocietyList.ForEach(x => x.UtilEvent = repoSocietyUser.GetAllById(x.SocietyEvent.Id).Select(y => MappingModel.UtilisateurCtoMVC(repoUser.Get(y.IdUser))).ToList());
 
 
-            return View();
+            return View(SocietyList);
         }
 
         // GET: Evenement/Create
