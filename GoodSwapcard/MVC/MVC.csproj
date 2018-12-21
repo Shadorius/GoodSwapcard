@@ -259,17 +259,16 @@
     <Content Include="Views\Society\_Edit.cshtml" />
     <Content Include="Views\Shared\_LogIn.cshtml" />
     <Content Include="Views\Home\Logok.cshtml" />
-    <Content Include="Views\Society\_Create.cshtml" />
     <Content Include="Views\Home\Messages.cshtml" />
     <Content Include="Views\Utilisateur\_Details.cshtml" />
     <Content Include="Views\Utilisateur\_Edit.cshtml" />
-    <Content Include="Views\Society\_Create.cshtml" />
     <Content Include="Views\Evenement\Index.cshtml" />
     <Content Include="Views\Evenement\_Details.cshtml" />
     <Content Include="Views\Evenement\Details.cshtml" />
     <Content Include="Views\Home\Edit.cshtml" />
     <Content Include="Views\Evenement\Create.cshtml" />
     <Content Include="Views\Evenement\ListUser.cshtml" />
+    <Content Include="Views\Society\_Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

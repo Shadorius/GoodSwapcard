@@ -119,11 +119,11 @@ namespace MVC.Controllers
                     utilisateur.Birthdate = date;
                 }
                
-                Utilisateur test = new Utilisateur();
-                test = MappingModel.UtilisateurCtoMVC(repo.Get(utilisateur.Id));
+                //Utilisateur test = new Utilisateur();
+                //test = MappingModel.UtilisateurCtoMVC(repo.Get(utilisateur.Id));
                 
                 Utilisateur util = MappingModel.UtilisateurEdittoModel(utilisateur);
-                util.statut.Id = test.statut.Id;
+                //util.statut.Id = test.statut.Id;
 
                 repo.Update(MappingModel.UtilisateurtoS(util));
             }

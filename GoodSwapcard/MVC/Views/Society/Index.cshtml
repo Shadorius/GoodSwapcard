@@ -59,7 +59,8 @@
                                 @Html.DisplayFor(modelItem => item.Boss.LastName)
                             </td>
                             <td class="text-center">
-                                <button data-toggle="modal" data-target="#editModal" data-id="@item.Id" type="button" class="open-EditSocietyDialog btn btn-success"> <i class="far fa-edit"></i></button>
+                                <button data-id="@item.Id" type="button" class="open-EditSocietyDialog btn btn-success"> <i class="far fa-edit"></i></button>
+                                @*<button data-toggle="modal" data-target="#editModal" data-id="@item.Id" type="button" class="open-EditSocietyDialog btn btn-success"> <i class="far fa-edit"></i></button>*@
                             </td>
                             <td class="text-center">
                                 <button data-toggle="modal" data-target="#detailsModal" data-id="@item.Id" type="button" class="open-DetailsSocietyDialog btn btn-info"> <i class="far fa-address-card"></i></button>
