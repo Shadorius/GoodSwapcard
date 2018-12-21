@@ -62,7 +62,7 @@ namespace Repostory
 
         public List<EventSocietyMS> GetAllById(int id)
         {
-            string Query = "Select * from [EventSoc] where IdEvent"+id;
+            string Query = "Select * from [EventSoc] where IdEvent ="+id;
             List<Dictionary<string, object>> Result = con.getData(Query);
             List<EventSocietyMS> CurrentList = new List<EventSocietyMS>();
 
