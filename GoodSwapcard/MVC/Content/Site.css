@@ -129,6 +129,17 @@ textarea {
 /*                                           General                                                    */
 /*                                                                                                      */
 /********************************************************************************************************/
+
+.dropdown-item:hover {
+    background-color: #343a40;
+    color: #FEFEFE;
+}
+.dropdown-menu {
+    background-color: #CCCCCC;
+}
+.dropdown-toggle {
+    background-color: #343A40;
+}
 .body-content {
     min-height: 110%;
     background: rgba(30,30,30,0.6);
