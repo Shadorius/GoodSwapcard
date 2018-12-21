@@ -60,6 +60,28 @@ namespace Repostory
             return CurrentList;
         }
 
+        public List<EventSocietyMS> GetAllById(int id)
+        {
+            string Query = "Select * from [EventSoc] where IdEvent ="+id;
+            List<Dictionary<string, object>> Result = con.getData(Query);
+            List<EventSocietyMS> CurrentList = new List<EventSocietyMS>();
+
+            if (Result.Count != 0)
+            {
+                for (int i = 0; i < Result.Count; i++)
+                {
+                    EventSocietyMS societyUser = new EventSocietyMS
+                    {
+                        Id = (int)Result[i]["Id"],
+                        IdSociety = (int)Result[i]["IdSociety"],
+                        IdEvent = (int)Result[i]["IdEvent"]
+                    };
+                    CurrentList.Add(societyUser);
+                }
+            }
+            return CurrentList;
+        }
+
         public bool Insert(EventSocietyMS item)
         {
             string Query = "INSERT INTO [EventSoc] Values (@0,@1)";

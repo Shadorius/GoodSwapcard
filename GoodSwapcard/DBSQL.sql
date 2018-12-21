@@ -212,9 +212,15 @@ INSERT INTO Society VALUES('Intergraph','grande desc','petite description','imag
 
 --Table SocietyUser
 INSERT INTO SocietyUser VALUES (1,2);
+INSERT INTO SocietyUser VALUES (1,3);
+INSERT INTO SocietyUser VALUES (1,1);
+INSERT INTO SocietyUser VALUES (2,1);
 INSERT INTO SocietyUser VALUES (2,3);
+INSERT INTO SocietyUser VALUES (2,2);
 INSERT INTO SocietyUser VALUES (3,1);
-
+INSERT INTO SocietyUser VALUES (3,2);
+INSERT INTO SocietyUser VALUES (4,1);
+INSERT INTO SocietyUser VALUES (4,3);
 --Table Place
 INSERT INTO Place (PlaceName, Street, Number, IdLoc) VALUES ('PAM Expo', 'rue du coin', '5', 4);
 INSERT INTO Place (PlaceName, Street, Number, IdLoc) VALUES ('Waux Hall', 'grand place', '2', 5);
@@ -222,11 +228,11 @@ INSERT INTO Place (PlaceName, Street, Number, IdLoc) VALUES ('Palais 12', 'plate
 INSERT INTO Place (PlaceName, Street, Number, IdLoc) VALUES ('Namur Expo', 'rue du bois', '789', 2);
 
 --Table Event
-INSERT INTO Evenement (EvenementName, EventDesc, DateEvent, IdUserCreator, IdPlace) VALUES ('Salon de l''emploi', 'Salon de l''emploie dédié aux métiers du domaine de l''informatique','2018-11-09 08:00:00', 1,2);
-INSERT INTO Evenement (EvenementName, EventDesc, DateEvent, IdUserCreator, IdPlace) VALUES ('Blizzcon', 'Salon de dédié aux produits Blizzard','2018-11-24 09:30:00', 2,4);
-INSERT INTO Evenement (EvenementName, EventDesc, DateEvent, IdUserCreator, IdPlace) VALUES ('Salon de l''Erotisme', 'Faut vraiment vous dire ce qu''on y fait? (-_(-_-)_-)','2018-09-04 09:30:00', 2,4);
-INSERT INTO Evenement (EvenementName, EventDesc, DateEvent, IdUserCreator, IdPlace) VALUES ('Salon de l''emploi', 'Salon de l''emploie dédié aux métiers du domaine de l''informatique','2017-11-09 08:00:00', 1,3);
-INSERT INTO Evenement (EvenementName, EventDesc, DateEvent, IdUserCreator, IdPlace) VALUES ('Salon de l''emploi', 'Salon de l''emploie dédié aux métiers du domaine de l''informatique','2016-11-09 08:00:00', 1,4);
+INSERT INTO Evenement (EvenementName, EventDesc, DateEvent, IdUserCreator, IdPlace) VALUES ('Salon de l''emploi', 'Salon de l''emploie dédié aux métiers du domaine de l''informatique','2019-11-09 08:00:00', 1,2);
+INSERT INTO Evenement (EvenementName, EventDesc, DateEvent, IdUserCreator, IdPlace) VALUES ('Blizzcon', 'Salon dédié aux produits Blizzard','2019-11-24 09:30:00', 2,4);
+INSERT INTO Evenement (EvenementName, EventDesc, DateEvent, IdUserCreator, IdPlace) VALUES ('Salon de l''Erotisme', 'Faut vraiment vous dire ce qu''on y fait? (-_(-_-)_-)','2019-09-04 09:30:00', 2,4);
+INSERT INTO Evenement (EvenementName, EventDesc, DateEvent, IdUserCreator, IdPlace) VALUES ('Salon de l''emploi', 'Salon de l''emploie dédié aux métiers du domaine de l''informatique','2019-11-09 08:00:00', 1,3);
+INSERT INTO Evenement (EvenementName, EventDesc, DateEvent, IdUserCreator, IdPlace) VALUES ('Salon de l''emploi', 'Salon de l''emploie dédié aux métiers du domaine de l''informatique','2019-11-09 08:00:00', 1,4);
 
 --Table Messages
 INSERT INTO Messagerie (IdUserOne, IdUserTwo, Content) VALUES (1,2,'Blablablabla ojdihjo^hôuhg dzadnia diajdiazjd dzjdaohhd âoidhz doâihd ');
@@ -274,3 +280,28 @@ INSERT INTO HourTime VALUES (17,0);
 INSERT INTO HourTime VALUES (17,15);
 INSERT INTO HourTime VALUES (17,30);
 INSERT INTO HourTime VALUES (17,45);
+
+--EventUser
+INSERT INTO EventUser (IdUser,IdEvent,IdStatutEvent) VALUES (1,1,1);
+INSERT INTO EventUser (IdUser,IdEvent,IdStatutEvent) VALUES (1,2,1);
+INSERT INTO EventUser (IdUser,IdEvent,IdStatutEvent) VALUES (1,3,1);
+INSERT INTO EventUser (IdUser,IdEvent,IdStatutEvent) VALUES (2,1,1);
+INSERT INTO EventUser (IdUser,IdEvent,IdStatutEvent) VALUES (2,2,1);
+INSERT INTO EventUser (IdUser,IdEvent,IdStatutEvent) VALUES (2,3,1);
+INSERT INTO EventUser (IdUser,IdEvent,IdStatutEvent) VALUES (2,4,1);
+INSERT INTO EventUser (IdUser,IdEvent,IdStatutEvent) VALUES (3,1,1);
+INSERT INTO EventUser (IdUser,IdEvent,IdStatutEvent) VALUES (3,2,1);
+INSERT INTO EventUser (IdUser,IdEvent,IdStatutEvent) VALUES (3,3,1);
+INSERT INTO EventUser (IdUser,IdEvent,IdStatutEvent) VALUES (4,3,1);
+INSERT INTO EventUser (IdUser,IdEvent,IdStatutEvent) VALUES (5,1,1);
+
+--EventSociety
+INSERT INTO EventSoc (IdSociety,IdEvent) VALUES (1,1);
+INSERT INTO EventSoc (IdSociety,IdEvent) VALUES (1,2);
+INSERT INTO EventSoc (IdSociety,IdEvent) VALUES (1,3);
+INSERT INTO EventSoc (IdSociety,IdEvent) VALUES (2,1);
+INSERT INTO EventSoc (IdSociety,IdEvent) VALUES (2,2);
+INSERT INTO EventSoc (IdSociety,IdEvent) VALUES (2,3);
+INSERT INTO EventSoc (IdSociety,IdEvent) VALUES (2,4);
+INSERT INTO EventSoc (IdSociety,IdEvent) VALUES (3,1);
+INSERT INTO EventSoc (IdSociety,IdEvent) VALUES (3,2);

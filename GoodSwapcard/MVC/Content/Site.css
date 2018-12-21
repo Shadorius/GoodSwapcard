@@ -204,6 +204,41 @@ a:hover{
 .EventDetails > .desc {
     margin: 1rem 1rem 3rem 1rem;
 }
+
+/********************************************************************************************************/
+/*                                                                                                      */
+/*                                      Notifications                                                   */
+/*                                                                                                      */
+/********************************************************************************************************/
+
+.unstyled{
+    list-style-type: none;
+    margin: auto;
+    padding: 0;
+}
+
+.alert_li:last-child{
+    margin-bottom: 1rem;
+}
+.alert_li > a:hover{
+    text-decoration: none;
+}
+
+li.alert_li {
+    font-size: 0.8rem;
+    color: grey;
+    padding: 1rem 1rem 0.2rem 1rem;
+    border-bottom: thin solid #CECECE;
+}
+
+li.alert_li:hover {
+    background-color: #CCCCCC;
+}
+
+
+.popover-body {
+    padding: 0;
+}
 /********************************************************************************************************/
 /*                                                                                                      */
 /*                             Cards remplacing bootstrap card                                          */

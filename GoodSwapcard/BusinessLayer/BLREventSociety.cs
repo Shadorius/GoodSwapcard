@@ -23,6 +23,11 @@ namespace BusinessLayer
             return repo.GetAll().Select(x => MappingModel.EventSocStoC(x)).ToList();
         }
 
+        public List<EventSocietyMC> GetAllById(int id)
+        {
+            return repo.GetAllById(id).Select(x => MappingModel.EventSocStoC(x)).ToList();
+        }
+
         public bool Insert(EventSocietyMC item)
         {
             return repo.Insert(MappingModel.EventSocCtoS(item));

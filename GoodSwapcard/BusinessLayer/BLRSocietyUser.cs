@@ -23,6 +23,11 @@ namespace BusinessLayer
             return repo.GetAll().Select(x => MappingModel.SocietyUserStoC(x)).ToList();
         }
 
+        public List<SocietyUserMC> GetAllById(int id)
+        {
+            return repo.GetAllById(id).Select(x => MappingModel.SocietyUserStoC(x)).ToList();
+        }
+
         public bool Insert(SocietyUserMC item)
         {
             return repo.Insert(MappingModel.SocietyUserCtoS(item));

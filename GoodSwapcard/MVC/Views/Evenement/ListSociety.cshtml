@@ -1,0 +1,36 @@
+﻿@model IEnumerable<MVC.Models.Views.ListEventSocietyUser>
+
+@{
+    ViewBag.Title = "ListSociety";
+}
+
+<h2>ListSociety</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th class="text-center">
+            @Html.DisplayNameFor(Model => Model.SocietyEvent.SocietyName)
+        </th>
+        <th class="text-center">
+            Utils
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(model => item.SocietyEvent.SocietyName)
+        </td>
+        <td>
+            @foreach (var t in item.UtilEvent) {
+            <p>@Html.DisplayFor(model => t.FirstName)</p>
+                
+            }
+        </td>
+    </tr>
+}
+
+</table>
