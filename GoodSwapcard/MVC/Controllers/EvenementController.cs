@@ -44,6 +44,7 @@ namespace MVC.Controllers
 
         public PartialViewResult ListUser(int id)
         {
+            //get list of user
 
             List<Utilisateur> u = repoEventUser.GetAllById(id).Select(x => MappingModel.UtilisateurCtoMVC(repoUser.Get(x.IdUser))).ToList();
 
