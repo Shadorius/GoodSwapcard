@@ -1,12 +1,14 @@
 ﻿@model IEnumerable<MVC.Models.Evenement>
-
+@using MVC.Utils;
 @{
     ViewBag.Title = "Index";
 }
-<div class="float-left">
-    <button onclick="location.href='@Url.Action("Create", "Evenement")'" type="button" class="btn btn-info">Créer un nouvel Evenement</button>
-</div>
-
+@if (UserSession.CurrentUser != null)
+{
+    <div class="float-left">
+        <button onclick="location.href='@Url.Action("Create", "Evenement")'" type="button" class="btn btn-info">Créer un nouvel Evenement</button>
+    </div>
+}
 <div class="cards-columns" id="my-table">
     @foreach (var item in Model)
     {
@@ -29,7 +31,7 @@
 @section Scripts {
 
     <script>
-        function ulWriter(rowIndex,record, columns, cellWriter) {
+        function ulWriter(rowIndex, record, columns, cellWriter) {
             var cssClass = "card cards-Event", article;
             article = '<article class="' + cssClass + '"><img class="card-img" src="/Img/mdr.jpg" alt="card image cap"><div class="card-img-overlay"><div hidden class="id">' + record.Id + '</div><button onclick="/Subscribe/Event/' + record.Id + '" type="button" class="btn btn-info">Subscribe</button><a href="/Evenement/Details/' + record.Id + '"><h4 class="cards-title">' + record.label + '</h4><p class="cards-desc">' + record.description + '</p></a></div></article>';
             return article;
