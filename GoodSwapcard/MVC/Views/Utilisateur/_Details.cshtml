@@ -10,62 +10,30 @@
                 </button>
             </div>
             <div class="modal-body">
-                <dl class="dl-horizontal">
+                <dl class="jumbotron">
                     <dt>
-                        @Html.DisplayNameFor(model => model.ajoutUser.Utilisateur.LastName)
+                        @Html.DisplayNameFor(model => model.ajoutUser.Utilisateur.LastName) : @Html.DisplayFor(model => model.ajoutUser.Utilisateur.LastName)
                     </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.ajoutUser.Utilisateur.LastName)
-                    </dd>
-
                     <dt>
-                        @Html.DisplayNameFor(model => model.ajoutUser.Utilisateur.FirstName)
+                        @Html.DisplayNameFor(model => model.ajoutUser.Utilisateur.FirstName) : @Html.DisplayFor(model => model.ajoutUser.Utilisateur.FirstName)
+                    </dt>
+                    
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ajoutUser.Utilisateur.Email) : @Html.DisplayFor(model => model.ajoutUser.Utilisateur.Email)
                     </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.ajoutUser.Utilisateur.FirstName)
-                    </dd>
-
                     <dt>
-                        @Html.DisplayNameFor(model => model.ajoutUser.Utilisateur.PsW)
+                        @Html.DisplayNameFor(model => model.ajoutUser.Utilisateur.Phone) : @Html.DisplayFor(model => model.ajoutUser.Utilisateur.Phone)
                     </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.ajoutUser.Utilisateur.PsW)
-                    </dd>
-
                     <dt>
-                        @Html.DisplayNameFor(model => model.ajoutUser.Utilisateur.Email)
+                        @Html.DisplayNameFor(model => model.ajoutUser.Utilisateur.Birthdate) : @Html.DisplayFor(model => model.ajoutUser.Utilisateur.Birthdate)
                     </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.ajoutUser.Utilisateur.Email)
-                    </dd>
-
                     <dt>
-                        @Html.DisplayNameFor(model => model.ajoutUser.Utilisateur.Phone)
+                        @Html.DisplayNameFor(model => model.ajoutUser.Utilisateur.statut.StatutName) : @Html.DisplayFor(model => model.ajoutUser.Utilisateur.statut.StatutName)
                     </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.ajoutUser.Utilisateur.Phone)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.ajoutUser.Utilisateur.Birthdate)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.ajoutUser.Utilisateur.Birthdate)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.ajoutUser.Utilisateur.statut.StatutName)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.ajoutUser.Utilisateur.statut.StatutName)
-                    </dd>
 
                 </dl>
             </div>
