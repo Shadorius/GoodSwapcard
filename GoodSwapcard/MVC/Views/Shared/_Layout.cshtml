@@ -6,7 +6,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>@ViewBag.Title - Mon application ASP.NET</title>
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"/>
     @Styles.Render("~/Content/dynatable")
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -30,14 +32,15 @@
             <ul class=" my-3 my-md-0 navbar-nav">
                 @if (UserSession.CurrentUser != null && UserSession.CurrentUser.statut.StatutName == "Admin")
                 {
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown04">
-                            @Html.ActionLink("Utilisateur", "Index", "Utilisateur", new { area = "" }, htmlAttributes: new { @class = "dropdown-item" })
-                            @Html.ActionLink("Society", "Index", "Society", new { area = "" }, htmlAttributes: new { @class = "dropdown-item" })
-                            @Html.ActionLink("Participant", "Participant", "Utilisateur", new { area = "" }, htmlAttributes: new { @class = "dropdown-item" })
-                        </div>
-                    </li>
+                <li class="nav-item dropdown">
+                    @*<a class="nav-link dropdown-toggle" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>*@
+
+                    <button class="btn nav-link dropdown-toggle" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</button>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown04">
+                        @Html.ActionLink("Utilisateur", "Index", "Utilisateur", new { area = "" }, htmlAttributes: new { @class = "dropdown-item" })
+                        @Html.ActionLink("Society", "Index", "Society", new { area = "" }, htmlAttributes: new { @class = "dropdown-item" })
+                    </div>
+                </li>
                 }
 
                 @if (UserSession.CurrentUser == null)
