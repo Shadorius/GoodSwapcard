@@ -158,6 +158,7 @@
     <Compile Include="Models\Views\AddListUser.cs" />
     <Compile Include="Models\Views\AddSociety.cs" />
     <Compile Include="Models\Views\AddUser.cs" />
+    <Compile Include="Models\Views\ListEventSocietyUser.cs" />
     <Compile Include="Models\Views\ListLocalityEvent.cs" />
     <Compile Include="Models\Views\EditUser.cs" />
     <Compile Include="Models\Views\LogIn.cs" />

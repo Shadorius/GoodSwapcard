@@ -18,6 +18,9 @@ namespace MVC.Controllers
         BLRCountry repoCountry = new BLRCountry();
         BLRUtilisateur repoUser = new BLRUtilisateur();
         BLREventUser repoEventUser = new BLREventUser();
+        BLREventSociety repoEventSociety = new BLREventSociety();
+        BLRSociety repoSociety = new BLRSociety();
+        BLRSocietyUser repoSocietyUser = new BLRSocietyUser();
 
         // GET: Evenement
         public ActionResult Index()
@@ -49,6 +52,27 @@ namespace MVC.Controllers
             List<Utilisateur> u = repoEventUser.GetAllById(id).Select(x => MappingModel.UtilisateurCtoMVC(repoUser.Get(x.IdUser))).ToList();
 
             return PartialView("ListUser", u);
+        }
+
+        public ActionResult ListSociety(int id)
+        {
+            ListEventSocietyUser LEveSoc = new ListEventSocietyUser();
+
+            List<Society> temp = repoEventSociety.GetAllById(id).Select(x => MappingModel.SocietyCtoMVC(repoSociety.Get(x.IdSociety))).ToList();
+
+            List<ListEventSocietyUser> SocietyList = new List<ListEventSocietyUser>();
+            for (int i = 0; i < temp.Count(); i++)
+            {
+                ListEventSocietyUser t = new ListEventSocietyUser() {
+                    SocietyEvent = temp[i],
+                    UtilEvent = repoSocietyUser.GetAllById(temp[i].Id).Select(y => MappingModel.UtilisateurCtoMVC(repoUser.Get(y.IdUser))).ToList()
+                };
+            }
+
+            //SocietyList.ForEach(x => x.UtilEvent = repoSocietyUser.GetAllById(x.SocietyEvent.Id).Select(y => MappingModel.UtilisateurCtoMVC(repoUser.Get(y.IdUser))).ToList());
+
+
+            return View();
         }
 
         // GET: Evenement/Create
