@@ -29,6 +29,7 @@
         </div>
         <div class="tab-pane fade" id="AllEnterprises" role="tabpanel" aria-labelledby="AllEnterprises-tab">
             <div class="cards-columns">
+                @Html.Action("ListSociety", "Evenement", new { id = ViewBag.idEvent })
                 <article class="cards enterprise">
                     <img class="cards-img-top rounded-circle" src="~/Img/mdr.jpg" alt="Card image cap">
                     <div class="cards-body">
@@ -50,6 +51,28 @@
                     </div>
                     <footer class="cards-footer">
                         <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <img class="cards-img-footer rounded-circle" src="~/Img/mdr.jpg" alt="Card image cap">
+                                <p class="cards-footer-p">Nom Prenom</p>
+
+                                <div class="btn-group btn-block">
+                                    <button onclick="location.href='@Url.Action("Index", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-calendar-alt"></i>    </button>
+                                    <button onclick="location.href='@Url.Action("Index", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-comments"></i>    </button>
+                                    <button onclick="location.href='@Url.Action("Detail", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-address-card"></i>    </button>
+                                </div>
+                            </li>
+
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <img class="cards-img-footer rounded-circle" src="~/Img/mdr.jpg" alt="Card image cap">
+                                <p class="cards-footer-p">Nom Prenom</p>
+
+                                <div class="btn-group btn-block">
+                                    <button onclick="location.href='@Url.Action("Index", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-calendar-alt"></i>    </button>
+                                    <button onclick="location.href='@Url.Action("Index", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-comments"></i>    </button>
+                                    <button onclick="location.href='@Url.Action("Detail", "Utilisateur")'" type="button" class="btn btn-outline-info"> <i class="far fa-address-card"></i>    </button>
+                                </div>
+                            </li>
+
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <img class="cards-img-footer rounded-circle" src="~/Img/mdr.jpg" alt="Card image cap">
                                 <p class="cards-footer-p">Nom Prenom</p>

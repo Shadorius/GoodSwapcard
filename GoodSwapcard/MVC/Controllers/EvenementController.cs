@@ -54,7 +54,7 @@ namespace MVC.Controllers
             return PartialView("ListUser", u);
         }
 
-        public ActionResult ListSociety(int id)
+        public PartialViewResult ListSociety(int id)
         {
             ListEventSocietyUser LEveSoc = new ListEventSocietyUser();
 
@@ -73,7 +73,7 @@ namespace MVC.Controllers
             //SocietyList.ForEach(x => x.UtilEvent = repoSocietyUser.GetAllById(x.SocietyEvent.Id).Select(y => MappingModel.UtilisateurCtoMVC(repoUser.Get(y.IdUser))).ToList());
 
 
-            return View(SocietyList);
+            return PartialView("ListSociety", SocietyList);
         }
 
         // GET: Evenement/Create
