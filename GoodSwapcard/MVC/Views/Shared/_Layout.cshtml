@@ -10,6 +10,7 @@
     @Styles.Render("~/Content/dynatable")
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="https://unpkg.com/popper.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 </head>
 <body>
@@ -49,19 +50,19 @@
                 else
                 {
                     <li class="nav-item">
-                    <a href="/Home/Messages" class="nav-link">
-                        <i class="far fa-comment"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/Home/Notifications" class="nav-link">
-                        <i class="far fa-bell"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <button class="btn btn-outline-info my-2 my-sm-0" onclick="location.href='@Url.Action("Edit", "Home", new { id = UserSession.CurrentUser.Id })'" >Profil</button>
-                    <button class="btn btn-outline-info my-2 my-sm-0" onclick="location.href='@Url.Action("Deconnexion", "Home")'">Deconnexion</button>
-                </li>
+                        <a href="/Home/Messages" class="nav-link">
+                            <i class="far fa-comment"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" id="Notifs" class="nav-link">
+                            <i class="far fa-bell"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-info my-2 my-sm-0" onclick="location.href='@Url.Action("Edit", "Home", new { id = UserSession.CurrentUser.Id })'">Profil</button>
+                        <button class="btn btn-outline-info my-2 my-sm-0" onclick="location.href='@Url.Action("Deconnexion", "Home")'">Deconnexion</button>
+                    </li>
                 }
             </ul>
 
@@ -74,7 +75,19 @@
     <div class="container body-content">
         @RenderBody()
     </div>
-
+    <div style="display:none" class="alert_list">
+        <ul class="unstyled">
+            <li data-alert_id="1" class="alert_li">
+                <a href="#" class="alert_message"><i class="far fa-comment"></i> Nouveau message de Adnet</a>
+            </li>
+            <li data-alert_id="2" class="alert_li">
+                <a href="#" class="alert_message"><i class="far fa-calendar-alt"></i> Nouveau RDV par Fontesse</a>
+            </li>
+            <li data-alert_id="3" class="alert_li">
+                <a href="#" class="alert_message"><i class="far fa-comment"></i> Nouveau message de Brasseur</a>
+            </li>
+        </ul>
+    </div>
     <footer>
         <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
     </footer>

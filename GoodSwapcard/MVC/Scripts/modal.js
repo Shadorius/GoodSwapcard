@@ -1,4 +1,13 @@
-﻿//Code JS de la partie User
+﻿
+$(document).ready(function () {
+    $("#Notifs").popover({
+        'title': 'Notifications',
+        'html': true,
+        'placement': 'bottom',
+        'content': $(".alert_list").html()
+    });
+});
+//Code JS de la partie User
 $(document).on("click", ".open-DeleteUserDialog", function () {
     var currentUserId = $(this).data('id');
     console.log(currentUserId);
