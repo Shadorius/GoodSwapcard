@@ -10,6 +10,7 @@
     @Styles.Render("~/Content/dynatable")
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="https://unpkg.com/popper.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 </head>
 <body>
@@ -76,9 +77,15 @@
     </div>
     <div style="display:none" class="alert_list">
         <ul class="unstyled">
-            <li data-alert_id="1" class="alert_li"><a href="#" class="alert_message">Nouveau message de Bouillon</a> <br /><div class="clearfix"></div></li>
-            <li data-alert_id="2" class="alert_li"><a href="#">Nouvelle demande de RDV de Bouillon</a> <br /><div class="clearfix"></div></li>
-            <li data-alert_id="3" class="alert_li"><a href="#">Nouveau message de Brasseur</a> <br /><div class="clearfix"></div></li>
+            <li data-alert_id="1" class="alert_li">
+                <a href="#" class="alert_message"><i class="far fa-comment"></i> Nouveau message de Adnet</a>
+            </li>
+            <li data-alert_id="2" class="alert_li">
+                <a href="#" class="alert_message"><i class="far fa-calendar-alt"></i> Nouveau RDV par Fontesse</a>
+            </li>
+            <li data-alert_id="3" class="alert_li">
+                <a href="#" class="alert_message"><i class="far fa-comment"></i> Nouveau message de Brasseur</a>
+            </li>
         </ul>
     </div>
     <footer>

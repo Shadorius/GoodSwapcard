@@ -22,7 +22,6 @@ namespace MVC
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/Popper.js",
                       "~/Scripts/bootstrap.js"
                       ));
 

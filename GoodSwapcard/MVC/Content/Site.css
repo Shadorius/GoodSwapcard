@@ -211,35 +211,34 @@ a:hover{
 /*                                                                                                      */
 /********************************************************************************************************/
 
+.unstyled{
+    list-style-type: none;
+    margin: auto;
+    padding: 0;
+}
 
-.alert_list {
-    font-size: 0.8rem;
-    color: grey
+.alert_li:last-child{
+    margin-bottom: 1rem;
+}
+.alert_li > a:hover{
+    text-decoration: none;
 }
 
 li.alert_li {
     font-size: 0.8rem;
     color: grey;
-    padding: 10px 0px 2px 0px;
-    border-bottom: thin solid #c0c0c0;
+    padding: 1rem 1rem 0.2rem 1rem;
+    border-bottom: thin solid #CECECE;
 }
 
-    li.alert_li:hover {
-        background-color: #eee
-    }
-
-.turn_off_alert {
-    float: right;
-    margin-bottom: 1px
+li.alert_li:hover {
+    background-color: #CCCCCC;
 }
 
-a.alert_message {
-    color: grey
-}
 
-    a.alert_message:hover {
-        color: grey
-    }
+.popover-body {
+    padding: 0;
+}
 /********************************************************************************************************/
 /*                                                                                                      */
 /*                             Cards remplacing bootstrap card                                          */
