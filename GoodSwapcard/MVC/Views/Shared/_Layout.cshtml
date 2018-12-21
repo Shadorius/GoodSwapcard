@@ -49,19 +49,19 @@
                 else
                 {
                     <li class="nav-item">
-                    <a href="/Home/Messages" class="nav-link">
-                        <i class="far fa-comment"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/Home/Notifications" class="nav-link">
-                        <i class="far fa-bell"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <button class="btn btn-outline-info my-2 my-sm-0" onclick="location.href='@Url.Action("Edit", "Home", new { id = UserSession.CurrentUser.Id })'" >Profil</button>
-                    <button class="btn btn-outline-info my-2 my-sm-0" onclick="location.href='@Url.Action("Deconnexion", "Home")'">Deconnexion</button>
-                </li>
+                        <a href="/Home/Messages" class="nav-link">
+                            <i class="far fa-comment"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" id="Notifs" class="nav-link">
+                            <i class="far fa-bell"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-info my-2 my-sm-0" onclick="location.href='@Url.Action("Edit", "Home", new { id = UserSession.CurrentUser.Id })'">Profil</button>
+                        <button class="btn btn-outline-info my-2 my-sm-0" onclick="location.href='@Url.Action("Deconnexion", "Home")'">Deconnexion</button>
+                    </li>
                 }
             </ul>
 
@@ -74,7 +74,13 @@
     <div class="container body-content">
         @RenderBody()
     </div>
-
+    <div style="display:none" class="alert_list">
+        <ul class="unstyled">
+            <li data-alert_id="1" class="alert_li"><a href="#" class="alert_message">Nouveau message de Bouillon</a> <br /><div class="clearfix"></div></li>
+            <li data-alert_id="2" class="alert_li"><a href="#">Nouvelle demande de RDV de Bouillon</a> <br /><div class="clearfix"></div></li>
+            <li data-alert_id="3" class="alert_li"><a href="#">Nouveau message de Brasseur</a> <br /><div class="clearfix"></div></li>
+        </ul>
+    </div>
     <footer>
         <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
     </footer>
