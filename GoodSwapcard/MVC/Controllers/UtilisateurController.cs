@@ -71,7 +71,7 @@ namespace MVC.Controllers
 
                         Utilisateur uti = MappingModel.UtilisateurFI(util);
 
-                        util.PsW = hash;
+                        uti.PsW = hash;
                         repo.Insert(MappingModel.UtilisateurtoS(uti));
                         ViewBag.ErrorHash = "Le hashage n'a pas été correctement fait";
                     }

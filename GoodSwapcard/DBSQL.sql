@@ -199,11 +199,16 @@ INSERT INTO Locality (LocalityName, CP, IdCountry) VALUES ('Nivelles','1400',1);
 INSERT INTO Locality (LocalityName, CP, IdCountry) VALUES ('Cologne','50441',2);
 
 --Table Utilisateurs
-INSERT INTO Utils VALUES ('Adnet', 'Geoffroy', 'aqwzsx', 'emaila@mail.be','' ,'', 1);
-INSERT INTO Utils VALUES ('Bouillon', 'Jeremy', '123456', 'emailb@mail.be','' ,'', 1);
-INSERT INTO Utils VALUES ('Fontesse', 'Axel', '789456', 'emailc@mail.be','' ,'', 1);
-INSERT INTO Utils VALUES ('Ghost', 'Man', 'poiuyt', 'emaild@mail.be','' ,'', 2)
-INSERT INTO Utils VALUES ('Brasseur', 'Xavier', '9515951', 'emaile@mail.be','' ,'', 2);
+--INSERT INTO Utils VALUES ('Adnet', 'Geoffroy', 'aqwzsx', 'emaila@mail.be','' ,'', 1);
+--INSERT INTO Utils VALUES ('Bouillon', 'Jeremy', '123456', 'emailb@mail.be','' ,'', 1);
+--INSERT INTO Utils VALUES ('Fontesse', 'Axel', '456789', 'emailc@mail.be','' ,'', 1);
+--INSERT INTO Utils VALUES ('Ghost', 'Man', 'azerty', 'emaild@mail.be','' ,'', 2)
+--INSERT INTO Utils VALUES ('Brasseur', 'Xavier', 'qwerty', 'emaile@mail.be','' ,'', 2);
+INSERT INTO Utils VALUES ('Adnet', 'Geoffroy', '139964b7dd8604912283b13017ec75b1', 'emaila@mail.be','' ,'', 1);
+INSERT INTO Utils VALUES ('Bouillon', 'Jeremy', 'e10adc3949ba59abbe56e057f20f883e', 'emailb@mail.be','' ,'', 1);
+INSERT INTO Utils VALUES ('Fontesse', 'Axel', 'e35cf7b66449df565f93c607d5a81d09', 'emailc@mail.be','' ,'', 1);
+INSERT INTO Utils VALUES ('Ghost', 'Man', 'ab4f63f9ac65152575886860dde480a1', 'emaild@mail.be','' ,'', 2)
+INSERT INTO Utils VALUES ('Brasseur', 'Xavier', 'd8578edf8458ce06fbc5bb76a58c5ca4', 'emaile@mail.be','' ,'', 2);
 
 --Table Society
 INSERT INTO Society VALUES('Genesis Conult','grande desc','petite description','image','website','023233232','La rue', 'numer', 1, 2);

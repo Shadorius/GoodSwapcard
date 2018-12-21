@@ -48,5 +48,23 @@ namespace MVC.Utils
                 return false;
             }
         }
+
+        public static bool VerifyMd5HashLogin(MD5 md5Hash, string input, string hash)
+        {
+            // Hash the input.
+            //string hashOfInput = GetMd5Hash(md5Hash, input);
+
+            // Create a StringComparer an compare the hashes.
+            StringComparer comparer = StringComparer.OrdinalIgnoreCase;
+
+            if (0 == comparer.Compare(input, hash))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
