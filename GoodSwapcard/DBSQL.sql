@@ -212,9 +212,15 @@ INSERT INTO Society VALUES('Intergraph','grande desc','petite description','imag
 
 --Table SocietyUser
 INSERT INTO SocietyUser VALUES (1,2);
+INSERT INTO SocietyUser VALUES (1,3);
+INSERT INTO SocietyUser VALUES (1,1);
+INSERT INTO SocietyUser VALUES (2,1);
 INSERT INTO SocietyUser VALUES (2,3);
+INSERT INTO SocietyUser VALUES (2,2);
 INSERT INTO SocietyUser VALUES (3,1);
-
+INSERT INTO SocietyUser VALUES (3,2);
+INSERT INTO SocietyUser VALUES (4,1);
+INSERT INTO SocietyUser VALUES (4,3);
 --Table Place
 INSERT INTO Place (PlaceName, Street, Number, IdLoc) VALUES ('PAM Expo', 'rue du coin', '5', 4);
 INSERT INTO Place (PlaceName, Street, Number, IdLoc) VALUES ('Waux Hall', 'grand place', '2', 5);

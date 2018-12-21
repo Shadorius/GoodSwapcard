@@ -67,6 +67,7 @@ namespace MVC.Controllers
                     SocietyEvent = temp[i],
                     UtilEvent = repoSocietyUser.GetAllById(temp[i].Id).Select(y => MappingModel.UtilisateurCtoMVC(repoUser.Get(y.IdUser))).ToList()
                 };
+                SocietyList.Add(t);
             }
 
             //SocietyList.ForEach(x => x.UtilEvent = repoSocietyUser.GetAllById(x.SocietyEvent.Id).Select(y => MappingModel.UtilisateurCtoMVC(repoUser.Get(y.IdUser))).ToList());
