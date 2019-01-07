@@ -50,7 +50,7 @@ namespace MVC.Controllers
                 {
                     string hash = HashageMD5.GetMd5Hash(md5Hash, log.PWD);
 
-                    if (HashageMD5.VerifyMd5Hash(md5Hash, u.PsW, hash))
+                    if (HashageMD5.VerifyMd5HashLogin(md5Hash, u.PsW, hash))
                     {
                         UserSession.CurrentUser = u;
                         ViewBag.CodeErrorConnection = 1;

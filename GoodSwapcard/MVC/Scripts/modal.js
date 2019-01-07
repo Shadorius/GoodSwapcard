@@ -45,28 +45,28 @@ $(function () {
 });
 
 var EditUserBackURL = '/Utilisateur/Edit';
-//$(".open-EditUserDialog").click(function () {
-//    var $buttonClicked = $(this);
-//    var id = $buttonClicked.attr('data-id');
-//    console.log(id)
-//    var options = { "backdrop": "static", keyboard: true };
-//    $.ajax({
-//        type: "GET",
-//        url: EditUserBackURL,
-//        contentType: "application/json",
-//        data: { "Id": id },
-//        datatype: "json",
-//        success: function (data) {
-//            console.log(data);
-//            $('#myModalUserContent').html(data);
-//            $('#myModalUser').modal(options);
-//            $('#myModalUser').modal('show');
-//        },
-//        error: function () {
-//            alert("Dynamic content load failed.");
-//        }
-//    });
-//});
+$(".open-EditUserDialog").click(function () {
+    var $buttonClicked = $(this);
+    var id = $buttonClicked.attr('data-id');
+    console.log(id)
+    var options = { "backdrop": "static", keyboard: true };
+    $.ajax({
+        type: "GET",
+        url: EditUserBackURL,
+        contentType: "application/json",
+        data: { "Id": id },
+        datatype: "json",
+        success: function (data) {
+            console.log(data);
+            $('#myModalUserContent').html(data);
+            $('#myModalUser').modal(options);
+            $('#myModalUser').modal('show');
+        },
+        error: function () {
+            alert("Dynamic content load failed.");
+        }
+    });
+});
 
 $('#tableUser').on('click', '.open-EditUserDialog', function() {
     var $buttonClicked = $(this);
@@ -152,28 +152,28 @@ $(function () {
 //Edit
 var EditBackURL = '/Society/Edit';
 
-//$(".open-EditSocietyDialog").click(function () {
+$(".open-EditSocietyDialog").click(function () {
 
 
-//    var $buttonClicked = $(this);
-//    var id = $buttonClicked.attr('data-id');
-//    var options = { "backdrop": "static", keyboard: true };
-//    $.ajax({
-//        type: "GET",
-//        url: EditBackURL,
-//        contentType: "application/json",
-//        data: { "Id": id },
-//        datatype: "json",
-//        success: function (data) {
-//            $('#myModalSocietyContent').html(data);
-//            $('#myModalSociety').modal(options);
-//            $('#myModalSociety').modal('show');
-//        },
-//        error: function () {
-//            alert("Dynamic content load failed.");
-//        }
-//    });
-//});
+    var $buttonClicked = $(this);
+    var id = $buttonClicked.attr('data-id');
+    var options = { "backdrop": "static", keyboard: true };
+    $.ajax({
+        type: "GET",
+        url: EditBackURL,
+        contentType: "application/json",
+        data: { "Id": id },
+        datatype: "json",
+        success: function (data) {
+            $('#myModalSocietyContent').html(data);
+            $('#myModalSociety').modal(options);
+            $('#myModalSociety').modal('show');
+        },
+        error: function () {
+            alert("Dynamic content load failed.");
+        }
+    });
+});
 
 $("#closbtn").click(function () {
     $('#myModalSociety').modal('hide');
